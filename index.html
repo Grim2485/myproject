@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水族天堂</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- swiper styles -->
+    <style>
+        .swiper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+
+        .swiper-slide {
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            width: 620px;
+            /* height: 618px; */
+            border-radius: 32px;
+            position: relative;
+        }
+
+        .swiper-slide .content {
+            height: 30%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .5);
+            color: white;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+        }
+        .swiper-button-next{
+            right: -5%;
+            color: #52867E;
+        }
+        .swiper-button-prev{
+            left: -5%;
+            color: #52867E;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Canvas 全屏固定定位 */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .indexBanner {
+            position: fixed;
+            height: 326px;
+            z-index: 1;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .indexBanner h1 {
+            font-size: 96px;
+            color: white;
+            cursor: default;
+        }
+
+        .indexBanner p {
+            font-size: 32px;
+            color: white;
+            letter-spacing: 2px;
+            cursor: default;
+        }
+
+        .indexBanner a {
+            height: 59px;
+            width: 206px;
+            line-height: 59px;
+            background-color: #008CEB;
+            color: white;
+            border-radius: 150px;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .main {
+            margin-top: 2000px;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .tex {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            clip-path: circle(100% at 50% 50%);
+            z-index: -1;
+            background: white url("./img/bg.png")
+        }
+
+        .feature {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .feature .outer {
+            display: flex;
+            justify-content: space-between;
+            width:1320px;
+        }
+
+        .feature .outer .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature .pic {
+            position: relative;
+        }
+
+        .feature .pic .blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: -1;
+        }
+
+        .feature .goodsName {
+            width: 100%;
+            padding: 32px 0;
+            line-height: 32px;
+            text-align: center;
+            border-bottom: 1px solid #B3B1B1;
+        }
+
+        .feature .goodsName h3 {
+            font-size: 24px
+        }
+
+        .feature .price {
+            display: flex;
+            padding: 32px 0;
+            line-height: 32px;
+            flex-direction: column;
+            align-items: center;
+            color: #FE3372;
+            font-size: 20px;
+        }
+
+        .feature .price span {
+            font-size: 32px;
+        }
+
+        .about {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .about .outer {
+            display: flex;
+            width: 1320px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about .outer .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 80%;
+            width: 40%;
+        }
+
+        .about .outer .content h3 {
+            font-size: 36px;
+            letter-spacing: 2px;
+        }
+
+        .about .outer .content p {
+            font-size: 24px;
+            letter-spacing: 2px;
+            line-height: 3rem;
+        }
+
+        .about .outer .content a {
+            text-align: center;
+            line-height: 59px;
+            font-size: 24px;
+            height: 59px;
+            width: 206px;
+            border-radius: 150px;
+            background-color: #52867E;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .news {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .news h2 {
+            text-align: center;
+            margin: 76px 0;
+        }
+        .news .outer {
+            width: 1320px;
+            position: relative;
+            margin-bottom: 76px;
+        }
+
+        .main .att {
+            width: 100%;
+            height: 30vh;
+            margin: 76px 0;
+            /* position: relative; */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .main .att1 {
+            background-image: url('./img/attachment1.jpg');
+        }
+
+        .main .att2 {
+            background-image: url('./img/attachment2.jpg');
+        }
+    </style>
+    <!-- 引入 Three.js 函式庫 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+</head>
+
+<body>
+    <canvas></canvas>
+    <header>
+        <div class="navLogo">
+            <a href="">
+                <img src="./img/navLogo.svg" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="">關於我們</a>
+                </li>
+                <li>
+                    <a href="">最新消息</a>
+                </li>
+                <li>
+                    <a href="">門市資訊</a>
+                </li>
+                <li>
+                    <a href="">所有商品</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="">
+                <img src="./img/letter.svg" alt="contact">
+            </a>
+            <a href="">
+                <img src="./img/cart.svg" alt="cart">
+            </a>
+        </div>
+    </header>
+    <section class="indexBanner">
+        <h1>AquaHaven</h1>
+        <p>為家創造一片海,讓心隨魚悠游。</p>
+        <a href="">探索更多</a>
+    </section>
+    <div class="main">
+        <div class="tex"></div>
+        <section class="feature">
+            <h2>商品介紹</h2>
+            <div class="outer">
+                <div class="card">
+                    <div class="pic">
+                        <img src="./img/featurePic1.png" alt="">
+                        <img src="./img/blob.svg" alt="" class="blob">
+                    </div>
+                    <div class="goodsName">
+                        <h3>白金鼠魚</h3>
+                        <p>Platinum Corydoras</p>
+                    </div>
+                    <div class="price">
+
+                        <h4>促銷價</h4>
+                        <h4>NT<span>$20</span></h4>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="pic">
+                        <img src="./img/featurePic2.png" alt="">
+                        <img src="./img/blob.svg" alt="" class="blob">
+                    </div>
+                    <div class="goodsName">
+                        <h3>高背金龍</h3>
+                        <p>Highback Golden Arowana</p>
+                    </div>
+                    <div class="price">
+                        <h4>促銷價</h4>
+                        <h4>NT<span>$99999</span></h4>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="pic">
+                        <img src="./img/featurePic3.png" alt="">
+                        <img src="./img/blob.svg" alt="" class="blob">
+                    </div>
+                    <div class="goodsName">
+                        <h3>白色半月鬥魚</h3>
+                        <p>Half Moon</p>
+                    </div>
+                    <div class="price">
+                        <h4>促銷價</h4>
+                        <h4>NT<span>$150</span></h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="att att1"></div>
+        <section class="about">
+            <h2>關於我們</h2>
+            <div class="outer">
+                <div class="content">
+                    <h3>我們的願景：慢活水色，心靈的自然棲地</h3>
+                    <p>我們相信，養魚不只是一項愛好，更是一種回歸自然、滋養心靈的生活方式。本著「療癒與自然感」的品牌理念，我們精心挑選每一尾健康活潑的魚隻，和每一件能提升居家美學的周邊商品。</p>
+                    <a href="">了解更多</a>
+                </div>
+                <div class="pic">
+                    <img src="./img/about.png" alt="">
+                </div>
+            </div>
+        </section>
+        <div class="att att2"></div>
+        <section class="news">
+            <h2>最新消息</h2>
+            <div class="outer">
+                <!-- Swiper -->
+                 <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./img/news1.png" />
+                            <div class="content">
+                                <p>2025/10/23</p>
+                                <h4>【新品上架】淺藍濾材新選擇：為你的魚缸帶來清透淨化力</h4>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/news2.png" />
+                            <div class="content">
+                                <p>2025/10/23</p>
+                                <h4>【水色慢活】用療癒水草，打造居家靜心角落</h4>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/news3.png" />
+                            <div class="content">
+                                <p>2025/10/23</p>
+                                <h4>【魚兒好眠】秋季換水哲學：讓牠們安心度過季節更迭</h4>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/news4.png" />
+                            <div class="content">
+                                <p>2025/10/23</p>
+                                <h4>【活體到貨】色彩斑斕的熱帶新朋友。</h4>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/news5.png" />
+                            <div class="content">
+                                <p>2025/10/23</p>
+                                <h4>【水草造景】打造居家靜心角落。</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="outer">
+
+            <div class="footerlogo">
+                <a href="">
+                    <img src="./img/footerLogo.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="info">
+                <p>營業時間 | 周一至周六09:30-20:00</p>
+                <p>電話 | 03-8964426</p>
+                <p>傳真 | 03-8964426</p>
+                <p>地址 | 320桃園市中壢區復興路46號</p>
+            </div>
+            <div class="tag">
+                <a href="">關於我們</a>
+                <a href="">最新消息</a>
+                <a href="">門市資訊</a>
+                <a href="">所有商品</a>
+            </div>
+            <div class="icons">
+                <a href="" class="icon">
+                    <img src="./img/ic_fb.svg" alt="fb">
+                </a>
+                <a href="" class="icon">
+                    <img src="./img/ic_ig.svg" alt="ig">
+                </a>
+                <a href="" class="icon">
+                    <img src="./img/ic_twitter.svg" alt="twitter">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- 水波 -->
+    <script type="module">
+        // 從外部檔案引入著色器程式
+        import { simulationVertexShader, simulationFragmentShader, renderVertexShader, renderFragmentShader, } from "./shaders.js"
+
+        // DOM 載入完成後執行
+        document.addEventListener("DOMContentLoaded", () => {
+            // 建立兩個場景：一個用於水波模擬，一個用於最終渲染
+            const scene = new THREE.Scene();
+            const simScene = new THREE.Scene();
+
+            // 建立正交相機，用於 2D 渲染
+            const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+            // 初始化 WebGL 渲染器
+            const renderer = new THREE.WebGLRenderer({
+                antialias: true,        // 開啟抗鋸齒
+                alpha: true,            // 支援透明度
+                preserveDrawingBuffer: true, // 保留繪圖緩衝區
+            });
+            // 設定渲染器的像素比例和尺寸
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // 追蹤滑鼠位置
+            const mouse = new THREE.Vector2();
+            let frame = 0;
+
+            // 設定渲染目標的尺寸和參數
+            const width = window.innerWidth * window.devicePixelRatio;
+            const height = window.innerHeight * window.devicePixelRatio;
+            const options = {
+                format: THREE.RGBAFormat,
+                type: THREE.FloatType,
+                minFilter: THREE.LinearFilter,
+                magFilter: THREE.LinearFilter,
+                stencilBuffer: false,
+                depthBuffer: false,
+            };
+            // 建立兩個渲染目標，用於 ping-pong 緩衝
+            let rtA = new THREE.WebGLRenderTarget(width, height, options);
+            let rtB = new THREE.WebGLRenderTarget(width, height, options);
+
+            // 建立模擬用的著色器材質
+            const simMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    textureA: { value: null },        // 前一幀的結果
+                    mouse: { value: mouse },        // 滑鼠位置
+                    resolution: { value: new THREE.Vector2(width, height) }, // 解析度
+                    time: { value: 0 },               // 時間
+                    frame: { value: 0 },              // 幀數
+                },
+                vertexShader: simulationVertexShader,
+                fragmentShader: simulationFragmentShader,
+            });
+
+            // 建立渲染用的著色器材質
+            const renderMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    textureA: { value: null },      // 模擬結果
+                    textureB: { value: null },      // 背景文字紋理
+                },
+                vertexShader: renderVertexShader,
+                fragmentShader: renderFragmentShader,
+                transparent: true,
+            });
+
+            // 建立平面幾何體，用於全屏渲染
+            const plane = new THREE.PlaneGeometry(2, 2);
+            const simQuad = new THREE.Mesh(plane, simMaterial);
+            const renderQuad = new THREE.Mesh(plane, renderMaterial);
+
+            // 將平面加入對應的場景
+            simScene.add(simQuad);
+            scene.add(renderQuad);
+
+            // 建立 2D canvas 用於繪製文字
+            // const canvas = document.createElement("canvas");
+            const canvas = document.querySelector("canvas")
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d", { alpha: true });
+
+            // // 設定背景色
+            // ctx.fillStyle = "#fb7427";
+            // ctx.fillRect(0, 0, width, height);
+
+            // 載入背景圖片
+            const backgroundImage = new Image();
+            backgroundImage.src = './img/homeBanner.jpg';  // 替換成你的圖片路徑
+            console.log(backgroundImage);
+
+
+
+            backgroundImage.onload = () => {
+                // 在圖片載入完成後繪製到 canvas
+                ctx.drawImage(
+                    backgroundImage,
+                    0, 0,
+                    canvas.width, canvas.height,
+                );
+
+                // 繪製文字
+                // const fontSize = Math.round(250 * window.devicePixelRatio);
+                // ctx.fillStyle = "#fef4b8";
+                // ctx.font = `bold ${fontSize}px Test Söhne`;
+                // ctx.textAlign = "center";
+                // ctx.textBaseline = "middle";
+                // ctx.textRendering = "geometricPrecision";
+                // ctx.imageSmoothingEnabled = true;
+                // ctx.imageSmoothingQuality = "high";
+                // ctx.fillText("softhorizon", width / 2, height / 2);
+
+                // 將 canvas 轉換為 Three.js 紋理
+                const textTexture = new THREE.CanvasTexture(canvas);
+                textTexture.minFilter = THREE.LinearFilter;
+                textTexture.magFilter = THREE.LinearFilter;
+                textTexture.format = THREE.RGBAFormat;
+
+                // 監聽視窗調整大小事件
+                window.addEventListener("resize", () => {
+                    const newWidth = window.innerWidth * window.devicePixelRatio;
+                    const newHeight = window.innerHeight * window.devicePixelRatio;
+
+                    // 更新渲染器和渲染目標的尺寸
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    rtA.setSize(newWidth, newHeight);
+                    rtB.setSize(newWidth, newHeight);
+                    simMaterial.uniforms.resolution.value.set(newWidth, newHeight);
+
+                    // // 重新繪製文字
+                    // canvas.width = newWidth;
+                    // canvas.height = newHeight;
+                    // ctx.fillStyle = "#fb7427";
+                    // ctx.fillRect(0, 0, newWidth, newHeight);
+
+                    // 重新繪製背景
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+                    ctx.drawImage(
+                        backgroundImage,
+                        0, 0,
+                        canvas.width, canvas.height
+                    );
+
+                    // const newFontSize = Math.round(250 * window.devicePixelRatio);
+                    // ctx.fillStyle = "#fef4b8";
+                    // ctx.font = `bold ${newFontSize}px Test Söhne`;
+                    // ctx.textAlign = "center";
+                    // ctx.textBaseline = "middle";
+                    // ctx.fillText("softhorizon", newWidth / 2, newHeight / 2);
+
+                    // 更新紋理
+                    textTexture.needsUpdate = true;
+                });
+
+                // 監聽滑鼠移動事件
+                renderer.domElement.addEventListener("mousemove", (e) => {
+                    mouse.x = e.clientX * window.devicePixelRatio;
+                    mouse.y = (window.innerHeight - e.clientY) * window.devicePixelRatio;
+                });
+
+                // 監聽觸控移動事件
+                renderer.domElement.addEventListener("touchmove", (e) => {
+                    // e.preventDefault(); // 防止畫面滾動
+                    const touch = e.touches[0];
+                    if (touch) {
+                        mouse.x = touch.clientX * window.devicePixelRatio;
+                        mouse.y = (window.innerHeight - touch.clientY) * window.devicePixelRatio;
+                    }
+                }, { passive: false });
+
+                // 監聽觸控結束事件
+                renderer.domElement.addEventListener("touchend", () => {
+                    mouse.set(0, 0);
+                });
+
+                // 監聽滑鼠離開事件
+                renderer.domElement.addEventListener("mouseleave", () => {
+                    mouse.set(0, 0);
+                });
+
+                // 動畫循環
+                const animate = () => {
+                    // 更新模擬參數
+                    simMaterial.uniforms.frame.value = frame++;
+                    simMaterial.uniforms.time.value = performance.now() / 1000;
+
+                    // 執行水波模擬
+                    simMaterial.uniforms.textureA.value = rtA.texture;
+                    renderer.setRenderTarget(rtB);
+                    renderer.render(simScene, camera);
+
+                    // 渲染最終畫面
+                    renderMaterial.uniforms.textureA.value = rtB.texture;
+                    renderMaterial.uniforms.textureB.value = textTexture;
+                    renderer.setRenderTarget(null);
+                    renderer.render(scene, camera);
+
+                    // 交換渲染目標（ping-pong 技術）
+                    const temp = rtA;
+                    rtA = rtB;
+                    rtB = temp;
+
+                    // 請求下一幀動畫
+                    requestAnimationFrame(animate);
+                };
+
+                // 更新材質的紋理
+                renderMaterial.uniforms.textureB.value = textTexture;
+
+                // 開始動畫循環
+                animate();
+            };
+        });
+    </script>
+    <!-- gsap -->
+    <script>
+        // use a script tag or an external JS file
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger)
+            // gsap code here!
+            const tex = document.querySelector(".tex")
+            // 建立滾動觸發動畫
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "canvas",
+                    start: "50% top",  // 目標出現在中央時觸發
+                    end: "+=2000",            // 持續的滾動距離
+                    scrub: true,             // 跟隨滾動進度
+                    // pin: true,               // 固定在畫面上
+                    markers: false       //開發對準
+                }
+            })
+                .from(".tex", {
+                    'clip-path': 'circle(0% at 50% 50%)',
+                    duration: 1,
+                    ease: "power2.out"
+                })
+
+
+            // 視窗調整時重新更新 ScrollTrigger
+            window.addEventListener("resize", () => ScrollTrigger.refresh());
+        });
+
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            var swiper = new Swiper(".mySwiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                autoHeight: false,
+                centeredSlides: true,
+                slidesPerView: 2,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 55,
+                    depth: 500,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });
+    </script>
+</body>
+
+</html>

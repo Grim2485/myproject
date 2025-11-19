@@ -1,0 +1,142 @@
+/* 重置所有元素的邊距和盒模型 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        /* 設定基本頁面樣式 */
+        body {
+            width: 100%;
+            font-family: 'Arial', sans-serif;
+            background: white url("./img/bg.png");
+            color: #000000;
+            overflow-x: hidden;
+        }
+        .main h2 {
+            font-size: 40px;
+            color: #52867E;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* 導航欄和頁尾共用的固定定位樣式 */
+        header {
+            top: 0;
+            width: 100%;
+            height: 96px;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            z-index: 2;
+            background-color: #fff;
+            box-shadow: 0 4px 10px #4B4B4B4B;
+        }
+
+        header .logo img {
+            width: 101.78px;
+            height: 64;
+        }
+
+        header nav {
+            width: 680px;
+        }
+
+        header nav ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        header nav ul a {
+            color: #52867E;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        header .icons {
+            margin-right: 32px;
+            width: 120px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .banner {
+            height: 536px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url(./img/banner.jpg) center;
+            .title {
+                height: 143px;
+                color: #114E13;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                transform: translate(0,96px);
+                h1 {
+                    font-size: 64px;
+                }
+                h2 {
+                    font-size: 32px;
+                }
+            }
+            
+        }
+
+
+        footer {
+            position: relative;
+            height: 298px;
+            width: 100%;
+            bottom: 0;
+            z-index: 1;
+            background-color: #52867E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        footer .outer {
+            width: 1320px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        footer .info {
+            height: 124px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            letter-spacing: 2px;
+        }
+
+        footer .tag {
+            height: 156px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+        footer .tag a {
+            color: #fff;
+            letter-spacing: 2px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer .icons .icon {
+            margin: 12px;
+        }
