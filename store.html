@@ -1,14 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水族天堂</title>
+    <style>
+        .collapse:not(.show) {
+            display: none;
+        }
+
+        .collapsing {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.35s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .collapsing {
+                transition: none;
+            }
+        }
+
+        .collapsing.collapse-horizontal {
+            width: 0;
+            height: auto;
+            transition: width 0.35s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .collapsing.collapse-horizontal {
+                transition: none;
+            }
+        }
+
+        .accordion-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            color: #212529;
+            text-align: left;
+            background-color: #fff0;
+            border: 0;
+            border-radius: 0;
+            overflow-anchor: none;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-button {
+                transition: none;
+            }
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #0c63e4;
+            background-color: #e7f1ff;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            transform: rotate(-180deg);
+        }
+
+        .accordion-button::after {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-left: auto;
+            content: "";
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-size: 1.25rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-button::after {
+                transition: none;
+            }
+        }
+
+        .accordion-button:hover {
+            z-index: 2;
+        }
+
+        .accordion-button:focus {
+            z-index: 3;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .accordion-header {
+            margin-bottom: 0;
+        }
+
+        .accordion-item {
+            background-color: rgba(0, 0, 0, 0);
+            border-top: 1px solid rgba(0, 0, 0, 0.125);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+        }
+        .accordion-item:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0);
+        }
+
+        .accordion-item:first-of-type {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+
+        .accordion-item:first-of-type .accordion-button {
+            border-top-left-radius: calc(0.25rem - 1px);
+            border-top-right-radius: calc(0.25rem - 1px);
+        }
+
+        .accordion-item:not(:first-of-type) {
+            border-top: 0;
+        }
+
+        .accordion-item:last-of-type {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .accordion-item:last-of-type .accordion-button.collapsed {
+            border-bottom-right-radius: calc(0.25rem - 1px);
+            border-bottom-left-radius: calc(0.25rem - 1px);
+        }
+
+        .accordion-item:last-of-type .accordion-collapse {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .accordion-body {
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            a {
+                color: #666;
+                line-height: 32px;
+                padding-left: 12px;
+            }
+            a:hover {
+                background-color: #e4e4e4;
+            }
+        }
+
+        .accordion-flush .accordion-collapse {
+            border-width: 0;
+        }
+
+        .accordion-flush .accordion-item {
+            border-right: 0;
+            border-left: 0;
+            border-radius: 0;
+        }
+
+        .accordion-flush .accordion-item:first-child {
+            border-top: 0;
+        }
+
+        .accordion-flush .accordion-item:last-child {
+            border-bottom: 0;
+        }
+
+        .accordion-flush .accordion-item .accordion-button {
+            border-radius: 0;
+        }
+    </style>
     <link rel="stylesheet" href="./style.css">
     <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1320px;
+            margin: 76px auto;
+            .mainHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                border-bottom: 1px solid #B3B1B1;
+                padding-bottom: 21px;
+                .breadcrumb {
 
+                    a {
+                        color: #666666;
+                        font-size: 20px;
+                        letter-spacing: 2px;
+                    }
+                }
+                .searchbar {
+                    position: relative;
+                    input {
+                        border-radius: 150px;
+                        border-width: 1px;
+                        border-color: #B3B1B1;
+                        width: 278px;
+                        height: 52px;
+                        background-color: rgba(0, 0, 0, 0);
+                        padding: 0 20px;
+
+                    }
+                    input::placeholder {
+                        color: #666;
+                        font-size: 16px;
+                        
+                    }
+                    .icon {
+                        position: absolute;
+                        right: 20px;
+                        top: 13px;
+                    }
+                }
+            }
+            .outer {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 76px;
+                .categories {
+                    width: 251px;
+
+                    h3 {
+                        color: #52867E;
+                        font-size: 24px;
+                        letter-spacing: 2px;
+                        margin-bottom: 8px;
+                    }
+                }
+                .goods {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 987px;
+                    .cards {
+                        height: 1011px;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        .card {
+                            width: 317px;
+                            height: 437px;
+                            background-color: #fff;
+                            border-radius: 32px;
+                            .content {
+                                margin: 0 auto;
+                                width: 273.75px;
+                                .goodsTitle {
+                                    h4 {
+                                        font-size: 20px;
+                                        letter-spacing: 2px;
+                                        margin: 16px 0;
+                                    }
+                                }
+                                .goodsContent {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    .price {
+                                        color: #FE3372;
+                                        .money {
+                                            display: flex;
+                                            align-items: baseline;
+                                            span {
+                                                font-size: 20px;
+                                                font-weight: bold;
+                                            }
+                                            h4 {
+                                                margin-left: 6px;
+                                                font-size:32px ;
+                                            }
+                                        }
+                                    }
+                                    .addCartBtn {
+                                        button {
+                                            width: 111.75px;
+                                            height: 45.28px;
+                                            border-radius: 4px;
+                                            border: none;
+                                            background-color: #008CEB;
+                                            color: #fff;
+                                            letter-spacing: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .pageBtns {
+                        display: flex;
+                        
+                        .pageBtn {
+                            position: relative;
+                            color: #B3B1B1;
+                            font-size: 24px;
+                            cursor: pointer;
+
+                        }
+
+                        .active {
+                            color: #52867E;
+                        }
+
+                        span {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-25%,-60%);
+                            
+                        }
+                    }
+                }
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="navLogo">
@@ -30,8 +346,8 @@
                 <li>
                     <a href="">所有商品</a>
                 </li>
-            </ul>
         </nav>
+        </div>
         <div class="icons">
             <a href="">
                 <img src="./img/letter.svg" alt="contact">
@@ -43,14 +359,310 @@
     </header>
     <section class="banner">
         <div class="title">
-            <h1>NEWS</h1>
-            <h2>最新消息</h2>
+            <h1>STORE</h1>
+            <h2>線上商店</h2>
         </div>
     </section>
-
     <div class="main">
-
+        <div class="mainHeader">
+            <div class="breadcrumb">
+                <a href="">商品總覽</a>
+            </div>
+            <div class="searchbar">
+                <input type="text" placeholder="搜尋">
+                <span class="icon">
+                    <img src="./img/zoom.svg" alt="">
+                </span>
+            </div>
         </div>
+        <div class="outer">
+            <div class="categories">
+                <h3>商品分類</h3>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                活體區
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">中小型魚</a>
+                                <a href="">大型魚</a>
+                                <a href="">其他</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                魚飼料
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">中小型魚</a>
+                                <a href="">底棲</a>
+                                <a href="">活餌</a>
+                                <a href="">大型魚</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                魚缸
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">迷你缸</a>
+                                <a href="">智能生態缸</a>
+                                <a href="">大型缸</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                水草區
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">陰性水草</a>
+                                <a href="">莫絲</a>
+                                <a href="">高經水草</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                水質處理區
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">藥劑</a>
+                                <a href="">水質設備</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                周邊用品
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">清潔用品</a>
+                                <a href="">漁網</a>
+                                <a href="">氣泡石</a>
+                                <a href="">繁殖盒</a>
+                                <a href="">風管</a>
+                                <a href="">水草用品</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                設備區
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">馬達</a>
+                                <a href="">照明設備</a>
+                                <a href="">溫控設備</a>
+                                <a href="">零配件</a>
+                                <a href="">過濾器材</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEifht" aria-expanded="false" aria-controls="collapseEifht">
+                                造景與擺飾
+                            </button>
+                        </h2>
+                        <div id="collapseEifht" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a href="">背景板</a>
+                                <a href="">假水草</a>
+                                <a href="">沉木</a>
+                                <a href="">各式飾品</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="goods">
+                <div class="cards">
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>白金鼠魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$20</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods2.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>紅白蘭壽金魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$50</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods3.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>白色半月鬥魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$150</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods4.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>金絲神仙魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$120</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods5.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>熊貓鼠魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$20</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="pic">
+                        <img src="./img/goods6.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="goodsTitle">
+                                <h4>雙色隆頭魚</h4>
+                            </div>
+                            <div class="goodsContent">
+                                <div class="price">
+                                    <p>促銷價</p>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h4>$50</h4>
+                                    </div>
+                                </div>
+                                <div class="addCartBtn">
+                                    <button>加購物車</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pageBtns">
+                    <div class="pageBtn page1 active">
+                        <img src="./img/fishVectorActive.svg" alt="">
+                        <span>1</span>
+                    </div>
+                    <div class="pageBtn page2">
+                        <img src="./img/fishVector.svg" alt="">
+                        <span>2</span>
+                    </div>
+                    <div class="pageBtn page3">
+                        <img src="./img/fishVector.svg" alt="">
+                        <span>3</span>
+                    </div>
+                    <div class="pageBtn page4">
+                        <img src="./img/fishVector.svg" alt="">
+                        <span>4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="outer">
 
@@ -84,5 +696,10 @@
             </div>
         </div>
     </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
