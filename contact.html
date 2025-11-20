@@ -4,58 +4,462 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水族天堂</title>
+    <style>
+        .collapse:not(.show) {
+            display: none;
+        }
+
+        .collapsing {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.35s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .collapsing {
+                transition: none;
+            }
+        }
+
+        .collapsing.collapse-horizontal {
+            width: 0;
+            height: auto;
+            transition: width 0.35s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .collapsing.collapse-horizontal {
+                transition: none;
+            }
+        }
+
+        .accordion-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 24px;
+            color: #212529;
+            text-align: left;
+            background-color: #fff0;
+            border: 0;
+            border-radius: 0;
+            overflow-anchor: none;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-button {
+                transition: none;
+            }
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #0c63e4;
+            background-color: #e7f1ff;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+
+        .accordion-button:not(.collapsed)::before {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            transform: rotate(-180deg);
+        }
+
+        .accordion-button::before {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 32px;
+            content: "";
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-size: 1.25rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-button::before {
+                transition: none;
+            }
+        }
+
+        .accordion-button:hover {
+            z-index: 2;
+        }
+
+        .accordion-button:focus {
+            z-index: 3;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .accordion-header {
+            margin-bottom: 0;
+        }
+
+        .accordion-item {
+            background-color: rgba(0, 0, 0, 0);
+            border-top: 1px solid rgba(0, 0, 0, 0.125);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+        }
+
+        .accordion-item:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0);
+        }
+
+        .accordion-item:first-of-type {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+
+        .accordion-item:first-of-type .accordion-button {
+            border-top-left-radius: calc(0.25rem - 1px);
+            border-top-right-radius: calc(0.25rem - 1px);
+        }
+
+        .accordion-item:not(:first-of-type) {
+            border-top: 0;
+        }
+
+        .accordion-item:last-of-type {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .accordion-item:last-of-type .accordion-button.collapsed {
+            border-bottom-right-radius: calc(0.25rem - 1px);
+            border-bottom-left-radius: calc(0.25rem - 1px);
+        }
+
+        .accordion-item:last-of-type .accordion-collapse {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .accordion-body {
+            padding: 2rem 5rem;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            line-height: 32px;
+            letter-spacing: 2px;
+
+        }
+
+        .accordion-flush .accordion-collapse {
+            border-width: 0;
+        }
+
+        .accordion-flush .accordion-item {
+            border-right: 0;
+            border-left: 0;
+            border-radius: 0;
+        }
+
+        .accordion-flush .accordion-item:first-child {
+            border-top: 0;
+        }
+
+        .accordion-flush .accordion-item:last-child {
+            border-bottom: 0;
+        }
+
+        .accordion-flush .accordion-item .accordion-button {
+            border-radius: 0;
+        }
+    </style>
     <link rel="stylesheet" href="./style.css">
     <style>
+        .main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 76px 0;
+            .faq {
+                width: 1320px;
+                .faqTitle {
+                    text-align: center;
+                    margin-bottom: 76px;
+                }
+            }
+            .contact {
+                width: 1320px;
 
+                h2 {
+                    text-align: center;
+                    margin: 76px 0;
+                }
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    .formItems {
+                        display: flex;
+                        flex-direction: column;
+                        width: 1320px;
+                        label {
+                            font-size: 24px;
+                            margin: 24px 0 12px 0;
+                        }
+                        input {
+                            background: none;
+                            border: 1px solid #B3B1B1;
+                            height: 73px;
+                            border-radius: 14px;
+                            padding-left: 40px;
+                            font-size: 20px;
+                        }
+                        input::placeholder {
+                           font-size: 16px;
+                        }
+                        textarea {
+                            height: 261px;
+                            min-height: 40px;
+                            resize: none;
+                            line-height: 40px;
+                            border: 1px solid #B3B1B1;
+                            background: none;
+                            border-radius: 14px;
+                            padding-top: 16px;
+                            padding-left: 40px;
+                            font-size: 20px;
+                        }
+                        textarea::placeholder {
+                           font-size: 16px;
+                        }
+                    }
+                    input[type="submit"] {
+                        text-align: center;
+                        line-height: 59px;
+                        font-size: 24px;
+                        height: 59px;
+                        width: 206px;
+                        border-radius: 150px;
+                        background-color: #52867E;
+                        color: white;
+                        letter-spacing: 2px;
+                        border: none;
+                        cursor: pointer;
+                        margin-top: 76px;
+                    }
+                }
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
             </ul>
         </nav>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
     </header>
     <section class="banner">
         <div class="title">
-            <h1>NEWS</h1>
-            <h2>最新消息</h2>
+            <h1>CONTACT US</h1>
+            <h2>聯絡我們</h2>
         </div>
     </section>
 
     <div class="main">
-
+        <div class="faq">
+            <h2 class="faqTitle">常見問題</h2>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            貴網站販售的活體魚隻健康嗎？我們如何安心購買？
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>我們承諾活體魚隻都經過純淨檢疫與細心觀察，確保健康無虞。我們提供透明的健康保證和完善售後，讓您買得安心、放心。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            我是水族新手，不知道該如何開始，網站有提供幫助嗎？
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>當然！我們設有**【新手友善指引】專欄**，提供從開缸、水質、到魚隻選擇的簡單教學，讓您輕鬆開啟療癒水族生活。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            如果收到的活體魚隻狀態不佳或有損傷，該怎麼辦？
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>請您保持安心，立即與我們聯繫並提供照片，我們將依據「活體安心承諾」為您提供快速、妥善的售後處理與補償方案。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            貴網站的商品風格是否適合我的居家佈置？
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>我們的周邊商品皆為**「水域美學精選」，著重簡約、自然、高品質的設計，能輕鬆融入各種居家風格，打造一隅風景**。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            你們如何確保運送活體時，魚隻的舒適與安全？
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>我們採用專業的水質控溫包裝，並與信賴的物流合作，最大程度減少運送壓力，確保您的熱帶新朋友能舒適安全地抵達您的家中。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            「療癒與自然感」是貴網站的特色嗎？它體現在哪裡？
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>是的！這體現在我們柔和的網站設計、精選的自然系產品，以及我們推廣的**「慢活水色」哲學，希望能帶給您心靈的靜謐時光**。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            網站上的魚缸造景圖片，可以購買到相似的設備與水草嗎？
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>當然！圖片中的情境式造景旨在提供靈感。您可以直接在我們的網站上找到所有相關的造景材料、水草與設備，幫助您實現夢想中的水下世界。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            我對水質維護有疑問，網站上有專業的諮詢服務嗎？
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>我們提供線上水族諮詢服務。您可以透過客服管道提問，專業人員會以親切友善的方式提供維護建議，確保您的魚缸環境保持純淨健康。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                            你們的飼料產品有何特色？
+                        </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>我們的飼料是自然配方精選，著重提供魚隻必需的營養，讓牠們健康有活力，外觀色彩更飽滿，是您保持魚兒美麗狀態的安心選擇。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                            你們有沒有實體門市可以讓我去體驗水族世界的療癒氛圍？
+                        </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>有的，我們在 [請填寫城市名稱] 設有 [數量] 家分店。歡迎您親臨門市，感受我們營造的自然氛圍，並現場與我們的魚兒朋友互動。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="contact">
+            <h2>聯絡我們</h2>
+            <form action="">
+                <div class="formItems username">
+                    <label for="username">姓名</label>
+                    <input type="text" placeholder="請輸入姓名" id="username">
+                </div>
+                <div class="formItems userphone">
+                    <label for="userphone">連絡電話</label>
+                    <input type="tel" placeholder="請輸入連絡電話" id="userphone">
+                </div>
+                <div class="formItems usermail">
+                    <label for="usermail">電子信箱</label>
+                    <input type="email" placeholder="請輸入電子信箱" id="usermail">
+                </div>
+                <div class="formItems usertitle">
+                    <label for="usertitle">標題</label>
+                    <input type="text" placeholder="請輸入標題" id="usertitle">
+                </div>
+                <div class="formItems usercontent">
+                    <label for="usercontent">內容</label>
+                     <textarea name="" id="usercontent" placeholder="請輸入內容"></textarea>
+                </div>
+                <input type="submit" value="確定送出">
+            </form>
+        </div>
+    </div>
     <footer>
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -66,10 +470,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -84,5 +488,9 @@
             </div>
         </div>
     </footer>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
 </body>
 </html>

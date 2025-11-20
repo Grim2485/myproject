@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水族天堂</title>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
         .main {
@@ -15,7 +17,7 @@
             .container {
                 display: flex;
                 width: 1320px;
-                height: 100vh;
+                height: 987px;
                 justify-content: space-between;
                 flex-wrap: wrap;
 
@@ -25,9 +27,12 @@
                     overflow: hidden;
                     border-radius: 32px;;
                     background-color: #fff;
+                    cursor: pointer;
+                    box-shadow: 4px 4px 10px #B3B1B1;
 
                     .pic {
                         position: relative;
+                        overflow: hidden;
 
                         h4 {
                             position: absolute;
@@ -37,6 +42,12 @@
                             font-size: 20px;
                             letter-spacing: 2px;
                         }
+                    }
+                    .pic img {
+                        transition: all 0.5s ease;
+                    }
+                    .pic img:hover {
+                        transform: scale(1.25);
                     }
 
                     .content  {
@@ -58,13 +69,14 @@
 
             .pageBtns {
                 display: flex;
+                margin-top: 32px;
                 
                 .pageBtn {
                     position: relative;
                     color: #B3B1B1;
                     font-size: 24px;
                     cursor: pointer;
-
+                    
                 }
 
                 .active {
@@ -85,31 +97,31 @@
 <body>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
             </ul>
         </nav>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
@@ -122,7 +134,7 @@
     </section>
     <div class="main">
         <div class="container">
-            <div class="card">
+            <div class="card" data-aos="flip-left" >
                 <div class="pic">
                     <img src="./img/newspage1.png" alt="">
                     <h4>【優雅開箱】</h4>
@@ -132,7 +144,7 @@
                     <p>極簡風魚缸佈置靈感。</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="flip-left" data-aos-duration="1000">
                 <div class="pic">
                     <img src="./img/newspage2.png" alt="">
                     <h4>【新手專欄】</h4>
@@ -142,7 +154,7 @@
                     <p>輕鬆入門水族慢活術。</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="flip-left" data-aos-duration="1500">
                 <div class="pic">
                     <img src="./img/newspage3.png" alt="">
                     <h4>【活體到貨】</h4>
@@ -152,7 +164,7 @@
                     <p>色彩斑斕的熱帶新朋友。</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="flip-right" data-aos-duration="3000">
                 <div class="pic">
                     <img src="./img/newspage4.png" alt="">
                     <h4>【季節換水】</h4>
@@ -162,7 +174,7 @@
                     <p>讓魚群安心度過秋涼。</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="flip-right" data-aos-duration="2500">
                 <div class="pic">
                     <img src="./img/newspage5.png" alt="">
                     <h4>【淺藍新品】</h4>
@@ -172,7 +184,7 @@
                     <p>淨化水質，魚兒更舒適。</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="flip-right" data-aos-duration="2000">
                 <div class="pic">
                     <img src="./img/newspage6.png" alt="">
                     <h4>【水草造景】</h4>
@@ -207,7 +219,7 @@
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -218,10 +230,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -236,5 +248,20 @@
             </div>
         </div>
     </footer>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Initialize AOS -->
+    <script>
+    AOS.init();
+    </script>
+    <script>
+        let newsCards = document.querySelectorAll(".card")
+        newsCards.forEach(function (newsCard) {
+            newsCard.addEventListener("click",function () {
+                window.location.href = "newsDetail.html";
+                
+            })
+        })
+    </script>
 </body>
 </html>

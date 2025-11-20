@@ -6,56 +6,412 @@
     <title>水族天堂</title>
     <link rel="stylesheet" href="./style.css">
     <style>
+        .main {
+            margin: 76px auto;
+            width: 1320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .stepText {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 268px;
+                    margin-top: 8px;
+                    span {
+                        width: 48px;
+                        text-align: center;
+                        font-size: 14px;
+                        color: #7E7A7A;
+                    }
+                }
+            }
+            .cart {
+                margin: 76px 0;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .cartDetail {
+                    width: 873px;
+                    .itemName {
+                        width: 41.666666%;
+                    }
+                    .price {
+                        width: 16.666666%;
+                    }
+                    .counter {
+                        width: 16.666666%;
+                    }
+                    .totalPrice {
+                        width: 16.666666%;
+                    }
+                    .trash {
+                        width: 8.333333%;
+                    }
+                    .cartHeader {
+                        display: flex;
+                        width: 100%;
+                        padding: 0 24px;
+                        background-color: #52867E;
+                        color: #fff;
+                        border-radius: 8px;
+                        font-size: 20px;
+                        line-height: 56px;
+                    }
+                    .cartBody {
+                        width: 100%;
+                        padding: 0 24px;
+                        .cartItem {
+                            width: 100%;
+                            padding: 24px 0;
+                            display: flex;
+                            align-items: center;
+                            border-bottom: 1px solid #B3B1B1;
+                            .itemName {
+                                display: flex;
+                                align-items: center;
+                                .goodsName {
+                                    margin-left: 32px;
+                                    h4 {
+                                        font-size: 20px;
+                                    }
+                                    p {
+                                        color: #666;
+                                    }
+                                }
+                            }
+                            .price {
+                                font-size: 20px;
+                            }
 
+                            .counter {
+                                .number-box {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: 1px solid #B3B1B1;
+                                    /* padding: 5px 10px; */
+                                    width: 100px;
+                                    height: 30px;
+                                    border-radius: 6px;
+                                    font-size: 16px;
+                                    background: none;
+                                    
+                                }
+
+                                .number-box .btn {
+                                    border: none;
+                                    background: none;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    padding: 0 12px;
+                                }
+
+                                .number-box .value {
+                                    width: 40px;
+                                    height: 30px;
+                                    text-align: center;
+                                    line-height: 30px;
+                                    font-size: 16px;
+                                    border-left: 1px solid #B3B1B1;
+                                    border-right: 1px solid #B3B1B1;
+                                }
+                            }
+                            .totalPrice {
+                                font-size: 20px;
+                            }
+                            .trash {
+                                img {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+                }
+                .summary {
+                    width: 428px;
+                    height: 400px;
+                    border: 1px solid #B3B1B1;
+                    border-radius: 8px;
+                    padding: 24px 32px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    .summaryTitle {
+                        width: 100%;
+                        h3 {
+                            font-size: 20px;
+                        }
+                    }
+                    .summaryBody {
+                        width: 100%;
+                        color: #666;
+                        .amount {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            height: 166.25px;
+                            border-top: 1px solid #B3B1B1;
+                            border-bottom: 1px solid #B3B1B1;
+                            >div {
+                                padding: 8px 0;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                        }
+                        .totalAmount {
+                                display: flex;
+                                justify-content: space-between;
+                                margin: 24px 0;
+                        }
+                        
+                    }
+                }
+            }
+            .productSlogan {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .sloganItem {
+                    display: flex;
+                    .sloganText {
+                        margin-left: 12px;
+                        width: 250px;
+                        h4 {
+                            font-size: 20px;
+                        }
+                        p {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* nesting寫法會出bug */
+        .checkoutBtn a {
+                display: inline-block;
+                width: 366px;
+                height: 62px;
+                background-color: #008CEB;
+                border-radius: 150px;
+                text-align: center;
+                line-height: 62px;
+                color: #fff;
+                font-size: 24px;
+                letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
             </ul>
         </nav>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
     </header>
     <section class="banner">
         <div class="title">
-            <h1>NEWS</h1>
-            <h2>最新消息</h2>
+            <h1>CART</h1>
+            <h2>購物車</h2>
         </div>
     </section>
 
     <div class="main">
-
+        <div class="step">
+            <img src="./img/step.png" alt="">
+            <div class="stepText">
+                <span>Cart</span>
+                <span>Payment</span>
+                <span>Done</span>
+            </div>
         </div>
+        <div class="cart">
+            <div class="cartDetail">
+                <div class="cartHeader">
+                    <span class="itemName">商品名稱</span>
+                    <span class="price">價格</span>
+                    <span class="counter">數量</span>
+                    <span class="totalPrice">小計</span>
+                    <span class="trash">刪除</span>
+                </div>
+                <div class="cartBody">
+                    <div class="cartItem">
+                        <div class="itemName">
+                            <img src="./img/cartGoods1.png" alt="">
+                            <div class="goodsName">
+                                <h4>白金鼠魚</h4>
+                                <p>成魚</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>
+                                $20
+                            </span>
+                        </div>
+                        <div class="counter">
+                            <div class="number-box">
+                                <button class="btn minus">-</button>
+                                <span class="value">1</span>
+                                <button class="btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="totalPrice">
+                            <span>
+                                $20
+                            </span>
+                        </div>
+                        <div class="trash">
+                            <img src="./img/Trash.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="cartItem">
+                        <div class="itemName">
+                            <img src="./img/cartGoods2.png" alt="">
+                            <div class="goodsName">
+                                <h4>熊貓鼠魚</h4>
+                                <p>成魚</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>
+                                $20
+                            </span>
+                        </div>
+                        <div class="counter">
+                            <div class="number-box">
+                                <button class="btn minus">-</button>
+                                <span class="value">1</span>
+                                <button class="btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="totalPrice">
+                            <span>
+                                $20
+                            </span>
+                        </div>
+                        <div class="trash">
+                            <img src="./img/Trash.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="cartItem">
+                        <div class="itemName">
+                            <img src="./img/cartGoods3.png" alt="">
+                            <div class="goodsName">
+                                <h4>白色半月鬥魚</h4>
+                                <p>成魚</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>
+                                $150
+                            </span>
+                        </div>
+                        <div class="counter">
+                            <div class="number-box">
+                                <button class="btn minus">-</button>
+                                <span class="value">1</span>
+                                <button class="btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="totalPrice">
+                            <span>
+                                $150
+                            </span>
+                        </div>
+                        <div class="trash">
+                            <img src="./img/Trash.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summaryTitle">
+                    <h3>訂單總覽</h3>
+                </div>
+                <div class="summaryBody">
+                    <div class="amount">
+                        <div>
+                            <span>總數</span>
+                            <span>3</span>
+                        </div>
+                        <div>
+                            <span>合計</span>
+                            <span>$190</span>
+                        </div>
+                        <div>
+                            <span>運費</span>
+                            <span>$30</span>
+                        </div>
+                    </div>
+                    <div class="totalAmount">
+                        <span>總價格</span>
+                        <span>$220</span>
+                    </div>
+                </div>
+                <div class="checkoutBtn">
+                    <a href="">前往結帳</a>
+                </div>
+            </div>
+        </div>
+        <div class="productSlogan">
+            <div class="sloganItem">
+                <img src="./img/truck.svg" alt="truck">
+                <div class="sloganText">
+                    <h4>免運費</h4>
+                    <p>超過 $500 元即可享免運</p>
+                </div>
+            </div>
+            <div class="sloganItem">
+                <img src="./img/card.svg" alt="card">
+                <div class="sloganText">
+                    <h4>多樣付款</h4>
+                    <p>多種安全的付款選項</p>
+                </div>
+            </div>
+            <div class="sloganItem">
+                <img src="./img/headphone.svg" alt="headphone">
+                <div class="sloganText">
+                    <h4>全年無休</h4>
+                    <p>我們提供全天的線上支援</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -66,10 +422,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -84,5 +440,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    const box = document.querySelector('.number-box');
+    const valueEl = box.querySelector('.value');
+    let value = 1;
+
+        
+        box.querySelector('.minus').onclick = () => {
+            value--;
+            if (value<1) {
+                value =1
+                return
+            }
+            valueEl.textContent = value;
+        };
+
+    box.querySelector('.plus').onclick = () => {
+        value++;
+        valueEl.textContent = value;
+    };
+    </script>
 </body>
 </html>

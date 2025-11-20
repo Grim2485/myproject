@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水族天堂</title>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
         .main {
@@ -60,10 +62,32 @@
                 display: flex;
                 justify-content: space-between;
                 width: 1320px;
+                position: relative;
                 .card {
+                    overflow: hidden;
                     background-color: #fff;
                     border-radius: 32px;
                     height: 457px;
+                    .pic .gomap {
+                        opacity: 0;
+                        position: absolute;
+                        width: 405px;
+                        height: 315px;
+                        background-color: #000a;
+                        top: 0;
+                        transition: all 0.5s ease;
+                        a {
+                            color: #fff;
+                            display: flex;
+                            justify-content: center;
+                            line-height: 315px;
+                            font-size: 24px;
+                            letter-spacing: 2px;
+                        }
+                    }
+                    .pic .gomap:hover {
+                        opacity: 1;
+                    }
                     .content {
                         margin-top: 24px;
                         margin-left: 46px;
@@ -81,31 +105,31 @@
 <body>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
             </ul>
         </nav>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
@@ -118,7 +142,7 @@
     </section>
 
     <div class="main">
-        <div class="mainStore">
+        <div class="mainStore" data-aos="fade-down" data-aos-duration="1000">
             <h3>主店(中壢店)</h3>
             <div class="outer">
                 <div class="content">
@@ -158,27 +182,36 @@
             </div>
         </div>
         <div class="branchStore">
-            <div class="card">
+            <div class="card" data-aos="fade-down" data-aos-duration="1500">
                 <div class="pic">
-                    <img src="./img/store1.png" alt="">
+                    <img src="./img/store1.png" alt="store">
+                    <div class="gomap">
+                        <a href="">查看地圖</a>
+                    </div>
                 </div>
                 <div class="content">
                     <h4>龜山店</h4>
                     <p>地址:桃園市龜山區新興街87巷87號</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="fade-down" data-aos-duration="2000">
                 <div class="pic">
-                    <img src="./img/store2.png" alt="">
+                    <img src="./img/store2.png" alt="store">
+                    <div class="gomap">
+                        <a href="">查看地圖</a>
+                    </div>
                 </div>
                 <div class="content">
                     <h4>桃園店</h4>
                     <p>地址:桃園市桃園區新興街87巷87號</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-aos="fade-down" data-aos-duration="2500">
                 <div class="pic">
-                    <img src="./img/store3.png" alt="">
+                    <img src="./img/store3.png" alt="store">
+                    <div class="gomap">
+                        <a href="">查看地圖</a>
+                    </div>
                 </div>
                 <div class="content">
                     <h4>龍潭店</h4>
@@ -191,7 +224,7 @@
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -202,10 +235,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -220,5 +253,11 @@
             </div>
         </div>
     </footer>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Initialize AOS -->
+    <script>
+    AOS.init();
+    </script>
 </body>
 </html>

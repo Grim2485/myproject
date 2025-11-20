@@ -6,15 +6,7 @@
 
 }
 
-.bootstrap-scope {
-    /* 防止外部樣式進入 bootstrap 區 */
-    all: revert;
-}
 
-/* 但讓 bootstrap-scope 本身繼承 body 字型（可改）*/
-.bootstrap-scope {
-    font-family: inherit;
-}
 
 /* 設定基本頁面樣式 */
 body {
@@ -73,12 +65,21 @@ header nav ul a {
     font-weight: bold;
     letter-spacing: 2px;
 }
+header nav ul a:hover {
+    color: #008CEB;
+}
 
 header .icons {
     margin-right: 32px;
     width: 120px;
     display: flex;
     justify-content: space-between;
+}
+header .icons a{
+    transition: all 0.25s ease;
+}
+header .icons a:hover {
+    transform: translate(0,-4px);
 }
 
 .banner {

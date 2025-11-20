@@ -208,9 +208,8 @@
                     position: relative;
 
                     input {
+                        border: 1px solid #B3B1B1;
                         border-radius: 150px;
-                        border-width: 1px;
-                        border-color: #B3B1B1;
                         width: 278px;
                         height: 52px;
                         background-color: rgba(0, 0, 0, 0);
@@ -256,9 +255,19 @@
                         display: flex;
                         justify-content: space-between;
                         .goodsPics {
+                            .bigPic{
+                                margin-bottom: 24px;
+                            }
                             .smallPics {
                                 display: flex;
                                 justify-content: space-between;
+                                img {
+                                    cursor: pointer;
+                                }
+                                img:hover {
+                                    outline: 5px solid #008CEB;
+                                    outline-offset: -1px;
+                                }
                             }
                         }
                         .goodsDescription {
@@ -266,6 +275,95 @@
                             flex-direction: column;
                             justify-content: space-between;
 
+                            .goodsTitle {
+                                >h3 {
+                                    font-size: 24px;
+                                    letter-spacing: 2px;
+                                    margin-bottom: 8px;
+                                }
+                                .price {
+                                    display: flex;
+                                    color: #FE3372;
+                                    align-items: baseline;
+                                    span {
+                                        font-size: 20px;
+                                    }
+                                    .money {
+                                        display: flex;
+                                        align-items: baseline;
+                                        h3 {
+                                            font-size: 32px;
+                                        }
+                                    }
+                                    >span {
+                                        margin-right: 10px;
+                                    }
+                                }
+                            }
+                            .goodsSize {
+                                font-size: 20px;
+                                letter-spacing: 2px;
+                                >p {
+                                    margin-bottom: 8px;
+                                }
+                                .size {
+                                    button {
+                                        width: 84px;
+                                        height: 38px;
+                                        font-size: 20px;
+                                        letter-spacing: 2px;
+                                        background-color: #0000;
+                                        border: 1px solid #B3B1B1;
+                                        color: #666;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                    }
+                                    button:hover {
+                                        background-color: #e4e4e488;
+                                    }
+                                }
+                            }
+                            .amount {
+                                font-size: 20px;
+                                letter-spacing: 2px;
+                                >p {
+                                    margin-bottom: 8px;
+                                }
+                                .counter {
+                                    .number-box {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        border: 1px solid #B3B1B1;
+                                        /* padding: 5px 10px; */
+                                        width: 137px;
+                                        height: 38px;
+                                        border-radius: 6px;
+                                        font-size: 20px;
+                                        gap: 15px;
+                                        background: none;
+                                        
+                                    }
+
+                                    .number-box .btn {
+                                        border: none;
+                                        background: none;
+                                        font-size: 24px;
+                                        cursor: pointer;
+                                        padding: 0 5px;
+                                    }
+
+                                    .number-box .value {
+                                        width: 40px;
+                                        height: 38px;
+                                        text-align: center;
+                                        line-height: 38px;
+                                        font-size: 20px;
+                                        border-left: 1px solid #B3B1B1;
+                                        border-right: 1px solid #B3B1B1;
+                                    }
+                                }
+                            }
                             .addCartBtn {
 
                                 button {
@@ -277,13 +375,24 @@
                                     color: white;
                                     font-size: 24px;
                                     letter-spacing: 2px;
-
+                                    cursor: pointer;
+                                }
+                                button:hover {
+                                    background-color: #0071BE;
                                 }
                             }
                         }
                     }
                     .goodsContent {
-
+                        letter-spacing: 2px;
+                        h3 {
+                            font-size: 32px;
+                            margin: 32px 0;
+                        }
+                        p {
+                            font-size: 20px;
+                            line-height: 48px;
+                        }
                     }
                 }
             }
@@ -294,31 +403,31 @@
 <body>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
         </nav>
         </div>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
@@ -332,7 +441,9 @@
     <div class="main">
         <div class="mainHeader">
             <div class="breadcrumb">
-                <a href="">商品總覽</a>
+                <a href="./store.html">商品總覽</a>
+                <a href="./store.html">中小型魚</a>
+                <a href="./storeDetail.html">白金鼠魚</a>
             </div>
             <div class="searchbar">
                 <input type="text" placeholder="搜尋">
@@ -403,7 +514,7 @@
                             <div class="accordion-body">
                                 <a href="">陰性水草</a>
                                 <a href="">莫絲</a>
-                                <a href="">高經水草</a>
+                                <a href="">高莖水草</a>
                             </div>
                         </div>
                     </div>
@@ -507,7 +618,13 @@
                         </div>
                         <div class="amount">
                             <p>數量</p>
-                            <div class="counter"></div>
+                            <div class="counter">
+                                <div class="number-box">
+                                    <button class="btn minus">-</button>
+                                    <span class="value">1</span>
+                                    <button class="btn plus">+</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="addCartBtn">
                             <button>加購物車</button>
@@ -531,7 +648,7 @@
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -542,10 +659,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -564,6 +681,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+    <script>
+        const box = document.querySelector('.number-box');
+        const valueEl = box.querySelector('.value');
+        let value = 1;
+
+        box.querySelector('.minus').onclick = () => {
+            value--;
+            if (value<1) {
+                value =1
+                return
+            }
+            valueEl.textContent = value;
+        };
+
+        box.querySelector('.plus').onclick = () => {
+            value++;
+            valueEl.textContent = value;
+        };
+    </script>
 </body>
 
 </html>

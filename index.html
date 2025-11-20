@@ -33,6 +33,16 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, .5);
             color: white;
+            .outer {
+                margin-top: 54px;
+                margin-left: 50px;
+                font-size: 20px;
+                letter-spacing: 2px;
+                h4 {
+                    margin-top: 32px;
+                    margin-left: -10px;
+                }
+            }
         }
 
         .swiper-slide img {
@@ -48,6 +58,8 @@
             color: #52867E;
         }
     </style>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
         /* Canvas 全屏固定定位 */
@@ -98,6 +110,10 @@
             letter-spacing: 2px;
         }
 
+        .indexBanner a:hover {
+            background-color: #0071BE;
+        }
+
         .main {
             margin-top: 2000px;
             position: relative;
@@ -138,6 +154,7 @@
 
         .feature .pic {
             position: relative;
+            cursor: pointer;
         }
 
         .feature .pic .blob {
@@ -219,6 +236,10 @@
             letter-spacing: 2px;
         }
 
+        .about .outer .content a:hover {
+            background-color: #366860;
+        }
+
         .news {
             display: flex;
             flex-direction: column;
@@ -263,31 +284,31 @@
     <canvas></canvas>
     <header>
         <div class="navLogo">
-            <a href="">
+            <a href="./index.html">
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">關於我們</a>
+                    <a href="./about.html">關於我們</a>
                 </li>
                 <li>
-                    <a href="">最新消息</a>
+                    <a href="./news.html">最新消息</a>
                 </li>
                 <li>
-                    <a href="">門市資訊</a>
+                    <a href="./area.html">門市資訊</a>
                 </li>
                 <li>
-                    <a href="">所有商品</a>
+                    <a href="./store.html">所有商品</a>
                 </li>
             </ul>
         </nav>
         <div class="icons">
-            <a href="">
+            <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="">
+            <a href="./cart.html">
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
@@ -295,14 +316,14 @@
     <section class="indexBanner">
         <h1>AquaHaven</h1>
         <p>為家創造一片海,讓心隨魚悠游。</p>
-        <a href="">探索更多</a>
+        <a href="./store.html">探索更多</a>
     </section>
     <div class="main">
         <div class="tex"></div>
         <section class="feature">
             <h2>商品介紹</h2>
             <div class="outer">
-                <div class="card">
+                <div class="card" data-aos="flip-left" >
                     <div class="pic">
                         <img src="./img/featurePic1.png" alt="">
                         <img src="./img/blob.svg" alt="" class="blob">
@@ -317,7 +338,7 @@
                         <h4>NT<span>$20</span></h4>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" data-aos="flip-left" data-aos-duration="1000">
                     <div class="pic">
                         <img src="./img/featurePic2.png" alt="">
                         <img src="./img/blob.svg" alt="" class="blob">
@@ -331,7 +352,7 @@
                         <h4>NT<span>$99999</span></h4>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" data-aos="flip-left" data-aos-duration="1500">
                     <div class="pic">
                         <img src="./img/featurePic3.png" alt="">
                         <img src="./img/blob.svg" alt="" class="blob">
@@ -351,12 +372,12 @@
         <section class="about">
             <h2>關於我們</h2>
             <div class="outer">
-                <div class="content">
+                <div class="content" data-aos="fade-down-right" data-aos-duration="1000">
                     <h3>我們的願景：慢活水色，心靈的自然棲地</h3>
                     <p>我們相信，養魚不只是一項愛好，更是一種回歸自然、滋養心靈的生活方式。本著「療癒與自然感」的品牌理念，我們精心挑選每一尾健康活潑的魚隻，和每一件能提升居家美學的周邊商品。</p>
-                    <a href="">了解更多</a>
+                    <a href="./about.html">了解更多</a>
                 </div>
-                <div class="pic">
+                <div class="pic" data-aos="fade-down-left" data-aos-duration="2000">
                     <img src="./img/about.png" alt="">
                 </div>
             </div>
@@ -364,7 +385,7 @@
         <div class="att att2"></div>
         <section class="news">
             <h2>最新消息</h2>
-            <div class="outer">
+            <div class="outer" data-aos="flip-up">
                 <!-- Swiper -->
                  <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -373,36 +394,46 @@
                         <div class="swiper-slide">
                             <img src="./img/news1.png" />
                             <div class="content">
-                                <p>2025/10/23</p>
-                                <h4>【新品上架】淺藍濾材新選擇：為你的魚缸帶來清透淨化力</h4>
+                                <div class="outer">
+                                    <p>2025/10/23</p>
+                                    <h4>【新品上架】淺藍濾材新選擇：為你的魚缸帶來清透淨化力</h4>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img src="./img/news2.png" />
                             <div class="content">
-                                <p>2025/10/23</p>
-                                <h4>【水色慢活】用療癒水草，打造居家靜心角落</h4>
+                                <div class="outer">
+                                    <p>2025/10/23</p>
+                                    <h4>【水色慢活】用療癒水草，打造居家靜心角落</h4>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img src="./img/news3.png" />
                             <div class="content">
-                                <p>2025/10/23</p>
-                                <h4>【魚兒好眠】秋季換水哲學：讓牠們安心度過季節更迭</h4>
+                                <div class="outer">
+                                    <p>2025/10/23</p>
+                                    <h4>【魚兒好眠】秋季換水哲學：讓牠們安心度過季節更迭</h4>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img src="./img/news4.png" />
                             <div class="content">
-                                <p>2025/10/23</p>
-                                <h4>【活體到貨】色彩斑斕的熱帶新朋友。</h4>
+                                <div class="outer">
+                                    <p>2025/10/23</p>
+                                    <h4>【活體到貨】色彩斑斕的熱帶新朋友。</h4>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img src="./img/news5.png" />
                             <div class="content">
-                                <p>2025/10/23</p>
-                                <h4>【水草造景】打造居家靜心角落。</h4>
+                                <div class="outer">
+                                    <p>2025/10/23</p>
+                                    <h4>【水草造景】打造居家靜心角落。</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -416,7 +447,7 @@
         <div class="outer">
 
             <div class="footerlogo">
-                <a href="">
+                <a href="./index.html">
                     <img src="./img/footerLogo.svg" alt="Logo">
                 </a>
             </div>
@@ -427,10 +458,10 @@
                 <p>地址 | 320桃園市中壢區復興路46號</p>
             </div>
             <div class="tag">
-                <a href="">關於我們</a>
-                <a href="">最新消息</a>
-                <a href="">門市資訊</a>
-                <a href="">所有商品</a>
+                <a href="./about.html">關於我們</a>
+                <a href="./news.html">最新消息</a>
+                <a href="./area.html">門市資訊</a>
+                <a href="./store.html">所有商品</a>
             </div>
             <div class="icons">
                 <a href="" class="icon">
@@ -725,6 +756,27 @@
                 },
             });
         });
+    </script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       AOS.init();
+    </script>
+    <script>
+        let pics = document.querySelectorAll(".pic")
+        pics.forEach(function (pic) {
+            pic.addEventListener("click",function () {
+                window.location.href = "storeDetail.html";
+                
+            })
+        })
+        let newsCards = document.querySelectorAll(".swiper-slide")
+        newsCards.forEach(function (newsCard) {
+            newsCard.addEventListener("click",function () {
+                window.location.href = "newsDetail.html";
+                
+            })
+        })
     </script>
 </body>
 
