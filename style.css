@@ -11,7 +11,7 @@
 /* 設定基本頁面樣式 */
 body {
     width: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", "Noto Sans TC", sans-serif;
     background: white url("./img/bg.png");
     color: #000000;
     overflow-x: hidden;
