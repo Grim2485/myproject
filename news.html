@@ -28,7 +28,7 @@
                     border-radius: 32px;;
                     background-color: #fff;
                     cursor: pointer;
-                    box-shadow: 4px 4px 10px #B3B1B1;
+                    box-shadow: 2px 2px 4px #4B4B4B44;
 
                     .pic {
                         position: relative;
@@ -76,20 +76,23 @@
                     color: #B3B1B1;
                     font-size: 24px;
                     cursor: pointer;
-                    
+                    width: 64px;
+                    height: 48px;
+                    background: url("./img/fishVector.svg");
                 }
-
-                .active {
-                    color: #52867E;
-                }
-
                 span {
                     position: absolute;
                     left: 50%;
                     top: 50%;
-                    transform: translate(-25%,-60%);
-                    
+                    transform: translate(-25%,-50%);
                 }
+            }
+            .pageBtn:hover {
+                background: url("./img/fishVectorHover.svg")
+            }
+            .pageBtns .active {
+                color: #52867E;
+                background: url("./img/fishVectorActive.svg")
             }
         }
     </style>
@@ -198,19 +201,15 @@
         </div>
         <div class="pageBtns">
             <div class="pageBtn page1 active">
-                <img src="./img/fishVectorActive.svg" alt="">
                 <span>1</span>
             </div>
             <div class="pageBtn page2">
-                <img src="./img/fishVector.svg" alt="">
                 <span>2</span>
             </div>
             <div class="pageBtn page3">
-                <img src="./img/fishVector.svg" alt="">
                 <span>3</span>
             </div>
             <div class="pageBtn page4">
-                <img src="./img/fishVector.svg" alt="">
                 <span>4</span>
             </div>
         </div>

@@ -307,31 +307,35 @@
                         }
                         .card:hover {
                             transform: translate(0,-10px) scale(1.05);
-                            box-shadow: 4px 4px 20px #4B4B4B;
+                            box-shadow: 2px 2px 4px #4B4B4B44;
                         }
                     }
                     .pageBtns {
                         display: flex;
+                        margin-top: 32px;
                         
                         .pageBtn {
                             position: relative;
                             color: #B3B1B1;
                             font-size: 24px;
                             cursor: pointer;
-
+                            width: 64px;
+                            height: 48px;
+                            background: url("./img/fishVector.svg");
                         }
-
-                        .active {
-                            color: #52867E;
-                        }
-
                         span {
                             position: absolute;
                             left: 50%;
                             top: 50%;
-                            transform: translate(-25%,-60%);
-                            
+                            transform: translate(-25%,-50%);
                         }
+                    }
+                    .pageBtn:hover {
+                        background: url("./img/fishVectorHover.svg")
+                    }
+                    .pageBtns .active {
+                        color: #52867E;
+                        background: url("./img/fishVectorActive.svg")
                     }
                 }
             }
@@ -523,7 +527,7 @@
             </div>
             <div class="goods">
                 <div class="cards">
-                    <div class="card" data-aos="zoom-out-right" data-aos-duration="1000">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods1.png" alt="">
                         </div>
@@ -545,7 +549,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" data-aos="zoom-out-right" data-aos-duration="1500">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods2.png" alt="">
                         </div>
@@ -567,7 +571,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" data-aos="zoom-out-right" data-aos-duration="2000">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods3.png" alt="">
                         </div>
@@ -589,7 +593,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" data-aos="zoom-out-left" data-aos-duration="2000">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods4.png" alt="">
                         </div>
@@ -611,7 +615,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" data-aos="zoom-out-left" data-aos-duration="1500">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods5.png" alt="">
                         </div>
@@ -633,7 +637,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" data-aos="zoom-out-left" data-aos-duration="1000">
+                    <div class="card">
                         <div class="pic">
                         <img src="./img/goods6.png" alt="">
                         </div>
@@ -658,19 +662,15 @@
                 </div>
                 <div class="pageBtns">
                     <div class="pageBtn page1 active">
-                        <img src="./img/fishVectorActive.svg" alt="">
                         <span>1</span>
                     </div>
                     <div class="pageBtn page2">
-                        <img src="./img/fishVector.svg" alt="">
                         <span>2</span>
                     </div>
                     <div class="pageBtn page3">
-                        <img src="./img/fishVector.svg" alt="">
                         <span>3</span>
                     </div>
                     <div class="pageBtn page4">
-                        <img src="./img/fishVector.svg" alt="">
                         <span>4</span>
                     </div>
                 </div>
