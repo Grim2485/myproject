@@ -6,6 +6,8 @@
     <title>水族天堂</title>
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <link rel="stylesheet" href="./style.css">
     <style>
         .main {
@@ -22,7 +24,6 @@
                 background-color: #fff;
                 border-radius: 32px;
                 padding: 52px 65px;
-                margin-bottom: 76px;
                 h3 {
                     margin-bottom: 48px;
                     font-size: 32px;
@@ -60,14 +61,16 @@
 
             .branchStore {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
                 width: 1320px;
-                position: relative;
                 .card {
                     overflow: hidden;
+                    position: relative;
                     background-color: #fff;
                     border-radius: 32px;
                     height: 457px;
+                    transition: all .5s ease;
                     .pic .gomap {
                         opacity: 0;
                         position: absolute;
@@ -76,7 +79,7 @@
                         background-color: #000a;
                         top: 0;
                         transition: all 0.5s ease;
-                        a {
+                        .branchPic {
                             color: #fff;
                             display: flex;
                             justify-content: center;
@@ -98,6 +101,14 @@
                         }
                     }
                 }
+                .card:hover {
+                    box-shadow: 2px 2px 4px #4B4B4B44;
+                }
+            }
+            #map {
+                height: 600px;
+                width: 100%;
+                margin: 76px 0;
             }
         }
     </style>
@@ -181,12 +192,13 @@
                 </div>
             </div>
         </div>
+        <div id="map"></div>
         <div class="branchStore">
-            <div class="card" data-aos="fade-down" data-aos-duration="1500">
+            <div class="card" onmouseenter="hoverShow('a')" onmouseleave="hoverHide('a')" onclick="goTo('a')">
                 <div class="pic">
                     <img src="./img/store1.png" alt="store">
                     <div class="gomap">
-                        <a href="https://maps.app.goo.gl/iVBcwcrh6hZbsRcp7">查看地圖</a>
+                        <div class="branchPic">點擊查看</div>
                     </div>
                 </div>
                 <div class="content">
@@ -194,11 +206,11 @@
                     <p>地址:桃園市龜山區新興街87巷87號</p>
                 </div>
             </div>
-            <div class="card" data-aos="fade-down" data-aos-duration="2000">
+            <div class="card" onmouseenter="hoverShow('b')" onmouseleave="hoverHide('b')" onclick="goTo('b')">
                 <div class="pic">
                     <img src="./img/store2.png" alt="store">
                     <div class="gomap">
-                        <a href="https://maps.app.goo.gl/iVBcwcrh6hZbsRcp7">查看地圖</a>
+                        <div class="branchPic">點擊查看</div>
                     </div>
                 </div>
                 <div class="content">
@@ -206,11 +218,11 @@
                     <p>地址:桃園市桃園區新興街87巷87號</p>
                 </div>
             </div>
-            <div class="card" data-aos="fade-down" data-aos-duration="2500">
+            <div class="card" onmouseenter="hoverShow('c')" onmouseleave="hoverHide('c')" onclick="goTo('c')">
                 <div class="pic">
                     <img src="./img/store3.png" alt="store">
                     <div class="gomap">
-                        <a href="https://maps.app.goo.gl/iVBcwcrh6hZbsRcp7">查看地圖</a>
+                        <div class="branchPic">點擊查看</div>
                     </div>
                 </div>
                 <div class="content">
@@ -218,6 +230,7 @@
                     <p>地址:桃園市龍潭區新興街87巷87號</p>
                 </div>
             </div>
+            
         </div>
     </div>
     <footer>
@@ -258,6 +271,72 @@
     <!-- Initialize AOS -->
     <script>
     AOS.init();
+    </script>
+    <!-- leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        // 初始化地圖
+        const map = L.map('map',{scrollWheelZoom: false}).setView([24.9913844, 121.3125908], 11);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        // 座標資料
+        const locations = {
+            a: { name: "龜山分店",
+                lat: 25.0497561,
+                lng: 121.3542929,
+                desc: "龜山店" },
+            b: { name: "桃園分店",
+                lat: 24.9913844,
+                lng: 121.3125908,
+                desc: "桃園店" },
+            c: { name: "龍潭分店",
+                lat: 24.8758785,
+                lng: 121.2398688,
+                desc: "龍潭店" }
+        };
+
+        // 儲存 marker
+        const markers = {};
+
+        for (const key in locations) {
+            const loc = locations[key];
+
+            markers[key] = L.marker([loc.lat, loc.lng])
+                .addTo(map)
+                .bindPopup(`<h3>${loc.name}</h3><p>${loc.desc}</p>`);
+        }
+        //初始畫面有桃園分店
+        markers["b"].openPopup()
+        // ⭐ Hover 時顯示 Popup
+        function hoverShow(key) {
+            const loc = locations[key];
+            map.flyTo([24.9913844, 121.3125908], 11);
+            markers[key].openPopup();
+            console.log(markers[key]);
+            
+        }
+
+        // ⭐ Hover 離開時關閉 Popup
+        // function hoverHide(key) {
+        //     markers[key].closePopup();
+        // }
+
+        // 🔘 按鈕呼叫這個函式來控制地圖
+        function goTo(key) {
+            const loc = locations[key];
+            const marker = markers[key];
+
+            // 地圖飛過去（有動畫）
+            map.flyTo([loc.lat, loc.lng], 15, {
+                duration: 1.2
+            });
+                marker.openPopup();
+
+        }
     </script>
 </body>
 </html>

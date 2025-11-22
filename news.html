@@ -28,7 +28,8 @@
                     border-radius: 32px;;
                     background-color: #fff;
                     cursor: pointer;
-                    box-shadow: 2px 2px 4px #4B4B4B44;
+                    transition: all .5s ease;
+                    
 
                     .pic {
                         position: relative;
@@ -42,12 +43,6 @@
                             font-size: 20px;
                             letter-spacing: 2px;
                         }
-                    }
-                    .pic img {
-                        transition: all 0.5s ease;
-                    }
-                    .pic img:hover {
-                        transform: scale(1.25);
                     }
 
                     .content  {
@@ -64,6 +59,10 @@
                         }
                         
                     }
+                }
+                .card:hover {
+                    transform: translate(0,-10px) scale(1.05);
+                    box-shadow: 2px 2px 4px #4B4B4B44;
                 }
             }
 
@@ -137,7 +136,7 @@
     </section>
     <div class="main">
         <div class="container">
-            <div class="card" data-aos="flip-left" >
+            <div class="card" >
                 <div class="pic">
                     <img src="./img/newspage1.png" alt="">
                     <h4>【優雅開箱】</h4>
@@ -147,7 +146,7 @@
                     <p>極簡風魚缸佈置靈感。</p>
                 </div>
             </div>
-            <div class="card" data-aos="flip-left" data-aos-duration="1000">
+            <div class="card">
                 <div class="pic">
                     <img src="./img/newspage2.png" alt="">
                     <h4>【新手專欄】</h4>
@@ -157,7 +156,7 @@
                     <p>輕鬆入門水族慢活術。</p>
                 </div>
             </div>
-            <div class="card" data-aos="flip-left" data-aos-duration="1500">
+            <div class="card">
                 <div class="pic">
                     <img src="./img/newspage3.png" alt="">
                     <h4>【活體到貨】</h4>
@@ -167,7 +166,7 @@
                     <p>色彩斑斕的熱帶新朋友。</p>
                 </div>
             </div>
-            <div class="card" data-aos="flip-right" data-aos-duration="3000">
+            <div class="card">
                 <div class="pic">
                     <img src="./img/newspage4.png" alt="">
                     <h4>【季節換水】</h4>
@@ -177,7 +176,7 @@
                     <p>讓魚群安心度過秋涼。</p>
                 </div>
             </div>
-            <div class="card" data-aos="flip-right" data-aos-duration="2500">
+            <div class="card">
                 <div class="pic">
                     <img src="./img/newspage5.png" alt="">
                     <h4>【淺藍新品】</h4>
@@ -187,7 +186,7 @@
                     <p>淨化水質，魚兒更舒適。</p>
                 </div>
             </div>
-            <div class="card" data-aos="flip-right" data-aos-duration="2000">
+            <div class="card">
                 <div class="pic">
                     <img src="./img/newspage6.png" alt="">
                     <h4>【水草造景】</h4>
