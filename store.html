@@ -199,6 +199,10 @@
                         font-size: 20px;
                         letter-spacing: 2px;
                     }
+                    a:last-child {
+                        cursor: default;
+                        font-weight: 500;
+                    }
                 }
                 .searchbar {
                     position: relative;
@@ -384,7 +388,7 @@
     <div class="main">
         <div class="mainHeader">
             <div class="breadcrumb">
-                <a href="">商品總覽</a>
+                <a href="" class="bcItem">商品總覽</a>
             </div>
             <div class="searchbar">
                 <input type="text" placeholder="搜尋">
@@ -727,6 +731,11 @@
                 window.location.href = "storeDetail.html";
                 
             })
+        })
+
+        let bcItems = document.querySelectorAll(".bcItem")
+        bcItems[bcItems.length-1].addEventListener("click",function (e) {
+            e.preventDefault()
         })
     </script>
 </body>

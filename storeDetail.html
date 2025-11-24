@@ -202,6 +202,10 @@
                         font-size: 20px;
                         letter-spacing: 2px;
                     }
+                    a:last-child {
+                        cursor: default;
+                        font-weight: 500;
+                    }
                     a:not(:first-child)::before {
                         content: " / ";
                         pointer-events: none;
@@ -446,9 +450,9 @@
     <div class="main">
         <div class="mainHeader">
             <div class="breadcrumb">
-                <a href="./store.html">商品總覽</a>
-                <a href="./store.html">中小型魚</a>
-                <a href="./storeDetail.html">白金鼠魚</a>
+                <a href="./store.html" class="bcItem">商品總覽</a>
+                <a href="./store.html" class="bcItem">中小型魚</a>
+                <a href="./storeDetail.html" class="bcItem">白金鼠魚</a>
             </div>
             <div class="searchbar">
                 <input type="text" placeholder="搜尋">
@@ -716,6 +720,12 @@
             }
 
             )
+        })
+
+        // breadcrumb
+        let bcItems = document.querySelectorAll(".bcItem")
+        bcItems[bcItems.length-1].addEventListener("click",function (e) {
+            e.preventDefault()
         })
     </script>
 </body>

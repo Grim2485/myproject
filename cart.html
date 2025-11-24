@@ -207,6 +207,9 @@
                 font-size: 24px;
                 letter-spacing: 2px;
         }
+        .checkoutBtn a:hover {
+            background-color: #0071BE;
+        }
     </style>
 </head>
 <body>
@@ -293,7 +296,7 @@
                             </span>
                         </div>
                         <div class="trash">
-                            <img src="./img/Trash.svg" alt="">
+                            <img src="./img/Trash.svg" class="trashIcon" alt="">
                         </div>
                     </div>
                     <div class="cartItem">
@@ -322,7 +325,7 @@
                             </span>
                         </div>
                         <div class="trash">
-                            <img src="./img/Trash.svg" alt="">
+                            <img src="./img/Trash.svg" class="trashIcon" alt="">
                         </div>
                     </div>
                     <div class="cartItem">
@@ -351,7 +354,7 @@
                             </span>
                         </div>
                         <div class="trash">
-                            <img src="./img/Trash.svg" alt="">
+                            <img src="./img/Trash.svg" class="trashIcon" alt="">
                         </div>
                     </div>
                 </div>
@@ -362,15 +365,15 @@
                 </div>
                 <div class="summaryBody">
                     <div class="amount">
-                        <div>
+                        <div class="summaryCount">
                             <span>總數</span>
                             <span>3</span>
                         </div>
-                        <div>
+                        <div class="summaryTotal">
                             <span>合計</span>
                             <span>$190</span>
                         </div>
-                        <div>
+                        <div class="fee">
                             <span>運費</span>
                             <span>$30</span>
                         </div>
@@ -442,26 +445,86 @@
             </div>
         </div>
     </footer>
-
     <script>
-    const box = document.querySelector('.number-box');
-    const valueEl = box.querySelector('.value');
-    let value = 1;
-
-        
+        // 計數器
+    const boxs = document.querySelectorAll('.number-box');
+    // 獲取訂單總攬數據
+    const summaryCount= document.querySelector('.summaryCount').children[1]
+    const summaryTotal= document.querySelector('.summaryTotal').children[1]
+    const totalAmount = document.querySelector(".totalAmount").children[1]
+    const fee =document.querySelector(".fee").children[1]
+    // 對每個計數器上監聽器
+    boxs.forEach(function (box) {
+        const valueEl = box.querySelector('.value');
+        let value = 1;
+        // 單一商品價格
+        let price =box.parentElement.parentElement.querySelector(".price").children[0].innerHTML.replace("$","")
+        // 小計
+        let totalPrice =box.parentElement.parentElement.querySelector(".totalPrice").children[0]
+        // 減
         box.querySelector('.minus').onclick = () => {
             value--;
             if (value<1) {
                 value =1
                 return
             }
+            
             valueEl.textContent = value;
-        };
+            totalPrice.textContent = "$"+price*value
+            // 總數量
+            summaryCount.textContent--
 
+            let summaryTotalNum = Number(summaryTotal.textContent.replace("$",""))-price*1
+            console.log(summaryTotalNum);
+        
+            summaryTotal.textContent = "$" +summaryTotalNum
+
+            // 總計500免運
+            if (summaryTotalNum>=500) {
+                totalAmount.textContent="$" +summaryTotalNum
+                fee.textContent="$0"
+            } else {
+                totalAmount.textContent="$" +(summaryTotalNum+30)
+                fee.textContent="$30"
+            }
+            
+        };
+    // 加
     box.querySelector('.plus').onclick = () => {
         value++;
         valueEl.textContent = value;
+        totalPrice.textContent = "$"+price*value
+        summaryCount.textContent++
+
+        let summaryTotalNum = Number(summaryTotal.textContent.replace("$",""))+price*1
+        console.log(summaryTotalNum);
+        
+        summaryTotal.textContent = "$" +summaryTotalNum
+        
+        if (summaryTotalNum>=500) {
+                totalAmount.textContent="$" +summaryTotalNum
+                fee.textContent="$0"
+            } else {
+                totalAmount.textContent="$" +(summaryTotalNum+30)
+                fee.textContent="$30"
+            }
     };
+        
+    
+    
+    
+    })
+
+
+        
+    
+
+    let trashs = document.querySelectorAll(".trashIcon")
+    trashs.forEach(function (trash) {
+        trash.addEventListener("click",function () {
+            confirm("確定刪除嗎?")
+        })
+    })
     </script>
 </body>
 </html>
