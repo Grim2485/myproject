@@ -59,6 +59,13 @@
 
             }
 
+            .branch {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 76px;
+            }
             .branchStore {
                 display: flex;
                 flex-wrap: wrap;
@@ -192,45 +199,48 @@
                 </div>
             </div>
         </div>
-        <div id="map"></div>
-        <div class="branchStore">
-            <div class="card" onmouseenter="hoverShow('a')" onmouseleave="hoverHide('a')" onclick="goTo('a')">
-                <div class="pic">
-                    <img src="./img/store1.png" alt="store">
-                    <div class="gomap">
-                        <a href="#map" class="branchPic">點擊查看</a>
+        <div class="branch">
+            <h2>分店資訊</h2>
+            <div id="map"></div>
+            <div class="branchStore">
+                <div class="card" onmouseenter="hoverShow('a')" onmouseleave="hoverHide('a')" onclick="goTo('a')">
+                    <div class="pic">
+                        <img src="./img/store1.png" alt="store">
+                        <div class="gomap">
+                            <a href="#map" class="branchPic">點擊查看</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>龜山店</h4>
+                        <p>地址:桃園市龜山區新興街87巷87號</p>
                     </div>
                 </div>
-                <div class="content">
-                    <h4>龜山店</h4>
-                    <p>地址:桃園市龜山區新興街87巷87號</p>
-                </div>
-            </div>
-            <div class="card" onmouseenter="hoverShow('b')" onmouseleave="hoverHide('b')" onclick="goTo('b')">
-                <div class="pic">
-                    <img src="./img/store2.png" alt="store">
-                    <div class="gomap">
-                        <a href="#map" class="branchPic">點擊查看</a>
+                <div class="card" onmouseenter="hoverShow('b')" onmouseleave="hoverHide('b')" onclick="goTo('b')">
+                    <div class="pic">
+                        <img src="./img/store2.png" alt="store">
+                        <div class="gomap">
+                            <a href="#map" class="branchPic">點擊查看</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>桃園店</h4>
+                        <p>地址:桃園市桃園區新興街87巷87號</p>
                     </div>
                 </div>
-                <div class="content">
-                    <h4>桃園店</h4>
-                    <p>地址:桃園市桃園區新興街87巷87號</p>
-                </div>
-            </div>
-            <div class="card" onmouseenter="hoverShow('c')" onmouseleave="hoverHide('c')" onclick="goTo('c')">
-                <div class="pic">
-                    <img src="./img/store3.png" alt="store">
-                    <div class="gomap">
-                        <a href="#map" class="branchPic">點擊查看</a>
+                <div class="card" onmouseenter="hoverShow('c')" onmouseleave="hoverHide('c')" onclick="goTo('c')">
+                    <div class="pic">
+                        <img src="./img/store3.png" alt="store">
+                        <div class="gomap">
+                            <a href="#map" class="branchPic">點擊查看</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>龍潭店</h4>
+                        <p>地址:桃園市龍潭區新興街87巷87號</p>
                     </div>
                 </div>
-                <div class="content">
-                    <h4>龍潭店</h4>
-                    <p>地址:桃園市龍潭區新興街87巷87號</p>
-                </div>
+                
             </div>
-            
         </div>
     </div>
     <footer>

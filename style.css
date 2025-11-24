@@ -15,7 +15,6 @@ body {
     font-family: "Arial", "Noto Sans TC", sans-serif;
     background: white url("./img/bg.png");
     color: #000000;
-    overflow-x: hidden;
 }
 
 .main h2 {
