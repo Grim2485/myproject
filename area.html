@@ -215,7 +215,7 @@
             <h2>分店資訊</h2>
             <div id="map"></div>
             <div class="branchStore">
-                <div class="card" onmouseenter="hoverShow('a')" onmouseleave="hoverHide('a')" onclick="goTo('a')">
+                <div class="card" onmouseenter="hoverShow('a')" onclick="goTo('a')">
                     <div class="pic">
                         <img src="./img/store1.png" alt="store">
                         <div class="gomap">
@@ -230,7 +230,7 @@
                         <p>地址:桃園市龜山區新興街87巷87號</p>
                     </div>
                 </div>
-                <div class="card" onmouseenter="hoverShow('b')" onmouseleave="hoverHide('b')" onclick="goTo('b')">
+                <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
                     <div class="pic">
                         <img src="./img/store2.png" alt="store">
                         <div class="gomap">
@@ -245,7 +245,7 @@
                         <p>地址:桃園市桃園區新興街87巷87號</p>
                     </div>
                 </div>
-                <div class="card" onmouseenter="hoverShow('c')" onmouseleave="hoverHide('c')" onclick="goTo('c')">
+                <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
                     <div class="pic">
                         <img src="./img/store3.png" alt="store">
                         <div class="gomap">
@@ -347,7 +347,6 @@
             const loc = locations[key];
             map.flyTo([24.9913844, 121.3125908], 11);
             markers[key].openPopup();
-            console.log(markers[key]);
             
         }
 
