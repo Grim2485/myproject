@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水族天堂</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- leaflet -->
@@ -86,13 +88,23 @@
                         background-color: #000a;
                         top: 0;
                         transition: all 0.5s ease;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
                         .branchPic {
+                            height: 100%;
+                            width: 100%;
                             color: #fff;
-                            display: flex;
-                            justify-content: center;
-                            line-height: 315px;
                             font-size: 24px;
                             letter-spacing: 2px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            i {
+                                font-size: 32px;
+                            }
                         }
                     }
                     .pic .gomap:hover {
@@ -207,7 +219,10 @@
                     <div class="pic">
                         <img src="./img/store1.png" alt="store">
                         <div class="gomap">
-                            <a href="#map" class="branchPic">點擊查看</a>
+                            <a href="#map" class="branchPic">
+                                點擊查看
+                                <i class="fa-solid fa-location-dot"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="content">
@@ -219,7 +234,10 @@
                     <div class="pic">
                         <img src="./img/store2.png" alt="store">
                         <div class="gomap">
-                            <a href="#map" class="branchPic">點擊查看</a>
+                            <a href="#map" class="branchPic">
+                                點擊查看
+                                <i class="fa-solid fa-location-dot"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="content">
@@ -231,8 +249,10 @@
                     <div class="pic">
                         <img src="./img/store3.png" alt="store">
                         <div class="gomap">
-                            <a href="#map" class="branchPic">點擊查看</a>
-                        </div>
+                            <a href="#map" class="branchPic">
+                                點擊查看
+                                <i class="fa-solid fa-location-dot"></i>
+                            </a>
                     </div>
                     <div class="content">
                         <h4>龍潭店</h4>
