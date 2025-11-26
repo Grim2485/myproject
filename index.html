@@ -57,6 +57,14 @@
             left: -5%;
             color: #52867E;
         }
+        @media (max-width: 1466px) {
+            .swiper-button-next{
+                display: none;
+            }
+            .swiper-button-prev{
+                display: none;
+            }
+            }
     </style>
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -83,19 +91,18 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            pointer-events:none
         }
 
         .indexBanner h1 {
             font-size: 96px;
             color: white;
-            cursor: default;
         }
 
         .indexBanner p {
             font-size: 32px;
             color: white;
             letter-spacing: 2px;
-            cursor: default;
         }
 
         .indexBanner a {
@@ -108,6 +115,7 @@
             font-size: 24px;
             font-weight: 400;
             letter-spacing: 2px;
+            pointer-events:auto
         }
 
         .indexBanner a:hover {
@@ -138,6 +146,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
+            overflow: hidden;
         }
 
         .feature .outer {
@@ -380,12 +389,12 @@
         <section class="about">
             <h2>關於我們</h2>
             <div class="outer">
-                <div class="content" data-aos="fade-right" data-aos-duration="500">
+                <div class="content" >
                     <h3>我們的願景：慢活水色，心靈的自然棲地</h3>
                     <p>我們相信，養魚不只是一項愛好，更是一種回歸自然、滋養心靈的生活方式。本著「療癒與自然感」的品牌理念，我們精心挑選每一尾健康活潑的魚隻，和每一件能提升居家美學的周邊商品。</p>
                     <a href="./about.html">了解更多</a>
                 </div>
-                <div class="aboutPic" data-aos="fade-left" data-aos-duration="1000">
+                <div class="aboutPic" data-aos="flip-right" data-aos-duration="1000">
                     <img src="./img/about.png" alt="pic">
                 </div>
             </div>

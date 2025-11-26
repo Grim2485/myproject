@@ -13,168 +13,176 @@
     <style>
         .main {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            width: 1320px;
+            width: 100%;
             margin: 76px auto;
-            .mainHeader {
+            overflow: hidden;
+            .storeCompenent {
                 display: flex;
-                justify-content: space-between;
+                flex-direction: column;
                 align-items: center;
-                width: 100%;
-                border-bottom: 1px solid #B3B1B1;
-                padding-bottom: 21px;
-                .breadcrumb {
+                width: 1320px;
 
-                    a {
-                        color: #666666;
-                        font-size: 20px;
-                        letter-spacing: 2px;
-                    }
-                    a:last-child {
-                        cursor: default;
-                        font-weight: 500;
-                    }
-                }
-                .searchbar {
-                    position: relative;
-                    input {
-                        border-radius: 150px;
-                        border: 1px solid #B3B1B1;
-                        width: 278px;
-                        height: 52px;
-                        background-color: rgba(0, 0, 0, 0);
-                        padding: 0 20px;
-
-                    }
-                    input::placeholder {
-                        color: #666;
-                        font-size: 16px;
-                        
-                    }
-                    .icon {
-                        position: absolute;
-                        right: 20px;
-                        top: 13px;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .outer {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 76px;
-                .categories {
-                    width: 251px;
-
-                    h3 {
-                        color: #52867E;
-                        font-size: 24px;
-                        letter-spacing: 2px;
-                        margin-bottom: 8px;
-                    }
-                    .accordion button{
-                        font-size: 16px;
-                    }
-                }
-                .goods {
+                .mainHeader {
                     display: flex;
-                    flex-direction: column;
+                    justify-content: space-between;
                     align-items: center;
-                    width: 987px;
-                    .cards {
-                        height: 1011px;
-                        display: flex;
-                        justify-content: space-between;
-                        flex-wrap: wrap;
-                        .card {
-                            width: 317px;
-                            height: 437px;
-                            background-color: #fff;
-                            border-radius: 32px;
-                            transition: all .25s ease;
-                            .pic {
-                                cursor: pointer;
-                            }
-                            .content {
-                                margin: 0 auto;
-                                width: 273.75px;
-                                .goodsTitle {
-                                    h4 {
-                                        font-size: 20px;
-                                        letter-spacing: 2px;
-                                        margin: 16px 0;
-                                    }
-                                }
-                                .goodsContent {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    .price {
-                                        color: #FE3372;
-                                        .money {
-                                            display: flex;
-                                            align-items: baseline;
-                                            span {
-                                                font-size: 20px;
-                                                font-weight: bold;
-                                            }
-                                            h4 {
-                                                margin-left: 6px;
-                                                font-size:32px ;
-                                            }
-                                        }
-                                    }
-                                    .addCartBtn {
-                                        button {
-                                            width: 111.75px;
-                                            height: 45.28px;
-                                            border-radius: 4px;
-                                            border: none;
-                                            background-color: #008CEB;
-                                            color: #fff;
-                                            letter-spacing: 2px;
-                                            cursor: pointer;
-                                        }
-                                        button:hover {
-                                            background-color: #0071BE;
-                                        }
-                                    }
-                                }
-                            }
+                    width: 100%;
+                    border-bottom: 1px solid #B3B1B1;
+                    padding-bottom: 21px;
+                    .breadcrumb {
+    
+                        a {
+                            color: #666666;
+                            font-size: 20px;
+                            letter-spacing: 2px;
                         }
-                        .card:hover {
-                            transform: translate(0,-10px) scale(1.05);
-                            box-shadow: 2px 2px 4px #4B4B4B44;
+                        a:last-child {
+                            cursor: default;
+                            font-weight: 500;
                         }
                     }
-                    .pageBtns {
-                        display: flex;
-                        margin-top: 32px;
-                        
-                        .pageBtn {
-                            position: relative;
-                            color: #B3B1B1;
-                            font-size: 24px;
-                            cursor: pointer;
-                            width: 64px;
-                            height: 48px;
-                            background: url("./img/fishVector.svg");
+                    .searchbar {
+                        position: relative;
+                        input {
+                            border-radius: 150px;
+                            border: 1px solid #B3B1B1;
+                            width: 278px;
+                            height: 52px;
+                            background-color: rgba(0, 0, 0, 0);
+                            padding: 0 20px;
+    
                         }
-                        span {
+                        input::placeholder {
+                            color: #666;
+                            font-size: 16px;
+                            
+                        }
+                        .icon {
                             position: absolute;
-                            left: 50%;
-                            top: 50%;
-                            transform: translate(-25%,-50%);
+                            right: 20px;
+                            top: 13px;
+                            cursor: pointer;
                         }
                     }
-                    .pageBtn:hover {
-                        background: url("./img/fishVectorHover.svg")
+                }
+                .outer {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 76px;
+                    .categories {
+                        width: 251px;
+    
+                        h3 {
+                            color: #52867E;
+                            font-size: 24px;
+                            letter-spacing: 2px;
+                            margin-bottom: 8px;
+                        }
+                        .accordion button{
+                            font-size: 16px;
+                        }
                     }
-                    .pageBtns .active {
-                        color: #52867E;
-                        background: url("./img/fishVectorActive.svg")
+                    .goods {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 987px;
+                        .cards {
+                            height: 1011px;
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            .card {
+                                width: 317px;
+                                height: 437px;
+                                background-color: #fff;
+                                border-radius: 32px;
+                                transition: all .25s ease;
+                                .pic {
+                                    cursor: pointer;
+                                }
+                                .content {
+                                    margin: 0 auto;
+                                    width: 273.75px;
+                                    .goodsTitle {
+                                        h4 {
+                                            font-size: 20px;
+                                            letter-spacing: 2px;
+                                            margin: 16px 0;
+                                        }
+                                    }
+                                    .goodsContent {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        .price {
+                                            color: #FE3372;
+                                            .money {
+                                                display: flex;
+                                                align-items: baseline;
+                                                span {
+                                                    font-size: 20px;
+                                                    font-weight: bold;
+                                                }
+                                                h4 {
+                                                    margin-left: 6px;
+                                                    font-size:32px ;
+                                                }
+                                            }
+                                        }
+                                        .addCartBtn {
+                                            button {
+                                                width: 111.75px;
+                                                height: 45.28px;
+                                                border-radius: 4px;
+                                                border: none;
+                                                background-color: #008CEB;
+                                                color: #fff;
+                                                letter-spacing: 2px;
+                                                cursor: pointer;
+                                            }
+                                            button:hover {
+                                                background-color: #0071BE;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .card:hover {
+                                transform: translate(0,-10px) scale(1.05);
+                                box-shadow: 2px 2px 4px #4B4B4B44;
+                            }
+                        }
+                        .pageBtns {
+                            display: flex;
+                            margin-top: 32px;
+                            
+                            .pageBtn {
+                                position: relative;
+                                color: #B3B1B1;
+                                font-size: 24px;
+                                cursor: pointer;
+                                width: 64px;
+                                height: 48px;
+                                background: url("./img/fishVector.svg");
+                            }
+                            span {
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-25%,-50%);
+                            }
+                        }
+                        .pageBtn:hover {
+                            background: url("./img/fishVectorHover.svg")
+                        }
+                        .pageBtns .active {
+                            color: #52867E;
+                            background: url("./img/fishVectorActive.svg")
+                        }
                     }
                 }
             }
@@ -221,240 +229,243 @@
         </div>
     </section>
     <div class="main">
-        <div class="mainHeader">
-            <div class="breadcrumb">
-                <a href="" class="bcItem">商品總覽</a>
-            </div>
-            <div class="searchbar">
-                <input type="text" placeholder="搜尋">
-                <span class="icon">
-                    <img src="./img/zoom.svg" alt="">
-                </span>
-            </div>
-        </div>
-        <div class="outer">
-            <div class="categories">
-                <h3>商品分類</h3>
-                <div class="accordion">
-                    <div class="accordionItem show">
-                        <button>活體區</button>
-                        <div class="content">
-                            <a href="">中小型魚</a>
-                            <a href="">大型魚</a>
-                            <a href="">其他</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>魚飼料</button>
-                        <div class="content">
-                            <a href="">中小型魚</a>
-                            <a href="">底棲</a>
-                            <a href="">活餌</a>
-                            <a href="">大型魚</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>魚缸</button>
-                        <div class="content">
-                            <a href="">迷你缸</a>
-                            <a href="">智能生態缸</a>
-                            <a href="">大型缸</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>水草區</button>
-                        <div class="content">
-                            <a href="">陰性水草</a>
-                            <a href="">莫絲</a>
-                            <a href="">高莖水草</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>水質處理區</button>
-                        <div class="content">
-                            <a href="">藥劑</a>
-                            <a href="">水質設備</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>周邊用品</button>
-                        <div class="content">
-                            <a href="">清潔用品</a>
-                            <a href="">漁網</a>
-                            <a href="">氣泡石</a>
-                            <a href="">繁殖盒</a>
-                            <a href="">風管</a>
-                            <a href="">水草用品</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>設備區</button>
-                        <div class="content">
-                            <a href="">馬達</a>
-                            <a href="">照明設備</a>
-                            <a href="">溫控設備</a>
-                            <a href="">零配件</a>
-                            <a href="">過濾器材</a>
-                        </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>造景與擺飾</button>
-                        <div class="content">
-                            <a href="">背景板</a>
-                            <a href="">假水草</a>
-                            <a href="">沉木</a>
-                            <a href="">各式飾品</a>
-                        </div>
-                    </div>
+        <div class="storeCompenent">
+
+            <div class="mainHeader">
+                <div class="breadcrumb">
+                    <a href="" class="bcItem">商品總覽</a>
+                </div>
+                <div class="searchbar">
+                    <input type="text" placeholder="搜尋">
+                    <span class="icon">
+                        <img src="./img/zoom.svg" alt="">
+                    </span>
                 </div>
             </div>
-            <div class="goods">
-                <div class="cards">
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods1.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>白金鼠魚</h4>
-                            </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$20</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+            <div class="outer">
+                <div class="categories">
+                    <h3>商品分類</h3>
+                    <div class="accordion">
+                        <div class="accordionItem show">
+                            <button>活體區</button>
+                            <div class="content">
+                                <a href="">中小型魚</a>
+                                <a href="">大型魚</a>
+                                <a href="">其他</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods2.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>紅白蘭壽金魚</h4>
-                            </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$50</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+                        <div class="accordionItem">
+                            <button>魚飼料</button>
+                            <div class="content">
+                                <a href="">中小型魚</a>
+                                <a href="">底棲</a>
+                                <a href="">活餌</a>
+                                <a href="">大型魚</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods3.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>白色半月鬥魚</h4>
-                            </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$150</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+                        <div class="accordionItem">
+                            <button>魚缸</button>
+                            <div class="content">
+                                <a href="">迷你缸</a>
+                                <a href="">智能生態缸</a>
+                                <a href="">大型缸</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods4.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>金絲神仙魚</h4>
-                            </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$120</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+                        <div class="accordionItem">
+                            <button>水草區</button>
+                            <div class="content">
+                                <a href="">陰性水草</a>
+                                <a href="">莫絲</a>
+                                <a href="">高莖水草</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods5.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>熊貓鼠魚</h4>
-                            </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$20</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+                        <div class="accordionItem">
+                            <button>水質處理區</button>
+                            <div class="content">
+                                <a href="">藥劑</a>
+                                <a href="">水質設備</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="pic">
-                        <img src="./img/goods6.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="goodsTitle">
-                                <h4>雙色隆頭魚</h4>
+                        <div class="accordionItem">
+                            <button>周邊用品</button>
+                            <div class="content">
+                                <a href="">清潔用品</a>
+                                <a href="">漁網</a>
+                                <a href="">氣泡石</a>
+                                <a href="">繁殖盒</a>
+                                <a href="">風管</a>
+                                <a href="">水草用品</a>
                             </div>
-                            <div class="goodsContent">
-                                <div class="price">
-                                    <p>促銷價</p>
-                                    <div class="money">
-                                        <span>NT</span>
-                                        <h4>$50</h4>
-                                    </div>
-                                </div>
-                                <div class="addCartBtn">
-                                    <button>加購物車</button>
-                                </div>
+                        </div>
+                        <div class="accordionItem">
+                            <button>設備區</button>
+                            <div class="content">
+                                <a href="">馬達</a>
+                                <a href="">照明設備</a>
+                                <a href="">溫控設備</a>
+                                <a href="">零配件</a>
+                                <a href="">過濾器材</a>
+                            </div>
+                        </div>
+                        <div class="accordionItem">
+                            <button>造景與擺飾</button>
+                            <div class="content">
+                                <a href="">背景板</a>
+                                <a href="">假水草</a>
+                                <a href="">沉木</a>
+                                <a href="">各式飾品</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pageBtns">
-                    <div class="pageBtn page1 active">
-                        <span>1</span>
+                <div class="goods">
+                    <div class="cards">
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods1.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>白金鼠魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$20</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods2.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>紅白蘭壽金魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$50</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods3.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>白色半月鬥魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$150</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods4.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>金絲神仙魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$120</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods5.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>熊貓鼠魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$20</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="pic">
+                            <img src="./img/goods6.png" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="goodsTitle">
+                                    <h4>雙色隆頭魚</h4>
+                                </div>
+                                <div class="goodsContent">
+                                    <div class="price">
+                                        <p>促銷價</p>
+                                        <div class="money">
+                                            <span>NT</span>
+                                            <h4>$50</h4>
+                                        </div>
+                                    </div>
+                                    <div class="addCartBtn">
+                                        <button>加購物車</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pageBtn page2">
-                        <span>2</span>
-                    </div>
-                    <div class="pageBtn page3">
-                        <span>3</span>
-                    </div>
-                    <div class="pageBtn page4">
-                        <span>4</span>
+                    <div class="pageBtns">
+                        <div class="pageBtn page1 active">
+                            <span>1</span>
+                        </div>
+                        <div class="pageBtn page2">
+                            <span>2</span>
+                        </div>
+                        <div class="pageBtn page3">
+                            <span>3</span>
+                        </div>
+                        <div class="pageBtn page4">
+                            <span>4</span>
+                        </div>
                     </div>
                 </div>
             </div>
