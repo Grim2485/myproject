@@ -22,11 +22,12 @@
             .container {
                 display: flex;
                 width: 1320px;
-                height: 987px;
+                /* height: 987px; */
                 justify-content: space-between;
                 flex-wrap: wrap;
 
                 .card {
+                    margin-top: 32px;
                     width:391px ;
                     height: 439px;
                     overflow: hidden;
@@ -73,7 +74,7 @@
 
             .pageBtns {
                 display: flex;
-                margin-top: 32px;
+                margin-top: 76px;
                 
                 .pageBtn {
                     position: relative;
@@ -97,6 +98,17 @@
             .pageBtns .active {
                 color: #52867E;
                 background: url("./img/fishVectorActive.svg")
+            }
+        }
+        @media screen and (max-width: 1335px) {
+            .main {
+                .container {
+                    width: 100%;
+                    justify-content: center;
+                    .card {
+                        margin: 32px;
+                    }
+                }
             }
         }
     </style>

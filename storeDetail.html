@@ -14,10 +14,16 @@
         }
         .main {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 1320px;
+            justify-content: center;
+            width: 100%;
             margin: 76px auto;
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 1320px;
+
+            }
 
             .mainHeader {
                 display: flex;
@@ -94,10 +100,14 @@
 
                 .goodsDetail {
                     width: 987px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
                     .goodsAttribute{
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: center;
+                        flex-wrap: wrap;
                         .goodsPics {
                             .bigPic{
                                 margin-bottom: 24px;
@@ -241,6 +251,27 @@
                 }
             }
         }
+        @media screen and (max-width: 1335px) {
+            .main {
+                .container {
+                    width: 90%;
+                    .outer {
+                        .goodsDetail {
+                            width: 90%;
+                            .goodsAttribute {
+                                .goodsPics {
+
+                                }
+                                .goodsDescription {
+
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
     </style>
 </head>
 
@@ -283,150 +314,153 @@
         </div>
     </section>
     <div class="main">
-        <div class="mainHeader">
-            <div class="breadcrumb">
-                <a href="./store.html" class="bcItem">商品總覽</a>
-                <a href="./store.html" class="bcItem">中小型魚</a>
-                <a href="./storeDetail.html" class="bcItem">白金鼠魚</a>
+        <div class="container">
+
+            <div class="mainHeader">
+                <div class="breadcrumb">
+                    <a href="./store.html" class="bcItem">商品總覽</a>
+                    <a href="./store.html" class="bcItem">中小型魚</a>
+                    <a href="./storeDetail.html" class="bcItem">白金鼠魚</a>
+                </div>
+                <div class="searchbar">
+                    <input type="text" placeholder="搜尋">
+                    <span class="icon">
+                        <img src="./img/zoom.svg" alt="">
+                    </span>
+                </div>
             </div>
-            <div class="searchbar">
-                <input type="text" placeholder="搜尋">
-                <span class="icon">
-                    <img src="./img/zoom.svg" alt="">
-                </span>
-            </div>
-        </div>
-        <div class="outer">
-            <div class="categories">
-                <h3>商品分類</h3>
-                <div class="accordion">
-                    <div class="accordionItem show">
-                        <button>活體區</button>
-                        <div class="content">
-                            <a href="">中小型魚</a>
-                            <a href="">大型魚</a>
-                            <a href="">其他</a>
+            <div class="outer">
+                <div class="categories">
+                    <h3>商品分類</h3>
+                    <div class="accordion">
+                        <div class="accordionItem show">
+                            <button>活體區</button>
+                            <div class="content">
+                                <a href="">中小型魚</a>
+                                <a href="">大型魚</a>
+                                <a href="">其他</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>魚飼料</button>
-                        <div class="content">
-                            <a href="">中小型魚</a>
-                            <a href="">底棲</a>
-                            <a href="">活餌</a>
-                            <a href="">大型魚</a>
+                        <div class="accordionItem">
+                            <button>魚飼料</button>
+                            <div class="content">
+                                <a href="">中小型魚</a>
+                                <a href="">底棲</a>
+                                <a href="">活餌</a>
+                                <a href="">大型魚</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>魚缸</button>
-                        <div class="content">
-                            <a href="">迷你缸</a>
-                            <a href="">智能生態缸</a>
-                            <a href="">大型缸</a>
+                        <div class="accordionItem">
+                            <button>魚缸</button>
+                            <div class="content">
+                                <a href="">迷你缸</a>
+                                <a href="">智能生態缸</a>
+                                <a href="">大型缸</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>水草區</button>
-                        <div class="content">
-                            <a href="">陰性水草</a>
-                            <a href="">莫絲</a>
-                            <a href="">高莖水草</a>
+                        <div class="accordionItem">
+                            <button>水草區</button>
+                            <div class="content">
+                                <a href="">陰性水草</a>
+                                <a href="">莫絲</a>
+                                <a href="">高莖水草</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>水質處理區</button>
-                        <div class="content">
-                            <a href="">藥劑</a>
-                            <a href="">水質設備</a>
+                        <div class="accordionItem">
+                            <button>水質處理區</button>
+                            <div class="content">
+                                <a href="">藥劑</a>
+                                <a href="">水質設備</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>周邊用品</button>
-                        <div class="content">
-                            <a href="">清潔用品</a>
-                            <a href="">漁網</a>
-                            <a href="">氣泡石</a>
-                            <a href="">繁殖盒</a>
-                            <a href="">風管</a>
-                            <a href="">水草用品</a>
+                        <div class="accordionItem">
+                            <button>周邊用品</button>
+                            <div class="content">
+                                <a href="">清潔用品</a>
+                                <a href="">漁網</a>
+                                <a href="">氣泡石</a>
+                                <a href="">繁殖盒</a>
+                                <a href="">風管</a>
+                                <a href="">水草用品</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>設備區</button>
-                        <div class="content">
-                            <a href="">馬達</a>
-                            <a href="">照明設備</a>
-                            <a href="">溫控設備</a>
-                            <a href="">零配件</a>
-                            <a href="">過濾器材</a>
+                        <div class="accordionItem">
+                            <button>設備區</button>
+                            <div class="content">
+                                <a href="">馬達</a>
+                                <a href="">照明設備</a>
+                                <a href="">溫控設備</a>
+                                <a href="">零配件</a>
+                                <a href="">過濾器材</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="accordionItem">
-                        <button>造景與擺飾</button>
-                        <div class="content">
-                            <a href="">背景板</a>
-                            <a href="">假水草</a>
-                            <a href="">沉木</a>
-                            <a href="">各式飾品</a>
+                        <div class="accordionItem">
+                            <button>造景與擺飾</button>
+                            <div class="content">
+                                <a href="">背景板</a>
+                                <a href="">假水草</a>
+                                <a href="">沉木</a>
+                                <a href="">各式飾品</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="goodsDetail">
-                <div class="goodsAttribute">
-                    <div class="goodsPics">
-                        <div class="bigPic">
-                            <img src="./img/goodsBigPic1.png" alt="bigPic" class="big">
+                <div class="goodsDetail">
+                    <div class="goodsAttribute">
+                        <div class="goodsPics">
+                            <div class="bigPic">
+                                <img src="./img/goodsBigPic1.png" alt="bigPic" class="big">
+                            </div>
+                            <div class="smallPics">
+                                <img src="./img/goodsSmallPic1.png" alt="1" class="small">
+                                <img src="./img/goodsSmallPic2.png" alt="2" class="small">
+                                <img src="./img/goodsSmallPic3.png" alt="3" class="small">
+                                <img src="./img/goodsSmallPic4.png" alt="4" class="small">
+                            </div>
                         </div>
-                        <div class="smallPics">
-                            <img src="./img/goodsSmallPic1.png" alt="1" class="small">
-                            <img src="./img/goodsSmallPic2.png" alt="2" class="small">
-                            <img src="./img/goodsSmallPic3.png" alt="3" class="small">
-                            <img src="./img/goodsSmallPic4.png" alt="4" class="small">
-                        </div>
-                    </div>
-                    <div class="goodsDescription">
-                        <div class="goodsTitle">
-                            <h3>白金鼠魚</h3>
-                            <div class="price">
-                                <span>促銷價</span>
-                                <div class="money">
-                                    <span>NT</span>
-                                    <h3>$20</h3>
+                        <div class="goodsDescription">
+                            <div class="goodsTitle">
+                                <h3>白金鼠魚</h3>
+                                <div class="price">
+                                    <span>促銷價</span>
+                                    <div class="money">
+                                        <span>NT</span>
+                                        <h3>$20</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="goodsSize">
-                            <p>尺寸</p>
-                            <div class="size">
-                                <button>幼魚</button>
-                                <button>成魚</button>
-                            </div>
-                        </div>
-                        <div class="amount">
-                            <p>數量</p>
-                            <div class="counter">
-                                <div class="number-box">
-                                    <button class="btn minus">-</button>
-                                    <span class="value">1</span>
-                                    <button class="btn plus">+</button>
+                            <div class="goodsSize">
+                                <p>尺寸</p>
+                                <div class="size">
+                                    <button>幼魚</button>
+                                    <button>成魚</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="addCartBtn">
-                            <button>加購物車</button>
+                            <div class="amount">
+                                <p>數量</p>
+                                <div class="counter">
+                                    <div class="number-box">
+                                        <button class="btn minus">-</button>
+                                        <span class="value">1</span>
+                                        <button class="btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addCartBtn">
+                                <button>加購物車</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="goodsContent">
-                    <h3>商品詳細說明</h3>
-                    <p>白金鼠魚 (Platinum Corydoras)
-                    </p>
-                    <p>
-                            白金鼠魚以其圓潤的體態和活潑可愛的動作，成為水族箱中最受歡迎的底棲魚之一。牠們全身覆蓋著一層細緻的銀白或淡金色光澤，在光線下閃爍著溫和的光芒，為您的水底風景增添一抹寧靜的優雅。牠們性情溫和、容易照顧，是將「療癒與自然」帶入您居家生活的最佳選擇。
-                            魚體呈現均勻的銀白或淡金色光澤，魚鰭透明潔淨。成魚約 5-7 公分，體型圓潤討喜。經本店純淨檢疫養護，健康活潑、活力十足，可安心入缸。偏中性至弱酸性軟水（PH 6.5-7.5），水溫
-                        22°C - 28°C。
-                    </p>
+                    <div class="goodsContent">
+                        <h3>商品詳細說明</h3>
+                        <p>白金鼠魚 (Platinum Corydoras)
+                        </p>
+                        <p>
+                                白金鼠魚以其圓潤的體態和活潑可愛的動作，成為水族箱中最受歡迎的底棲魚之一。牠們全身覆蓋著一層細緻的銀白或淡金色光澤，在光線下閃爍著溫和的光芒，為您的水底風景增添一抹寧靜的優雅。牠們性情溫和、容易照顧，是將「療癒與自然」帶入您居家生活的最佳選擇。
+                                魚體呈現均勻的銀白或淡金色光澤，魚鰭透明潔淨。成魚約 5-7 公分，體型圓潤討喜。經本店純淨檢疫養護，健康活潑、活力十足，可安心入缸。偏中性至弱酸性軟水（PH 6.5-7.5），水溫
+                            22°C - 28°C。
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

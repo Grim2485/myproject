@@ -16,16 +16,22 @@
             background: url(./img/banner2.jpg) center;
         }
         .main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
             margin: 76px 0;
+            display: flex;
+            justify-content: center;
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 1320px;
+            }
             .mainStore {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                width: 1320px;
+                width: 100%;
                 background-color: #fff;
                 border-radius: 32px;
                 padding: 52px 65px;
@@ -36,7 +42,9 @@
                 }
                 .outer {
                     display: flex;
+                    width: 100%;
                     justify-content: space-between;
+                    flex-wrap: wrap;
                     .content {
                         display: flex;
                         flex-direction: column;
@@ -58,7 +66,7 @@
                         }
                     }
                     .map {
-                        margin-left: 78px;
+                        margin-left: 16px;
                     }
                 }
 
@@ -75,7 +83,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-                width: 1320px;
+                width: 100%;
                 .card {
                     overflow: hidden;
                     position: relative;
@@ -133,6 +141,36 @@
                 margin: 76px 0;
             }
         }
+        @media screen and (max-width: 1335px) {
+            .main {
+                .container {
+                    width: 100%;
+                    .mainStore {
+                        width: 80%;
+                        .outer {
+                            justify-content: center;
+                            .content {
+                                flex-direction: row;
+                                align-items: center;
+                                .pic {
+                                    margin-left: 16px;
+                                    margin-bottom: 16px;
+                                }
+                            }
+                        }
+                    }
+                    .branch {
+                        .branchStore {
+                            justify-content: center;
+                            .card {
+                                margin: 0 16px;
+                                margin-bottom: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     </style>
 </head>
 <body>
@@ -175,95 +213,97 @@
     </section>
 
     <div class="main">
-        <div class="mainStore" data-aos="fade-down" data-aos-duration="1000">
-            <h3>旗艦店(中壢店)</h3>
-            <div class="outer">
-                <div class="content">
-                    <div class="infos">
-                        <div class="info">
-                            <span>
-                                <img src="./img/ic_clock.svg" alt="clock">
-                            </span>
-                            <p>營業時間 | 周一至周六09:30-20:00</p>
+        <div class="container">
+            <div class="mainStore" data-aos="fade-down" data-aos-duration="1000">
+                <h3>旗艦店(中壢店)</h3>
+                <div class="outer">
+                    <div class="content">
+                        <div class="infos">
+                            <div class="info">
+                                <span>
+                                    <img src="./img/ic_clock.svg" alt="clock">
+                                </span>
+                                <p>營業時間 | 周一至周六09:30-20:00</p>
+                            </div>
+                            <div class="info">
+                                <span>
+                                    <img src="./img/ic_phone.svg" alt="phone">
+                                </span>
+                                <p>電話 | 03-8964426</p>
+                            </div>
+                            <div class="info">
+                                <span>
+                                    <img src="./img/ic_fax.svg" alt="fax">
+                                </span>
+                                <p>傳真 | 03-8964426</p>
+                            </div>
+                            <div class="info">
+                                <span>
+                                    <img src="./img/ic_mark.svg" alt="mark">
+                                </span>
+                                <p>地址 | 320桃園市中壢區復興路46號</p>
+                            </div>
                         </div>
-                        <div class="info">
-                            <span>
-                                <img src="./img/ic_phone.svg" alt="phone">
-                            </span>
-                            <p>電話 | 03-8964426</p>
-                        </div>
-                        <div class="info">
-                            <span>
-                                <img src="./img/ic_fax.svg" alt="fax">
-                            </span>
-                            <p>傳真 | 03-8964426</p>
-                        </div>
-                        <div class="info">
-                            <span>
-                                <img src="./img/ic_mark.svg" alt="mark">
-                            </span>
-                            <p>地址 | 320桃園市中壢區復興路46號</p>
+                        <div class="pic">
+                            <img src="./img/mainStore.png" alt="">
                         </div>
                     </div>
-                    <div class="pic">
-                        <img src="./img/mainStore.png" alt="">
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.248662786049!2d121.22251637689507!3d24.957653041358718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34682236320313e5%3A0xfda3e725bd3b4c1c!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5b6p6IiI6LevNDbomZ8!5e0!3m2!1szh-TW!2stw!4v1763479560581!5m2!1szh-TW!2stw" width="710" height="520" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                </div>
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.248662786049!2d121.22251637689507!3d24.957653041358718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34682236320313e5%3A0xfda3e725bd3b4c1c!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5b6p6IiI6LevNDbomZ8!5e0!3m2!1szh-TW!2stw!4v1763479560581!5m2!1szh-TW!2stw" width="710" height="520" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-        </div>
-        <div class="branch">
-            <h2>分店資訊</h2>
-            <div id="map"></div>
-            <div class="branchStore">
-                <div class="card" onmouseenter="hoverShow('a')" onclick="goTo('a')">
-                    <div class="pic">
-                        <img src="./img/store1.png" alt="store">
-                        <div class="gomap">
-                            <a href="#map" class="branchPic">
-                                點擊查看
-                                <i class="fa-solid fa-location-dot"></i>
-                            </a>
+            <div class="branch">
+                <h2>分店資訊</h2>
+                <div id="map"></div>
+                <div class="branchStore">
+                    <div class="card" onmouseenter="hoverShow('a')" onclick="goTo('a')">
+                        <div class="pic">
+                            <img src="./img/store1.png" alt="store">
+                            <div class="gomap">
+                                <a href="#map" class="branchPic">
+                                    點擊查看
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4>龜山店</h4>
+                            <p>地址:桃園市龜山區新興街87巷87號</p>
                         </div>
                     </div>
-                    <div class="content">
-                        <h4>龜山店</h4>
-                        <p>地址:桃園市龜山區新興街87巷87號</p>
-                    </div>
-                </div>
-                <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
-                    <div class="pic">
-                        <img src="./img/store2.png" alt="store">
-                        <div class="gomap">
-                            <a href="#map" class="branchPic">
-                                點擊查看
-                                <i class="fa-solid fa-location-dot"></i>
-                            </a>
+                    <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
+                        <div class="pic">
+                            <img src="./img/store2.png" alt="store">
+                            <div class="gomap">
+                                <a href="#map" class="branchPic">
+                                    點擊查看
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4>桃園店</h4>
+                            <p>地址:桃園市桃園區新興街87巷87號</p>
                         </div>
                     </div>
-                    <div class="content">
-                        <h4>桃園店</h4>
-                        <p>地址:桃園市桃園區新興街87巷87號</p>
-                    </div>
-                </div>
-                <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
-                    <div class="pic">
-                        <img src="./img/store3.png" alt="store">
-                        <div class="gomap">
-                            <a href="#map" class="branchPic">
-                                點擊查看
-                                <i class="fa-solid fa-location-dot"></i>
-                            </a>
+                    <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
+                        <div class="pic">
+                            <img src="./img/store3.png" alt="store">
+                            <div class="gomap">
+                                <a href="#map" class="branchPic">
+                                    點擊查看
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4>龍潭店</h4>
+                            <p>地址:桃園市龍潭區新興街87巷87號</p>
                         </div>
                     </div>
-                    <div class="content">
-                        <h4>龍潭店</h4>
-                        <p>地址:桃園市龍潭區新興街87巷87號</p>
-                    </div>
+                    
                 </div>
-                
             </div>
         </div>
     </div>
