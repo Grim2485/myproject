@@ -12,11 +12,13 @@
         .banner {
             background: url(./img/banner3.jpg) center;
         }
+
         .main {
             display: flex;
             justify-content: center;
             width: 100%;
             margin: 76px auto;
+
             .container {
                 display: flex;
                 flex-direction: column;
@@ -40,10 +42,12 @@
                         font-size: 20px;
                         letter-spacing: 2px;
                     }
+
                     a:last-child {
                         cursor: default;
                         font-weight: 500;
                     }
+
                     a:not(:first-child)::before {
                         content: " / ";
                         pointer-events: none;
@@ -93,7 +97,8 @@
                         letter-spacing: 2px;
                         margin-bottom: 8px;
                     }
-                    .accordion button{
+
+                    .accordion button {
                         font-size: 16px;
                     }
                 }
@@ -104,30 +109,37 @@
                     flex-direction: column;
                     align-items: center;
 
-                    .goodsAttribute{
+                    .goodsAttribute {
                         display: flex;
-                        justify-content: center;
-                        flex-wrap: wrap;
+                        width: 100%;
+                        justify-content: space-between;
+                        /* flex-wrap: wrap; */
+
                         .goodsPics {
-                            .bigPic{
+                            .bigPic {
                                 margin-bottom: 24px;
                             }
+
                             .smallPics {
                                 display: flex;
                                 justify-content: space-between;
+
                                 img {
                                     cursor: pointer;
                                 }
+
                                 img:hover {
                                     outline: 5px solid #008CEB;
                                     outline-offset: -1px;
                                 }
                             }
                         }
+
                         .goodsDescription {
                             display: flex;
                             flex-direction: column;
                             justify-content: space-between;
+                            min-height: 400px;
 
                             .goodsTitle {
                                 >h3 {
@@ -135,31 +147,39 @@
                                     letter-spacing: 2px;
                                     margin-bottom: 8px;
                                 }
+
                                 .price {
                                     display: flex;
                                     color: #FE3372;
                                     align-items: baseline;
+
                                     span {
                                         font-size: 20px;
                                     }
+
                                     .money {
                                         display: flex;
                                         align-items: baseline;
+
                                         h3 {
                                             font-size: 32px;
                                         }
                                     }
+
                                     >span {
                                         margin-right: 10px;
                                     }
                                 }
                             }
+
                             .goodsSize {
                                 font-size: 20px;
                                 letter-spacing: 2px;
+
                                 >p {
                                     margin-bottom: 8px;
                                 }
+
                                 .size {
                                     button {
                                         width: 84px;
@@ -172,17 +192,21 @@
                                         border-radius: 4px;
                                         cursor: pointer;
                                     }
+
                                     button:hover {
                                         background-color: #e4e4e488;
                                     }
                                 }
                             }
+
                             .amount {
                                 font-size: 20px;
                                 letter-spacing: 2px;
+
                                 >p {
                                     margin-bottom: 8px;
                                 }
+
                                 .counter {
                                     .number-box {
                                         display: inline-flex;
@@ -196,7 +220,7 @@
                                         font-size: 20px;
                                         gap: 15px;
                                         background: none;
-                                        
+
                                     }
 
                                     .number-box .btn {
@@ -218,6 +242,7 @@
                                     }
                                 }
                             }
+
                             .addCartBtn {
 
                                 button {
@@ -231,18 +256,22 @@
                                     letter-spacing: 2px;
                                     cursor: pointer;
                                 }
+
                                 button:hover {
                                     background-color: #0071BE;
                                 }
                             }
                         }
                     }
+
                     .goodsContent {
                         letter-spacing: 2px;
+
                         h3 {
                             font-size: 32px;
                             margin: 32px 0;
                         }
+
                         p {
                             font-size: 20px;
                             line-height: 48px;
@@ -251,23 +280,48 @@
                 }
             }
         }
+
         @media screen and (max-width: 1335px) {
             .main {
                 .container {
                     width: 90%;
+
                     .outer {
                         .goodsDetail {
                             width: 90%;
+                            margin-left: 32px;
+
                             .goodsAttribute {
+
                                 .goodsPics {
+                                    margin-bottom: 32px;
+                                    margin-right: 32px;
+                                    width: 45%;
 
+                                    .bigPic {
+                                        img {
+                                            width: 100%;
+                                        }
+                                    }
+                                    .smallPics {
+                                        img {
+                                            width: 20%;
+                                        }
+                                    }
                                 }
-                                .goodsDescription {
 
+                                .goodsDescription {
+                                    width: 50%;
+                                    .addCartBtn {
+                                        button {
+                                            width: 100%;
+                                            min-width: 100px;
+                                        }
+                                    }
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -457,7 +511,8 @@
                         </p>
                         <p>
                                 白金鼠魚以其圓潤的體態和活潑可愛的動作，成為水族箱中最受歡迎的底棲魚之一。牠們全身覆蓋著一層細緻的銀白或淡金色光澤，在光線下閃爍著溫和的光芒，為您的水底風景增添一抹寧靜的優雅。牠們性情溫和、容易照顧，是將「療癒與自然」帶入您居家生活的最佳選擇。
-                                魚體呈現均勻的銀白或淡金色光澤，魚鰭透明潔淨。成魚約 5-7 公分，體型圓潤討喜。經本店純淨檢疫養護，健康活潑、活力十足，可安心入缸。偏中性至弱酸性軟水（PH 6.5-7.5），水溫
+                                魚體呈現均勻的銀白或淡金色光澤，魚鰭透明潔淨。成魚約 5-7 公分，體型圓潤討喜。經本店純淨檢疫養護，健康活潑、活力十足，可安心入缸。偏中性至弱酸性軟水（PH
+                            6.5-7.5），水溫
                             22°C - 28°C。
                         </p>
                     </div>
@@ -508,8 +563,8 @@
 
         box.querySelector('.minus').onclick = () => {
             value--;
-            if (value<1) {
-                value =1
+            if (value < 1) {
+                value = 1
                 return
             }
             valueEl.textContent = value;
@@ -526,8 +581,8 @@
         smalls.forEach(function (small) {
             small.addEventListener("click", function (e) {
                 console.log(e.target.alt);
-                big.src=`./img/goodsBigPic${e.target.alt}.png`
-                
+                big.src = `./img/goodsBigPic${e.target.alt}.png`
+
             }
 
             )
@@ -535,7 +590,7 @@
 
         // breadcrumb
         let bcItems = document.querySelectorAll(".bcItem")
-        bcItems[bcItems.length-1].addEventListener("click",function (e) {
+        bcItems[bcItems.length - 1].addEventListener("click", function (e) {
             e.preventDefault()
         })
     </script>

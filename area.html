@@ -67,6 +67,10 @@
                     }
                     .map {
                         margin-left: 16px;
+                        iframe {
+                            width:710px; 
+                            height:520px
+                        }
                     }
                 }
 
@@ -78,6 +82,12 @@
                 flex-direction: column;
                 align-items: center;
                 margin-top: 76px;
+            }
+            .branch .outer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
             .branchStore {
                 display: flex;
@@ -94,7 +104,7 @@
                     .pic .gomap {
                         opacity: 0;
                         position: absolute;
-                        width: 405px;
+                        width: 100%;
                         height: 315px;
                         background-color: #000a;
                         top: 0;
@@ -152,6 +162,10 @@
                             .content {
                                 flex-direction: row;
                                 align-items: center;
+                                .info {
+                                    font-size: 16px;
+                                    letter-spacing: 1px;
+                                }
                                 .pic {
                                     margin-left: 16px;
                                     margin-bottom: 16px;
@@ -165,6 +179,101 @@
                             .card {
                                 margin: 0 16px;
                                 margin-bottom: 16px;
+                                width: 30%;
+                                .content {
+                                    margin: 0 5%;
+                                    margin-top: 16px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .main {
+                .container {
+                    .mainStore {
+                        .outer {
+                            width: 100%;
+                            align-items: center;
+                            .content {
+                                flex-direction: column-reverse;
+                                align-items: start;
+                                width: 100%;
+
+                                .pic {
+                                    width: 100%;
+                                    margin-left: 0;
+                                    img {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                            .map {
+                                width: 100%;
+                                margin-left: 0;
+                                margin-top: 16px;
+                                iframe {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    .branch {
+                        width: 90%;
+                        .outer {
+                            width: 100%;
+                            flex-direction: row;
+                            align-items: center;
+
+                        }
+                        #map {
+                            width: 90%;
+                        }
+                        .branchStore {
+                            flex-direction: column;
+                            .card {
+                                display: flex;
+                                align-items: center;
+                                background-color: #0000;
+                                border-top: 1px solid #B3B1B1;
+                                width: 90%;
+                                height: auto;
+                                border-radius: 0%;
+                                padding: 48px 16px;
+                                margin-bottom: 0;
+                                .pic {
+                                    overflow: hidden;
+                                    width: 100px;
+                                    height: 76px;
+                                    border-radius: 8px;
+                                    img {
+                                        width: 100px;
+                                    }
+                                    .gomap {
+                                        a {
+                                            cursor: default;
+                                        }
+                                    }
+                                }
+                                .pic:hover .gomap{
+                                    display: none;
+                                }
+                                .content {
+                                    margin-top: 0;
+                                    h4 {
+                                        margin-bottom: 8px;
+                                    }
+                                }
+                            }
+                            .card:hover {
+                                box-shadow: none;
+                                background-color: #0001;
+                            }
+                            .card:last-child {
+                                border-bottom: 1px solid #B3B1B1;
                             }
                         }
                     }
@@ -249,60 +358,61 @@
                         </div>
                     </div>
                     <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.248662786049!2d121.22251637689507!3d24.957653041358718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34682236320313e5%3A0xfda3e725bd3b4c1c!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5b6p6IiI6LevNDbomZ8!5e0!3m2!1szh-TW!2stw!4v1763479560581!5m2!1szh-TW!2stw" width="710" height="520" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.248662786049!2d121.22251637689507!3d24.957653041358718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34682236320313e5%3A0xfda3e725bd3b4c1c!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5b6p6IiI6LevNDbomZ8!5e0!3m2!1szh-TW!2stw!4v1763479560581!5m2!1szh-TW!2stw"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
             <div class="branch">
                 <h2>分店資訊</h2>
-                <div id="map"></div>
-                <div class="branchStore">
-                    <div class="card" onmouseenter="hoverShow('a')" onclick="goTo('a')">
-                        <div class="pic">
-                            <img src="./img/store1.png" alt="store">
-                            <div class="gomap">
-                                <a href="#map" class="branchPic">
-                                    點擊查看
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </a>
+                <div class="outer">
+                    <div id="map"></div>
+                    <div class="branchStore">
+                        <div class="card" onmouseenter="hoverShow('a')" onclick="goTo('a')">
+                            <div class="pic">
+                                <img src="./img/store1.png" alt="store">
+                                <div class="gomap">
+                                    <a href="#map" class="branchPic">
+                                        點擊查看
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4>龜山店</h4>
+                                <p>地址:桃園市龜山區新興街87巷87號</p>
                             </div>
                         </div>
-                        <div class="content">
-                            <h4>龜山店</h4>
-                            <p>地址:桃園市龜山區新興街87巷87號</p>
-                        </div>
-                    </div>
-                    <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
-                        <div class="pic">
-                            <img src="./img/store2.png" alt="store">
-                            <div class="gomap">
-                                <a href="#map" class="branchPic">
-                                    點擊查看
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </a>
+                        <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
+                            <div class="pic">
+                                <img src="./img/store2.png" alt="store">
+                                <div class="gomap">
+                                    <a href="#map" class="branchPic">
+                                        點擊查看
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4>桃園店</h4>
+                                <p>地址:桃園市桃園區新興街87巷87號</p>
                             </div>
                         </div>
-                        <div class="content">
-                            <h4>桃園店</h4>
-                            <p>地址:桃園市桃園區新興街87巷87號</p>
-                        </div>
-                    </div>
-                    <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
-                        <div class="pic">
-                            <img src="./img/store3.png" alt="store">
-                            <div class="gomap">
-                                <a href="#map" class="branchPic">
-                                    點擊查看
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </a>
+                        <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
+                            <div class="pic">
+                                <img src="./img/store3.png" alt="store">
+                                <div class="gomap">
+                                    <a href="#map" class="branchPic">
+                                        點擊查看
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4>龍潭店</h4>
+                                <p>地址:桃園市龍潭區新興街87巷87號</p>
                             </div>
                         </div>
-                        <div class="content">
-                            <h4>龍潭店</h4>
-                            <p>地址:桃園市龍潭區新興街87巷87號</p>
-                        </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

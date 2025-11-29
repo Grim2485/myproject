@@ -13,6 +13,7 @@
             width: 100%;
             padding-top: 50px;
             padding-bottom: 50px;
+            
         }
 
 
@@ -57,7 +58,7 @@
             left: -5%;
             color: #52867E;
         }
-        @media (max-width: 1466px) {
+        @media (max-width: 1500px) {
             .swiper-button-next{
                 display: none;
             }
@@ -147,32 +148,36 @@
             align-items: center;
             justify-content: space-around;
             overflow: hidden;
+            width: 1466.666666px;
+            margin: 0 auto;
         }
 
         .feature .outer {
             display: flex;
             justify-content: space-between;
-            width:1320px;
+            flex-wrap: wrap;
+            width:90%;
         }
 
-        .feature .outer .card {
+        .feature .outer .featureCard {
             display: flex;
             flex-direction: column;
             align-items: center;
+            cursor: pointer;
         }
 
         .feature .pic {
             position: relative;
-            cursor: pointer;
+            
             .goodsPic {
                 transition: all .5s;
                 width: 404px;
                 height: 216px;
             }
-            .goodsPic:hover {
+        }
+        .feature .featureCard:hover .goodsPic {
                 transform: translate(0,-50px) scale(1.5);
             }
-        }
 
         .feature .pic .blob {
             position: absolute;
@@ -213,11 +218,13 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
+            width: 1320px;
+            margin: 0 auto;
         }
 
         .about .outer {
             display: flex;
-            width: 1320px;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
         }
@@ -261,6 +268,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 1320px;
+            margin: 0 auto;
         }
 
         .news h2 {
@@ -268,7 +277,7 @@
             margin: 76px 0;
         }
         .news .outer {
-            width: 1320px;
+            width: 100%;
             position: relative;
             margin-bottom: 76px;
         }
@@ -288,6 +297,48 @@
 
         .main .att2 {
             background-image: url('./img/attachment2.jpg');
+        }
+
+        @media screen and (max-width: 1482px) {
+            .main {
+                .feature {
+                    width: 100%;
+                    .outer {
+                        .featureCard {
+                            width: 30%;
+                            .pic {
+                                .goodsPic {
+                                    width: 100%;
+                                    
+                                }
+                                
+                                .blob {
+                                    width: 150px;
+                                }
+                            }
+                        }
+                        .featureCard:hover .goodsPic {
+                            transform: translate(0,-50px) scale(1.25,1.25);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1335px) {
+            .main {
+                .about {
+                    width: 90%;
+                    .aboutPic {
+                        margin-left: 32px;
+                    }
+
+                }
+                .news {
+                    width: 90%;
+                }
+            }
         }
     </style>
     <!-- 引入 Three.js 函式庫 -->
@@ -340,8 +391,8 @@
         <section class="feature">
             <h2>商品介紹</h2>
             <div class="outer">
-                <div class="card" data-aos="flip-left" >
-                    <div class="pic pic1">
+                <div class="featureCard pic1" data-aos="flip-left" >
+                    <div class="pic">
                         <img src="./img/featurePic1.png" alt="pic1" class="goodsPic">
                         <img src="./img/blob.svg" alt="blob" class="blob">
                     </div>
@@ -355,8 +406,8 @@
                         <h4>NT<span>$20</span></h4>
                     </div>
                 </div>
-                <div class="card" data-aos="flip-left" data-aos-duration="1000">
-                    <div class="pic pic2">
+                <div class="featureCard  pic2" data-aos="flip-left" data-aos-duration="1000">
+                    <div class="pic">
                         <img src="./img/featurePic2.png" alt="pic2" class="goodsPic">
                         <img src="./img/blob.svg" alt="blob" class="blob">
                     </div>
@@ -369,8 +420,8 @@
                         <h4>NT<span>$99999</span></h4>
                     </div>
                 </div>
-                <div class="card" data-aos="flip-left" data-aos-duration="1500">
-                    <div class="pic pic3">
+                <div class="featureCard  pic3" data-aos="flip-left" data-aos-duration="1500">
+                    <div class="pic">
                         <img src="./img/featurePic3.png" alt="pic3" class="goodsPic">
                         <img src="./img/blob.svg" alt="blob" class="blob">
                     </div>
@@ -780,7 +831,7 @@
        AOS.init();
     </script>
     <script>
-        let pics = document.querySelectorAll(".pic")
+        let pics = document.querySelectorAll(".featureCard")
         
         pics.forEach(function (pic) {
             pic.addEventListener("click",function () {

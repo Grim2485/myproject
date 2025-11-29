@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,33 @@
         .banner {
             background: url(./img/banner5.jpg) center;
         }
+
         .main {
             margin: 76px auto;
-            width: 1320px;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            
+            .container {
+                width: 1320px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+
+            }
+
             .step {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
                 .stepText {
                     display: flex;
                     justify-content: space-between;
                     width: 492px;
                     margin-top: 8px;
+
                     span {
                         width: 48px;
                         text-align: center;
@@ -32,28 +45,37 @@
                     }
                 }
             }
+
             .cart {
                 margin: 76px 0;
                 display: flex;
+                flex-wrap: wrap;
                 width: 100%;
                 justify-content: space-between;
+
                 .cartDetail {
                     width: 873px;
+
                     .itemName {
                         width: 41.666666%;
                     }
+
                     .price {
                         width: 16.666666%;
                     }
+
                     .counter {
                         width: 16.666666%;
                     }
+
                     .totalPrice {
                         width: 16.666666%;
                     }
+
                     .trash {
                         width: 8.333333%;
                     }
+
                     .cartHeader {
                         display: flex;
                         width: 100%;
@@ -64,28 +86,35 @@
                         font-size: 20px;
                         line-height: 56px;
                     }
+
                     .cartBody {
                         width: 100%;
                         padding: 0 24px;
+
                         .cartItem {
                             width: 100%;
                             padding: 24px 0;
                             display: flex;
                             align-items: center;
                             border-bottom: 1px solid #B3B1B1;
+
                             .itemName {
                                 display: flex;
                                 align-items: center;
+
                                 .goodsName {
                                     margin-left: 32px;
+
                                     h4 {
                                         font-size: 20px;
                                     }
+
                                     p {
                                         color: #666;
                                     }
                                 }
                             }
+
                             .price {
                                 font-size: 20px;
                             }
@@ -102,7 +131,7 @@
                                     border-radius: 6px;
                                     font-size: 16px;
                                     background: none;
-                                    
+
                                 }
 
                                 .number-box .btn {
@@ -123,9 +152,11 @@
                                     border-right: 1px solid #B3B1B1;
                                 }
                             }
+
                             .totalPrice {
                                 font-size: 20px;
                             }
+
                             .trash {
                                 img {
                                     cursor: pointer;
@@ -134,6 +165,7 @@
                         }
                     }
                 }
+
                 .summary {
                     width: 428px;
                     height: 400px;
@@ -144,15 +176,19 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-between;
+
                     .summaryTitle {
                         width: 100%;
+
                         h3 {
                             font-size: 20px;
                         }
                     }
+
                     .summaryBody {
                         width: 100%;
                         color: #666;
+
                         .amount {
                             display: flex;
                             flex-direction: column;
@@ -160,35 +196,43 @@
                             height: 166.25px;
                             border-top: 1px solid #B3B1B1;
                             border-bottom: 1px solid #B3B1B1;
+
                             >div {
                                 padding: 8px 0;
                                 display: flex;
                                 justify-content: space-between;
                             }
                         }
+
                         .totalAmount {
-                                display: flex;
-                                justify-content: space-between;
-                                margin: 24px 0;
-                                font-size: 20px;
-                                color: #000;
+                            display: flex;
+                            justify-content: space-between;
+                            margin: 24px 0;
+                            font-size: 20px;
+                            color: #000;
                         }
-                        
+
                     }
                 }
             }
+
             .productSlogan {
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
+                flex-wrap: wrap;
+
                 .sloganItem {
                     display: flex;
+
                     .sloganText {
                         margin-left: 24px;
                         width: 250px;
+
                         h4 {
                             font-size: 20px;
                         }
+
                         p {
                             font-size: 20px;
                         }
@@ -199,22 +243,72 @@
 
         /* nesting寫法會出bug */
         .checkoutBtn a {
-                display: inline-block;
-                width: 366px;
-                height: 62px;
-                background-color: #008CEB;
-                border-radius: 150px;
-                text-align: center;
-                line-height: 62px;
-                color: #fff;
-                font-size: 24px;
-                letter-spacing: 2px;
+            display: inline-block;
+            width: 366px;
+            height: 62px;
+            background-color: #008CEB;
+            border-radius: 150px;
+            text-align: center;
+            line-height: 62px;
+            color: #fff;
+            font-size: 24px;
+            letter-spacing: 2px;
         }
+
         .checkoutBtn a:hover {
             background-color: #0071BE;
         }
+
+        @media screen and (max-width: 1335px) {
+            .main {
+                .container {
+                    width: 100%;
+                    .cart {
+                        flex-direction: column;
+                        align-items: center;
+                        width: 90%;
+                        .cartDetail {
+                            width: 100%;
+                        }
+                        .summary {
+                            width: 100%;
+                            border: none;
+                        }
+                    }
+
+                    .productSlogan {
+                        justify-content: center;
+                        .sloganItem {
+                            margin-bottom: 32px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .main {
+                .productSlogan {
+                            /* flex-direction: column;
+                            align-items: center; */
+    
+                            .sloganItem {
+                                .sloganText {
+                                    width: 185px;
+                                    h4 {
+                                        font-size: 20px;
+                                    }
+                                    p {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="navLogo">
@@ -255,162 +349,164 @@
     </section>
 
     <div class="main">
-        <div class="step">
-            <img src="./img/step.png" alt="">
-            <div class="stepText">
-                <span>Cart</span>
-                <span>Payment</span>
-                <span>Done</span>
-            </div>
-        </div>
-        <div class="cart">
-            <div class="cartDetail">
-                <div class="cartHeader">
-                    <span class="itemName">商品名稱</span>
-                    <span class="price">價格</span>
-                    <span class="counter">數量</span>
-                    <span class="totalPrice">小計</span>
-                    <span class="trash">刪除</span>
-                </div>
-                <div class="cartBody">
-                    <div class="cartItem">
-                        <div class="itemName">
-                            <img src="./img/cartGoods1.png" alt="">
-                            <div class="goodsName">
-                                <h4>白金鼠魚</h4>
-                                <p>成魚</p>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>
-                                $20
-                            </span>
-                        </div>
-                        <div class="counter">
-                            <div class="number-box">
-                                <button class="btn minus">-</button>
-                                <span class="value">1</span>
-                                <button class="btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="totalPrice">
-                            <span>
-                                $20
-                            </span>
-                        </div>
-                        <div class="trash">
-                            <img src="./img/Trash.svg" class="trashIcon" alt="">
-                        </div>
-                    </div>
-                    <div class="cartItem">
-                        <div class="itemName">
-                            <img src="./img/cartGoods2.png" alt="">
-                            <div class="goodsName">
-                                <h4>熊貓鼠魚</h4>
-                                <p>成魚</p>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>
-                                $20
-                            </span>
-                        </div>
-                        <div class="counter">
-                            <div class="number-box">
-                                <button class="btn minus">-</button>
-                                <span class="value">1</span>
-                                <button class="btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="totalPrice">
-                            <span>
-                                $20
-                            </span>
-                        </div>
-                        <div class="trash">
-                            <img src="./img/Trash.svg" class="trashIcon" alt="">
-                        </div>
-                    </div>
-                    <div class="cartItem">
-                        <div class="itemName">
-                            <img src="./img/cartGoods3.png" alt="">
-                            <div class="goodsName">
-                                <h4>白色半月鬥魚</h4>
-                                <p>成魚</p>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>
-                                $150
-                            </span>
-                        </div>
-                        <div class="counter">
-                            <div class="number-box">
-                                <button class="btn minus">-</button>
-                                <span class="value">1</span>
-                                <button class="btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="totalPrice">
-                            <span>
-                                $150
-                            </span>
-                        </div>
-                        <div class="trash">
-                            <img src="./img/Trash.svg" class="trashIcon" alt="">
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="step">
+                <img src="./img/step.png" alt="">
+                <div class="stepText">
+                    <span>Cart</span>
+                    <span>Payment</span>
+                    <span>Done</span>
                 </div>
             </div>
-            <div class="summary">
-                <div class="summaryTitle">
-                    <h3>訂單總覽</h3>
-                </div>
-                <div class="summaryBody">
-                    <div class="amount">
-                        <div class="summaryCount">
-                            <span>總數</span>
-                            <span>3</span>
+            <div class="cart">
+                <div class="cartDetail">
+                    <div class="cartHeader">
+                        <span class="itemName">商品名稱</span>
+                        <span class="price">價格</span>
+                        <span class="counter">數量</span>
+                        <span class="totalPrice">小計</span>
+                        <span class="trash">刪除</span>
+                    </div>
+                    <div class="cartBody">
+                        <div class="cartItem">
+                            <div class="itemName">
+                                <img src="./img/cartGoods1.png" alt="">
+                                <div class="goodsName">
+                                    <h4>白金鼠魚</h4>
+                                    <p>成魚</p>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <span>
+                                    $20
+                                </span>
+                            </div>
+                            <div class="counter">
+                                <div class="number-box">
+                                    <button class="btn minus">-</button>
+                                    <span class="value">1</span>
+                                    <button class="btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="totalPrice">
+                                <span>
+                                    $20
+                                </span>
+                            </div>
+                            <div class="trash">
+                                <img src="./img/Trash.svg" class="trashIcon" alt="">
+                            </div>
                         </div>
-                        <div class="summaryTotal">
-                            <span>合計</span>
-                            <span>$190</span>
+                        <div class="cartItem">
+                            <div class="itemName">
+                                <img src="./img/cartGoods2.png" alt="">
+                                <div class="goodsName">
+                                    <h4>熊貓鼠魚</h4>
+                                    <p>成魚</p>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <span>
+                                    $20
+                                </span>
+                            </div>
+                            <div class="counter">
+                                <div class="number-box">
+                                    <button class="btn minus">-</button>
+                                    <span class="value">1</span>
+                                    <button class="btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="totalPrice">
+                                <span>
+                                    $20
+                                </span>
+                            </div>
+                            <div class="trash">
+                                <img src="./img/Trash.svg" class="trashIcon" alt="">
+                            </div>
                         </div>
-                        <div class="fee">
-                            <span>運費</span>
-                            <span>$30</span>
+                        <div class="cartItem">
+                            <div class="itemName">
+                                <img src="./img/cartGoods3.png" alt="">
+                                <div class="goodsName">
+                                    <h4>白色半月鬥魚</h4>
+                                    <p>成魚</p>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <span>
+                                    $150
+                                </span>
+                            </div>
+                            <div class="counter">
+                                <div class="number-box">
+                                    <button class="btn minus">-</button>
+                                    <span class="value">1</span>
+                                    <button class="btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="totalPrice">
+                                <span>
+                                    $150
+                                </span>
+                            </div>
+                            <div class="trash">
+                                <img src="./img/Trash.svg" class="trashIcon" alt="">
+                            </div>
                         </div>
                     </div>
-                    <div class="totalAmount">
-                        <span>總價格</span>
-                        <span>$220</span>
+                </div>
+                <div class="summary">
+                    <div class="summaryTitle">
+                        <h3>訂單總覽</h3>
+                    </div>
+                    <div class="summaryBody">
+                        <div class="amount">
+                            <div class="summaryCount">
+                                <span>總數</span>
+                                <span>3</span>
+                            </div>
+                            <div class="summaryTotal">
+                                <span>合計</span>
+                                <span>$190</span>
+                            </div>
+                            <div class="fee">
+                                <span>運費</span>
+                                <span>$30</span>
+                            </div>
+                        </div>
+                        <div class="totalAmount">
+                            <span>總價格</span>
+                            <span>$220</span>
+                        </div>
+                    </div>
+                    <div class="checkoutBtn">
+                        <a href="">前往結帳</a>
                     </div>
                 </div>
-                <div class="checkoutBtn">
-                    <a href="">前往結帳</a>
-                </div>
             </div>
-        </div>
-        <div class="productSlogan">
-            <div class="sloganItem">
-                <img src="./img/truck.svg" alt="truck">
-                <div class="sloganText">
-                    <h4>免運費</h4>
-                    <p>超過 $500 元即可享免運</p>
+            <div class="productSlogan">
+                <div class="sloganItem">
+                    <img src="./img/truck.svg" alt="truck">
+                    <div class="sloganText">
+                        <h4>免運費</h4>
+                        <p>超過 $500 元即可享免運</p>
+                    </div>
                 </div>
-            </div>
-            <div class="sloganItem">
-                <img src="./img/card.svg" alt="card">
-                <div class="sloganText">
-                    <h4>多樣付款</h4>
-                    <p>多種安全的付款選項</p>
+                <div class="sloganItem">
+                    <img src="./img/card.svg" alt="card">
+                    <div class="sloganText">
+                        <h4>多樣付款</h4>
+                        <p>多種安全的付款選項</p>
+                    </div>
                 </div>
-            </div>
-            <div class="sloganItem">
-                <img src="./img/headphone.svg" alt="headphone">
-                <div class="sloganText">
-                    <h4>全年無休</h4>
-                    <p>我們提供全天的線上支援</p>
+                <div class="sloganItem">
+                    <img src="./img/headphone.svg" alt="headphone">
+                    <div class="sloganText">
+                        <h4>全年無休</h4>
+                        <p>我們提供全天的線上支援</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -450,82 +546,83 @@
     </footer>
     <script>
         // 計數器
-    const boxs = document.querySelectorAll('.number-box');
-    // 獲取訂單總攬數據
-    const summaryCount= document.querySelector('.summaryCount').children[1]
-    const summaryTotal= document.querySelector('.summaryTotal').children[1]
-    const totalAmount = document.querySelector(".totalAmount").children[1]
-    const fee =document.querySelector(".fee").children[1]
-    // 對每個計數器上監聽器
-    boxs.forEach(function (box) {
-        const valueEl = box.querySelector('.value');
-        let value = 1;
-        // 單一商品價格
-        let price =box.parentElement.parentElement.querySelector(".price").children[0].innerHTML.replace("$","")
-        // 小計
-        let totalPrice =box.parentElement.parentElement.querySelector(".totalPrice").children[0]
-        // 減
-        box.querySelector('.minus').onclick = () => {
-            value--;
-            if (value<1) {
-                value =1
-                return
-            }
-            
-            valueEl.textContent = value;
-            totalPrice.textContent = "$"+price*value
-            // 總數量
-            summaryCount.textContent--
+        const boxs = document.querySelectorAll('.number-box');
+        // 獲取訂單總攬數據
+        const summaryCount = document.querySelector('.summaryCount').children[1]
+        const summaryTotal = document.querySelector('.summaryTotal').children[1]
+        const totalAmount = document.querySelector(".totalAmount").children[1]
+        const fee = document.querySelector(".fee").children[1]
+        // 對每個計數器上監聽器
+        boxs.forEach(function (box) {
+            const valueEl = box.querySelector('.value');
+            let value = 1;
+            // 單一商品價格
+            let price = box.parentElement.parentElement.querySelector(".price").children[0].innerHTML.replace("$", "")
+            // 小計
+            let totalPrice = box.parentElement.parentElement.querySelector(".totalPrice").children[0]
+            // 減
+            box.querySelector('.minus').onclick = () => {
+                value--;
+                if (value < 1) {
+                    value = 1
+                    return
+                }
 
-            let summaryTotalNum = Number(summaryTotal.textContent.replace("$",""))-price*1
-        
-            summaryTotal.textContent = "$" +summaryTotalNum
+                valueEl.textContent = value;
+                totalPrice.textContent = "$" + price * value
+                // 總數量
+                summaryCount.textContent--
 
-            // 總計500免運
-            if (summaryTotalNum>=500) {
-                totalAmount.textContent="$" +summaryTotalNum
-                fee.textContent="$0"
-            } else {
-                totalAmount.textContent="$" +(summaryTotalNum+30)
-                fee.textContent="$30"
-            }
-            
-        };
-    // 加
-    box.querySelector('.plus').onclick = () => {
-        value++;
-        valueEl.textContent = value;
-        totalPrice.textContent = "$"+price*value
-        summaryCount.textContent++
+                let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) - price * 1
 
-        let summaryTotalNum = Number(summaryTotal.textContent.replace("$",""))+price*1
-        
-        summaryTotal.textContent = "$" +summaryTotalNum
-        
-        if (summaryTotalNum>=500) {
-                totalAmount.textContent="$" +summaryTotalNum
-                fee.textContent="$0"
-            } else {
-                totalAmount.textContent="$" +(summaryTotalNum+30)
-                fee.textContent="$30"
-            }
-    };
-        
-    
-    
-    
-    })
+                summaryTotal.textContent = "$" + summaryTotalNum
+
+                // 總計500免運
+                if (summaryTotalNum >= 500) {
+                    totalAmount.textContent = "$" + summaryTotalNum
+                    fee.textContent = "$0"
+                } else {
+                    totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                    fee.textContent = "$30"
+                }
+
+            };
+            // 加
+            box.querySelector('.plus').onclick = () => {
+                value++;
+                valueEl.textContent = value;
+                totalPrice.textContent = "$" + price * value
+                summaryCount.textContent++
+
+                let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) + price * 1
+
+                summaryTotal.textContent = "$" + summaryTotalNum
+
+                if (summaryTotalNum >= 500) {
+                    totalAmount.textContent = "$" + summaryTotalNum
+                    fee.textContent = "$0"
+                } else {
+                    totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                    fee.textContent = "$30"
+                }
+            };
 
 
-        
-    
 
-    let trashs = document.querySelectorAll(".trashIcon")
-    trashs.forEach(function (trash) {
-        trash.addEventListener("click",function () {
-            confirm("確定刪除嗎?")
+
         })
-    })
+
+
+
+
+
+        let trashs = document.querySelectorAll(".trashIcon")
+        trashs.forEach(function (trash) {
+            trash.addEventListener("click", function () {
+                confirm("確定刪除嗎?")
+            })
+        })
     </script>
 </body>
+
 </html>

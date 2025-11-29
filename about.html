@@ -30,7 +30,9 @@
                         display: flex;
                         align-items: end;
                         margin-bottom: 85px;
-
+                        h2 {
+                            white-space: nowrap;
+                        }
                         p {
                             margin-left:37px ;
                         }
@@ -57,11 +59,33 @@
             .main {
                 .container {
                     width: 100%;
+                    align-items: start;
                     .content {
                         margin: 0 16px;
                     }
                     .pic {
                         margin: 0 16px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .main {
+                .container:nth-child(2n-1) {
+                    flex-direction: column-reverse;
+                }
+                .container {
+                    flex-direction: column;
+                    align-items: center;
+                    .content {
+
+                    }
+                    .pic{
+                        width: 80%;
+                        margin-bottom: 32px;
+                        img {
+                            width: 100%;
+                        }
                     }
                 }
             }
