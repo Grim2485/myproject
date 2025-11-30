@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         .banner {
-            background: url(./img/banner2.jpg) center;
+            background: url(./img/banner2.jpg) center / cover no-repeat;
         }
         .main {
             width: 100%;
@@ -289,7 +289,7 @@
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
-        <nav>
+        <nav class="navList">
             <ul>
                 <li>
                     <a href="./about.html">關於我們</a>
@@ -313,6 +313,13 @@
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
+        <label class="hb">
+            <input type="checkbox" class="menu-switch">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+        </label>
+        <div class="backdrop"></div>
     </header>
     <section class="banner">
         <div class="title">
@@ -379,7 +386,7 @@
                             </div>
                             <div class="content">
                                 <h4>龜山店</h4>
-                                <p>地址:桃園市龜山區新興街87巷87號</p>
+                                <p>地址:桃園市龜山區新興街87巷12號</p>
                             </div>
                         </div>
                         <div class="card" onmouseenter="hoverShow('b')" onclick="goTo('b')">
@@ -394,7 +401,7 @@
                             </div>
                             <div class="content">
                                 <h4>桃園店</h4>
-                                <p>地址:桃園市桃園區新興街87巷87號</p>
+                                <p>地址:桃園市桃園區春日路77號</p>
                             </div>
                         </div>
                         <div class="card" onmouseenter="hoverShow('c')" onclick="goTo('c')">
@@ -409,7 +416,7 @@
                             </div>
                             <div class="content">
                                 <h4>龍潭店</h4>
-                                <p>地址:桃園市龍潭區新興街87巷87號</p>
+                                <p>地址:桃園市龍潭區中興路61號</p>
                             </div>
                         </div>
                     </div>
@@ -515,5 +522,6 @@
                 marker.openPopup();
         }
     </script>
+    <script src="./hb.js"></script>
 </body>
 </html>

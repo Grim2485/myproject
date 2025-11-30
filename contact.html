@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         .banner {
-            background: url(./img/banner4.jpg) center;
+            background: url(./img/banner4.jpg) center / cover no-repeat;
         }
         .main {
             width: 100%;
@@ -109,6 +109,36 @@
                 }
             }
         }
+        @media screen and (max-width: 1024px) {
+            .main {
+                flex-direction: column;
+                align-items: center;
+                gap: 76px;
+                .faq {
+                    width: 90%;
+                    text-align: center;
+                    .faqTitle {
+                        border-bottom: none;
+                    }
+                }
+                .contact {
+                    width: 90%;
+                    h2 {
+                        border-bottom: none;
+                        text-align: center;
+                    }
+                    form {
+                        align-items: center;
+                        .formItems {
+                            input {
+                                height: 48px;
+    
+                            }
+                        }
+                    }
+                }
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +148,7 @@
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
-        <nav>
+        <nav class="navList">
             <ul>
                 <li>
                     <a href="./about.html">關於我們</a>
@@ -142,6 +172,13 @@
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
+        <label class="hb">
+            <input type="checkbox" class="menu-switch">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+        </label>
+        <div class="backdrop"></div>
     </header>
     <section class="banner">
         <div class="title">
@@ -299,5 +336,6 @@
     <!-- 手風琴 -->
     <script src="./accordion.js">
     </script>
+    <script src="./hb.js"></script>
 </body>
 </html>

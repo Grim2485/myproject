@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         .banner {
-            background: url(./img/banner1.jpg) center;
+            background: url(./img/banner1.jpg) center / cover no-repeat;
         }
         .main {
             display: flex;
@@ -120,7 +120,7 @@
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
-        <nav>
+        <nav class="navList">
             <ul>
                 <li>
                     <a href="./about.html">關於我們</a>
@@ -144,6 +144,13 @@
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
+        <label class="hb">
+            <input type="checkbox" class="menu-switch">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+        </label>
+        <div class="backdrop"></div>
     </header>
     <section class="banner">
         <div class="title">
@@ -278,5 +285,6 @@
             })
         })
     </script>
+    <script src="./hb.js"></script>
 </body>
 </html>

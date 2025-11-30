@@ -142,7 +142,7 @@
         }
 
         .feature {
-            height: 70vh;
+            gap: 128px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -213,7 +213,7 @@
         }
 
         .about {
-            height: 100vh;
+            gap: 128px;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -233,7 +233,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 80%;
+            gap: 32px;
             width: 40%;
         }
 
@@ -289,6 +289,7 @@
             /* position: relative; */
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
         }
 
         .main .att1 {
@@ -332,6 +333,10 @@
                     width: 90%;
                     .aboutPic {
                         margin-left: 32px;
+                        width: 55%;
+                        img {
+                            width: 100%;
+                        }
                     }
 
                 }
@@ -340,6 +345,23 @@
                 }
             }
         }
+        @media screen and (max-width: 1024px) {
+            .main {
+                .about {
+                    .content {
+                        h3 {
+                            font-size: 20px;
+                        }
+                        p {
+                            font-size: 16px;
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+
+        }
+
     </style>
     <!-- 引入 Three.js 函式庫 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -356,7 +378,7 @@
                 <img src="./img/navLogo.svg" alt="Logo">
             </a>
         </div>
-        <nav>
+        <nav class="navList">
             <ul>
                 <li>
                     <a href="./about.html">關於我們</a>
@@ -380,6 +402,13 @@
                 <img src="./img/cart.svg" alt="cart">
             </a>
         </div>
+        <label class="hb">
+            <input type="checkbox" class="menu-switch">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+        </label>
+        <div class="backdrop"></div>
     </header>
     <section class="indexBanner">
         <h1>AquaHaven</h1>
@@ -865,6 +894,7 @@
             })
         })
     </script>
+    <script src="./hb.js"></script>
 </body>
 
 </html>

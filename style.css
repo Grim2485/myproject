@@ -84,13 +84,22 @@ header .icons a:hover {
     transform: translate(0,-4px);
 }
 
+/* checkbox */
+.menu-switch {
+    display: none;
+}
+.backdrop, .hb {
+    display: none;
+}
+        
+
 .banner {
     height: 536px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(./img/banner.jpg) center;
+    background: url(./img/banner.jpg) center / cover;
 
     .title {
         height: 143px;
@@ -129,6 +138,7 @@ footer .outer {
     width: 1320px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
 }
 
@@ -160,14 +170,196 @@ footer .icons .icon {
     margin: 12px;
 }
 
+@media screen and (max-width: 1024px) {
 
-@media screen and (max-width: 1335px) {
-    .main {
-        .container {
-            width: 100%;
-        }
+    .hb {
+        position: relative;
+        display: block;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .hb .bar {
+        display: block;
+        width: 80%;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: #111;
+    }
+    .bar1 {
+        top: 6px;
+    }
+    .bar2 {
+        top: 18px;
+    }
+    .bar3 {
+        top: 30px;
+    }
+    /* header:has(.menu-switch:checked) .bar1 {
+        animation: hbBar1GoAnimation .5s forwards;
+    }
+    header:has(.menu-switch:checked) .bar2 {
+        animation: hbBar2GoAnimation .5s forwards;
+    }
+    header:has(.menu-switch:checked) .bar3 {
+        animation: hbBar3GoAnimation .5s forwards;
+    }
+
+    header:not(:has(.menu-switch:checked)) .bar1 {
+    animation: hbBar1BackAnimation .5s forwards;
+    }
+    header:not(:has(.menu-switch:checked)) .bar2 {
+    animation: hbBar2BackAnimation .5s forwards;
+    }
+    header:not(:has(.menu-switch:checked)) .bar3 {
+    animation: hbBar3BackAnimation .5s forwards;
+    } */
+
+    .navList {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: #222e;
+        width: 80%;
+        height: calc(100svh - 96px);
+        transition: right .7s;
+        z-index: 999999999;
+    }
+    .navList ul {
+        flex-direction: column;
+    }
+    .navList ul li {
+        border-bottom: 1px solid #fff;
+    }
+    .navList ul li a {
+        display: block;
+        padding: 16px;
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+    }
+    header:has(.menu-switch:checked) .navList {
+        right: 0;
+    }
+
+    header .icons {
+        margin-left: auto;
+        margin-right: 16px;
+        width: 100px;
+    }
+    header:has(.menu-switch:checked) .backdrop {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: calc(100svh - 96px);
+    width: 100vw;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    }
+
+    footer .outer {
+        width: 90%;
     }
 }
-@media screen and (min-width: 430px) {
 
+@media screen and (max-width: 768px) {
+    footer {
+        height: auto;
+        padding: 16px 0;
+    }
+    footer .outer {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+}
+
+
+@keyframes hbBar1GoAnimation {
+    0%{
+        top: 6px;
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 45deg;
+        top:18px
+    }
+}
+
+@keyframes hbBar2GoAnimation {
+    0%{
+        top:18px;
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        rotate: -45deg;
+        top:18px
+    }
+}
+
+@keyframes hbBar3GoAnimation {
+    0%{
+        top: 30px;
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        rotate: -45deg;
+        top:18px
+    }
+}
+
+@keyframes hbBar1BackAnimation {
+    0%{
+        rotate: 45deg;
+        top:18px
+        
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        top: 6px;
+    }
+}
+@keyframes hbBar2BackAnimation {
+    0%{
+        rotate: -45deg;
+        top:18px
+        
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        top:18px;
+    }
+}
+@keyframes hbBar3BackAnimation {
+    0%{
+        rotate: -45deg;
+        top:18px
+        
+    }
+    50%{
+        top:18px;
+        rotate: 0deg;
+    }
+    100%{
+        top: 30px;
+    }
 }
