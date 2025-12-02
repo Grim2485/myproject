@@ -89,6 +89,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
+        .start {
+            position: absolute;
+            top: 0;
+
+        }
         /* Canvas 全屏固定定位 */
         canvas {
             position: fixed;
@@ -154,7 +159,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            clip-path: circle(100% at 50% 50%);
+            clip-path: circle(0% at 50% 50%);
             z-index: -1;
             background: white url("./img/bg.png")
         }
@@ -417,6 +422,7 @@
 </head>
 
 <body>
+    <div class="strat"></div>
     <canvas></canvas>
     <header>
         <div class="navLogo">
@@ -860,18 +866,19 @@
             // 建立滾動觸發動畫
             gsap.timeline({
                 scrollTrigger: {
-                    trigger: "canvas",
+                    trigger: ".strat",
                     start: "50% top",  // 目標出現在中央時觸發
                     end: "+=2000",            // 持續的滾動距離
                     scrub: true,             // 跟隨滾動進度
-                    // pin: true,               // 固定在畫面上
-                    markers: false       //開發對準
+                    //pin: true,               // 固定在畫面上
+                    markers: true ,      //開發對準
+                    
                 }
             })
-                .from(".tex", {
-                    'clip-path': 'circle(0% at 50% 50%)',
+                .to(".tex", {
+                    'clip-path': 'circle(100% at 50% 50%)',
                     duration: 1,
-                    ease: "power2.out"
+                    ease: "power2.out",
                 })
 
 
