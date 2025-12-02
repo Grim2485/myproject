@@ -40,6 +40,8 @@
                     .pic {
                         position: relative;
                         overflow: hidden;
+                        display: flex;
+                        justify-content: center;
 
                         h4 {
                             position: absolute;
@@ -109,6 +111,17 @@
                         margin: 32px;
                     }
                 }
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .main .container .card {
+                width: 40%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main .container .card {
+                width: 391px;
             }
         }
     </style>
