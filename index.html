@@ -381,6 +381,12 @@
         }
 
         @media screen and (max-width: 768px) {
+            .indexBanner h1 {
+                font-size: 64px;
+            }
+            .indexBanner p {
+                font-size: 24px;
+            }
             .main .feature .outer{
                 flex-direction: column;
                 align-items: center;
@@ -620,6 +626,17 @@
 
         // DOM 載入完成後執行
         document.addEventListener("DOMContentLoaded", () => {
+            //大於2000就暫停
+            let pause = false;
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 2000) {
+                    pause = true;
+                } else {
+                    pause = false;
+                }
+            });
+
             // 建立兩個場景：一個用於水波模擬，一個用於最終渲染
             const scene = new THREE.Scene();
             const simScene = new THREE.Scene();
@@ -798,6 +815,8 @@
 
                 // 動畫循環
                 const animate = () => {
+                    if (!pause) {
+                    
                     // 更新模擬參數
                     simMaterial.uniforms.frame.value = frame++;
                     simMaterial.uniforms.time.value = performance.now() / 1000;
@@ -817,6 +836,7 @@
                     const temp = rtA;
                     rtA = rtB;
                     rtB = temp;
+                    }
 
                     // 請求下一幀動畫
                     requestAnimationFrame(animate);
