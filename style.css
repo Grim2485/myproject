@@ -191,32 +191,32 @@ footer .icons .icon {
     }
     .bar1 {
         top: 6px;
+        transition: top .25s .25s ,rotate .25s 0s;
     }
     .bar2 {
         top: 18px;
+        transition: rotate .25s 0s;
     }
     .bar3 {
         top: 30px;
-    }
-    /* header:has(.menu-switch:checked) .bar1 {
-        animation: hbBar1GoAnimation .5s forwards;
-    }
-    header:has(.menu-switch:checked) .bar2 {
-        animation: hbBar2GoAnimation .5s forwards;
-    }
-    header:has(.menu-switch:checked) .bar3 {
-        animation: hbBar3GoAnimation .5s forwards;
+        transition: top .25s .25s ,rotate .25s 0s;
     }
 
-    header:not(:has(.menu-switch:checked)) .bar1 {
-    animation: hbBar1BackAnimation .5s forwards;
+    header:has(.menu-switch:checked) .bar1 {
+        top:18px;
+        rotate: 45deg;
+        transition: top .25s 0s ,rotate .25s .25s;
     }
-    header:not(:has(.menu-switch:checked)) .bar2 {
-    animation: hbBar2BackAnimation .5s forwards;
+    header:has(.menu-switch:checked) .bar2 {
+        rotate: 45deg;
+        transition: rotate .25s .25s;
     }
-    header:not(:has(.menu-switch:checked)) .bar3 {
-    animation: hbBar3BackAnimation .5s forwards;
-    } */
+    header:has(.menu-switch:checked) .bar3 {
+        top:18px;
+        rotate: -45deg;
+        transition: top .25s 0s ,rotate .25s .25s;
+    }
+
 
     .navList {
         position: absolute;
@@ -275,91 +275,5 @@ footer .icons .icon {
         flex-direction: column;
         align-items: center;
         gap: 16px;
-    }
-}
-
-
-@keyframes hbBar1GoAnimation {
-    0%{
-        top: 6px;
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        rotate: 45deg;
-        top:18px
-    }
-}
-
-@keyframes hbBar2GoAnimation {
-    0%{
-        top:18px;
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        rotate: -45deg;
-        top:18px
-    }
-}
-
-@keyframes hbBar3GoAnimation {
-    0%{
-        top: 30px;
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        rotate: -45deg;
-        top:18px
-    }
-}
-
-@keyframes hbBar1BackAnimation {
-    0%{
-        rotate: 45deg;
-        top:18px
-        
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        top: 6px;
-    }
-}
-@keyframes hbBar2BackAnimation {
-    0%{
-        rotate: -45deg;
-        top:18px
-        
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        top:18px;
-    }
-}
-@keyframes hbBar3BackAnimation {
-    0%{
-        rotate: -45deg;
-        top:18px
-        
-    }
-    50%{
-        top:18px;
-        rotate: 0deg;
-    }
-    100%{
-        top: 30px;
     }
 }
