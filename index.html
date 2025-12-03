@@ -77,13 +77,6 @@
         }
         }
 
-        @media (max-width: 768px) {
-            .swiper-slide .content .outer {
-                font-size: 14px;
-                letter-spacing: 0px;
-                gap: 0px;
-        }
-        }
     </style>
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -411,6 +404,10 @@
                 font-size: 16px;
             }
 
+            .main .news {
+                width: 100%;
+            }
+
 
             .main .att {
                 height:  20vh;
@@ -502,7 +499,7 @@
                     </div>
                     <div class="price">
                         <h4>促銷價</h4>
-                        <h4>NT<span>$999</span></h4>
+                        <h4>NT<span>$99999</span></h4>
                     </div>
                 </div>
                 <div class="featureCard  pic3" data-aos="flip-left" data-aos-duration="1500">
@@ -724,35 +721,43 @@
             canvas.height = height;
             const ctx = canvas.getContext("2d", { alpha: true });
 
-            // // 設定背景色
-            // ctx.fillStyle = "#fb7427";
-            // ctx.fillRect(0, 0, width, height);
 
             // 載入背景圖片
             const backgroundImage = new Image();
             backgroundImage.src = './img/homeBanner.jpg';  // 替換成你的圖片路徑
-            console.log(backgroundImage);
-
-
 
             backgroundImage.onload = () => {
-                // 在圖片載入完成後繪製到 canvas
-                ctx.drawImage(
-                    backgroundImage,
-                    0, 0,
-                    canvas.width, canvas.height,
-                );
+                if (window.innerWidth>=768) {
+                    // 在圖片載入完成後繪製到 canvas
+                    ctx.drawImage(
+                        backgroundImage,
+                        0, 0,
+                        canvas.width, canvas.height,
+                    );
+                } else {
+                    const imgRatio = backgroundImage.width / backgroundImage.height;
+                    const canvasRatio = canvas.width / canvas.height;
 
-                // 繪製文字
-                // const fontSize = Math.round(250 * window.devicePixelRatio);
-                // ctx.fillStyle = "#fef4b8";
-                // ctx.font = `bold ${fontSize}px Test Söhne`;
-                // ctx.textAlign = "center";
-                // ctx.textBaseline = "middle";
-                // ctx.textRendering = "geometricPrecision";
-                // ctx.imageSmoothingEnabled = true;
-                // ctx.imageSmoothingQuality = "high";
-                // ctx.fillText("softhorizon", width / 2, height / 2);
+                    let drawWidth, drawHeight, dx, dy;
+
+                    if (imgRatio > canvasRatio) {
+                        // 圖較寬，依高度縮放
+                        drawHeight = canvas.height;
+                        drawWidth = canvas.height * imgRatio;
+                        dx = (canvas.width - drawWidth) / 2;  // 水平置中
+                        dy = 0;
+                    } else {
+                        // 圖較高，依寬度縮放
+                        drawWidth = canvas.width;
+                        drawHeight = canvas.width / imgRatio;
+                        dx = 0;
+                        dy = (canvas.height - drawHeight) / 2; // 垂直置中
+                    }
+
+                    ctx.drawImage(backgroundImage, dx, dy, drawWidth, drawHeight);
+                }
+                
+
 
                 // 將 canvas 轉換為 Three.js 紋理
                 const textTexture = new THREE.CanvasTexture(canvas);
@@ -762,39 +767,56 @@
 
                 // 監聽視窗調整大小事件
                 window.addEventListener("resize", () => {
-                    const newWidth = window.innerWidth * window.devicePixelRatio;
-                    const newHeight = window.innerHeight * window.devicePixelRatio;
 
-                    // 更新渲染器和渲染目標的尺寸
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    rtA.setSize(newWidth, newHeight);
-                    rtB.setSize(newWidth, newHeight);
-                    simMaterial.uniforms.resolution.value.set(newWidth, newHeight);
+                        
+                        const newWidth = window.innerWidth * window.devicePixelRatio;
+                        const newHeight = window.innerHeight * window.devicePixelRatio;
+    
+                        // 更新渲染器和渲染目標的尺寸
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                        rtA.setSize(newWidth, newHeight);
+                        rtB.setSize(newWidth, newHeight);
+                        simMaterial.uniforms.resolution.value.set(newWidth, newHeight);
 
-                    // // 重新繪製文字
-                    // canvas.width = newWidth;
-                    // canvas.height = newHeight;
-                    // ctx.fillStyle = "#fb7427";
-                    // ctx.fillRect(0, 0, newWidth, newHeight);
+    
+                        
+                        if (window.innerWidth>=768) {
+                            // 重新繪製背景
+                                canvas.width = newWidth;
+                                canvas.height = newHeight;
+                                
+                                ctx.drawImage(
+                                    backgroundImage,
+                                    0, 0,
+                                    canvas.width, canvas.height
+                                );
+                        } else {
+                            const imgRatio = backgroundImage.width / backgroundImage.height;
+                            const canvasRatio = canvas.width / canvas.height;
 
-                    // 重新繪製背景
-                    canvas.width = newWidth;
-                    canvas.height = newHeight;
-                    ctx.drawImage(
-                        backgroundImage,
-                        0, 0,
-                        canvas.width, canvas.height
-                    );
+                            let drawWidth, drawHeight, dx, dy;
 
-                    // const newFontSize = Math.round(250 * window.devicePixelRatio);
-                    // ctx.fillStyle = "#fef4b8";
-                    // ctx.font = `bold ${newFontSize}px Test Söhne`;
-                    // ctx.textAlign = "center";
-                    // ctx.textBaseline = "middle";
-                    // ctx.fillText("softhorizon", newWidth / 2, newHeight / 2);
+                            if (imgRatio > canvasRatio) {
+                                // 圖較寬，依高度縮放
+                                drawHeight = canvas.height;
+                                drawWidth = canvas.height * imgRatio;
+                                dx = (canvas.width - drawWidth) / 2;  // 水平置中
+                                dy = 0;
+                            } else {
+                                // 圖較高，依寬度縮放
+                                drawWidth = canvas.width;
+                                drawHeight = canvas.width / imgRatio;
+                                dx = 0;
+                                dy = (canvas.height - drawHeight) / 2; // 垂直置中
+                            }
 
-                    // 更新紋理
-                    textTexture.needsUpdate = true;
+                            ctx.drawImage(backgroundImage, dx, dy, drawWidth, drawHeight);
+                        }
+
+                            
+                        // 更新紋理
+                        textTexture.needsUpdate = true;
+
                 });
 
                 // 監聽滑鼠移動事件
@@ -902,7 +924,7 @@
                 grabCursor: true,
                 autoHeight: false,
                 centeredSlides: true,
-                slidesPerView: 2,
+                slidesPerView: 1.25,
                 loop: true,
                 autoplay: {
                     delay: 5000,
@@ -922,7 +944,14 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    }
+                }
             });
+
         });
     </script>
     <!-- AOS -->
@@ -965,7 +994,6 @@
             })
         })
     </script>
-    <script src="./hb.js"></script>
 </body>
 
 </html>
