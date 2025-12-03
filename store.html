@@ -193,6 +193,9 @@
                 }
             }
         }
+        .cForm {
+            display: none;
+        }
         @media screen and (max-width: 1335px) {
             .main {
                 .container {
@@ -268,6 +271,85 @@
             }
             .main .container .outer .goods .cards .card{
                 width: 317px;
+            }
+        }
+        @media screen and (max-width:430px){
+            .main .container .mainHeader {
+                .searchbar {
+                    input {
+                        height: 32px;
+                    }
+
+                    input::placeholder {
+                        font-size: 14px;
+                        
+                    }
+                    .icon {
+                        right: 12px;
+                        top: 8px;
+                        img {
+                            width: 16px;
+                        }
+                    }
+                }
+            }
+            .main .container .outer {
+                flex-direction: column;
+                margin-top: 32px;
+            }
+            .main .container .outer .categories {
+                width: 100%;
+                .accordion {
+                    display: none;
+                }
+                .cForm {
+                    display: block;
+                    form {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 8px;
+                        .cFormItem {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            gap: 8px;
+                            select {
+                                height: 32px;
+                                background-color: #fff0;
+                                border: 1px solid #B3B1B1;
+                                transition: all .25s;
+                            }
+                            select:focus {
+                                z-index: 3;
+                                border-color: #86b7fe;
+                                outline: 0;
+                                box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+                            }
+                        }
+                        button[type="submit"] {
+                            background-color: #008CEB;
+                            color: #fff;
+                            border: none;
+                            height: 48px;
+                            width: 96px;
+                            border-radius: 4px;
+                            font-size: 16px;
+                            margin: 16px 0;
+                        }
+                    }
+                }
+            }
+            .main .container .outer .goods {
+                width: 100%;
+                .cards {
+                    .card {
+                        margin-left: 0;
+                        .content .goodsContent .price .money h4 {
+                            font-size: 32px;
+                        }
+                    }
+                }
             }
         }
     </style>
@@ -406,6 +488,33 @@
                                 <a href="">各式飾品</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="cForm">
+                        <form action="">
+                            <div class="cFormItem">
+                                <label for="cClass">選擇類別</label>
+                                <select name="" id="cClass">
+                                    <option value="0">活體區</option>
+                                    <option value="1">魚飼料</option>
+                                    <option value="2">魚缸</option>
+                                    <option value="3">水草區</option>
+                                    <option value="4">水質處理區</option>
+                                    <option value="5">周邊用品</option>
+                                    <option value="6">設備區</option>
+                                    <option value="7">造景與擺飾</option>
+                                </select>
+                            </div>
+                            <div class="cFormItem">
+                                <label for="cSubClass">選擇細項</label>
+                                <select name="" id="cSubClass">
+                                    <option value="">全部</option>
+                                    <option value="0">中小型魚</option>
+                                    <option value="1">大型魚</option>
+                                    <option value="2">其他</option>
+                                </select>
+                            </div>
+                            <button type="submit">送出</button>
+                        </form>
                     </div>
                 </div>
                 <div class="goods">
@@ -615,6 +724,52 @@
         let bcItems = document.querySelectorAll(".bcItem")
         bcItems[bcItems.length-1].addEventListener("click",function (e) {
             e.preventDefault()
+        })
+
+        let cData = [{
+            cName:"活體區",
+            cSub:["中小型魚","大型魚","其他"]
+            },
+            {
+            cName:"魚飼料",
+            cSub:["中小型魚","底棲","活餌","大型魚"]
+            },
+            {
+            cName:"魚缸",
+            cSub:["迷你缸","智能生態缸","大型缸"]
+            },
+            {
+            cName:"水草區",
+            cSub:["陰性水草","莫絲","高莖水草"]
+            },
+            {
+            cName:"水質處理區",
+            cSub:["藥劑","水質設備"]
+            },
+            {
+            cName:"周邊用品",
+            cSub:["清潔用品","漁網","氣泡石","繁殖盒","風管","水草用品"]
+            },
+            {
+            cName:"設備區",
+            cSub:["馬達","照明設備","溫控設備","零配件","過濾器材"]
+            },
+            {
+            cName:"造景與擺飾",
+            cSub:["背景板","假水草","沉木","各式飾品"]
+            },
+        ]
+        const cClass = document.querySelector("#cClass")
+        const cSubClass = document.querySelector("#cSubClass")
+        cClass.addEventListener("change",function () {
+            // console.log(cData[this.value]);
+            let cSubArray = cData[this.value].cSub
+            cSubClass.innerHTML=`<option value="">全部</option>`
+
+            for (let i = 0; i < cSubArray.length; i++) {
+                cSubClass.insertAdjacentHTML("beforeend", `<option value="${i}">${cSubArray[i]}</option>`);
+            }
+            
         })
     </script>
 </body>

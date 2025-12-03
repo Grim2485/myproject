@@ -285,6 +285,35 @@
                 height: 300px;
             }
         }
+        @media screen and (max-width: 430px) {
+            .main .container .mainStore {
+                h3 {
+                    font-size: 24px;
+                }
+                .outer .map iframe{
+                    height: 200px;
+                }
+            }
+            .main .container .branch .outer {
+                flex-direction: column;
+            }
+            .main .container .branch .outer #map{
+                margin: 32px 0 16px 0;
+                height: 300px;
+            }
+            .main .container .branch .outer .card{
+                padding: 16px 8px;
+                .content {
+                    h4 {
+                        font-size: 20px;
+                    }
+                    p {
+                        font-size: 14px;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
     </style>
 </head>
 <body>

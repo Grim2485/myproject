@@ -317,6 +317,7 @@
                     }
                 }
                 .cart {
+                    margin-bottom: 32px;
                     .cartDetail {
                         .itemName {
                             width: 50%;
@@ -386,6 +387,31 @@
                             }
                         }
                     }
+                }
+            }
+        }
+        @media screen and (max-width: 430px) {
+            .main .container .cart {
+                .cartDetail {
+                        .itemName {
+                            width: 60%;
+                        }
+
+                        .price {
+                            width: 20%;
+                        }
+
+                        .counter {
+                            width: 20%;
+                        }
+
+                        .totalPrice {
+                            display: none;
+                        }
+
+                        .trash {
+                            display: none;
+                        }
                 }
             }
         }
@@ -655,6 +681,7 @@
                 value--;
                 if (value < 1) {
                     value = 1
+                    confirm("確定刪除嗎?")
                     return
                 }
 

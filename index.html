@@ -413,6 +413,35 @@
                 height:  20vh;
             }
         }
+        @media screen and (max-width: 430px){
+            .main .feature {
+                gap: 64px;
+            }
+            .main .about {
+                gap: 64px;
+            }
+            .main .about .outer{
+                flex-direction: column-reverse;
+                gap: 16px;
+                .aboutPic {
+                    margin: 0;
+                    width: 100%;
+                }
+                .content {
+                    width: 100%;
+                    align-items: center;
+                    p {
+                        text-indent: 24px;
+                    }
+                    a {
+                        width: 50%;
+                    }
+                }
+            }
+            .main .news h2 {
+                margin: 0;
+            }
+        }
 
     </style>
     <!-- 引入 Three.js 函式庫 -->
