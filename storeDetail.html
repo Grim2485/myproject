@@ -764,6 +764,38 @@
             }
             
         })
+
+
+        // localStorage
+        // 取數據
+        let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+        const addCartBtn = document.querySelector(".addCartBtn")
+        addCartBtn.addEventListener("click",function () {
+            let goodsAmount = Number(document.querySelector(".value").textContent)
+            
+
+            // 找array中對應索引直
+            let index = cartData.findIndex(item => item.goodsName === "白金鼠魚");
+
+            if (index== -1) {
+                cartData.push(
+                    {
+                    goodsName : "白金鼠魚",
+                    goodsSize : "成魚",
+                    goodsPrice:20,
+                    goodsQuantity:1,
+                    goodsPicNum:0
+                    }
+                    
+                )
+            } else {
+                cartData[index].goodsQuantity+= goodsAmount
+            }
+            // 更新localStorage
+                localStorage.setItem("cartData", JSON.stringify(cartData));
+                alert("已加入購物車")
+        })
+
     </script>
     <script src="./hb.js"></script>
 </body>

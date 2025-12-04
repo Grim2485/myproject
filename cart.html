@@ -486,7 +486,7 @@
                     <div class="cartBody">
                         <div class="cartItem">
                             <div class="itemName">
-                                <img src="./img/cartGoods1.png" alt="">
+                                <img src="./img/cartGoods0.png" alt="">
                                 <div class="goodsName">
                                     <h4>白金鼠魚</h4>
                                     <p>成魚</p>
@@ -515,7 +515,7 @@
                         </div>
                         <div class="cartItem">
                             <div class="itemName">
-                                <img src="./img/cartGoods2.png" alt="">
+                                <img src="./img/cartGoods1.png" alt="">
                                 <div class="goodsName">
                                     <h4>熊貓鼠魚</h4>
                                     <p>成魚</p>
@@ -544,7 +544,7 @@
                         </div>
                         <div class="cartItem">
                             <div class="itemName">
-                                <img src="./img/cartGoods3.png" alt="">
+                                <img src="./img/cartGoods2.png" alt="">
                                 <div class="goodsName">
                                     <h4>白色半月鬥魚</h4>
                                     <p>成魚</p>
@@ -661,84 +661,314 @@
         </div>
     </footer>
     <script>
-        // 計數器
-        const boxs = document.querySelectorAll('.number-box');
-        // 獲取訂單總攬數據
-        const summaryCount = document.querySelector('.summaryCount').children[1]
-        const summaryTotal = document.querySelector('.summaryTotal').children[1]
-        const totalAmount = document.querySelector(".totalAmount").children[1]
-        const fee = document.querySelector(".fee").children[1]
-        // 對每個計數器上監聽器
-        boxs.forEach(function (box) {
-            const valueEl = box.querySelector('.value');
-            let value = 1;
-            // 單一商品價格
-            let price = box.parentElement.parentElement.querySelector(".price").children[0].innerHTML.replace("$", "")
-            // 小計
-            let totalPrice = box.parentElement.parentElement.querySelector(".totalPrice").children[0]
-            // 減
-            box.querySelector('.minus').onclick = () => {
-                value--;
-                if (value < 1) {
-                    value = 1
-                    confirm("確定刪除嗎?")
-                    return
-                }
+        // LocalStorage
+        // 存數據
+        // const cartList = [{
+        //     goodsName : "白金鼠魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 20,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 0
+        //     },
+        //     {
+        //     goodsName : "紅白蘭壽金魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 50,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 1
+        //     },
+        //     {
+        //     goodsName : "白色半月鬥魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 150,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 2
+        //     },
+        //     {
+        //     goodsName : "金絲神仙魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 120,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 3
+        //     },
+        //     {
+        //     goodsName : "熊貓鼠魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 20,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 4
+        //     },
+        //     {
+        //     goodsName : "雙色隆頭魚",
+        //     goodsSize : "成魚",
+        //     goodsPrice : 50,
+        //     goodsQuantity:1,
+        //     goodsPicNum: 5
+        //     }
+        // ];
+        // localStorage.setItem("cartData", JSON.stringify(cartList));
+        // 取數據
+        let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+        
+        // 如果沒數據跳轉商品頁面
+        if (cartData.length==0) {
+            alert("購物車沒東西")
+            window.location.href = "./store.html";
+        }
 
-                valueEl.textContent = value;
-                totalPrice.textContent = "$" + price * value
-                // 總數量
-                summaryCount.textContent--
+        const cartItems = document.querySelectorAll(".cartItem")
 
-                let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) - price * 1
-
-                summaryTotal.textContent = "$" + summaryTotalNum
-
-                // 總計500免運
-                if (summaryTotalNum >= 500) {
-                    totalAmount.textContent = "$" + summaryTotalNum
-                    fee.textContent = "$0"
-                } else {
-                    totalAmount.textContent = "$" + (summaryTotalNum + 30)
-                    fee.textContent = "$30"
-                }
-
-            };
-            // 加
-            box.querySelector('.plus').onclick = () => {
-                value++;
-                valueEl.textContent = value;
-                totalPrice.textContent = "$" + price * value
-                summaryCount.textContent++
-
-                let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) + price * 1
-
-                summaryTotal.textContent = "$" + summaryTotalNum
-
-                if (summaryTotalNum >= 500) {
-                    totalAmount.textContent = "$" + summaryTotalNum
-                    fee.textContent = "$0"
-                } else {
-                    totalAmount.textContent = "$" + (summaryTotalNum + 30)
-                    fee.textContent = "$30"
-                }
-            };
-
-
-
-
+        cartItems.forEach(function (cartItem) {
+            cartItem.remove()
         })
 
+        let totalQuantity=0
+        let totalPrice= 0
+
+        cartData.forEach(function (goodsData) {
+            
+            const cartBody = document.querySelector(".cartBody")
+            cartBody.insertAdjacentHTML("beforeend", `<div class="cartItem">
+                <div class="itemName">
+                    <img src="./img/cartGoods${goodsData.goodsPicNum}.png" alt="">
+                    <div class="goodsName">
+                        <h4>${goodsData.goodsName}</h4>
+                        <p>${goodsData.goodsSize}</p>
+                    </div>
+                </div>
+                <div class="price">
+                    <span>
+                        $${goodsData.goodsPrice}
+                    </span>
+                </div>
+                <div class="counter">
+                    <div class="number-box">
+                        <button class="btn minus">-</button>
+                        <span class="value">${goodsData.goodsQuantity}</span>
+                        <button class="btn plus">+</button>
+                    </div>
+                </div>
+                <div class="totalPrice">
+                    <span>
+                        $${goodsData.goodsPrice*goodsData.goodsQuantity}
+                    </span>
+                </div>
+                <div class="trash">
+                    <img src="./img/Trash.svg" class="trashIcon" alt="">
+                </div>
+                </div>`);
+
+            totalQuantity+=goodsData.goodsQuantity
+            totalPrice+= goodsData.goodsPrice*goodsData.goodsQuantity
+        })
+
+        let summaryFee = 0
+
+        if (totalPrice<500) {
+            summaryFee=30
+        }
+
+        const summaryBody = document.querySelector(".summaryBody")
+
+        summaryBody.innerHTML=`
+        <div class="amount">
+            <div class="summaryCount">
+                <span>總數</span>
+                <span>${totalQuantity}</span>
+            </div>
+            <div class="summaryTotal">
+                <span>合計</span>
+                <span>$${totalPrice}</span>
+            </div>
+            <div class="fee">
+                <span>運費</span>
+                <span>$${summaryFee}</span>
+            </div>
+        </div>
+        <div class="totalAmount">
+            <span>總價格</span>
+            <span>$${totalPrice+summaryFee}</span>
+        </div>
+        `
+
+        
 
 
 
+        
+        document.addEventListener("DOMContentLoaded",function () {
+            // 計數器
+            const boxs = document.querySelectorAll('.number-box');
+            // 獲取訂單總攬數據
+            const summaryCount = document.querySelector('.summaryCount').children[1]
+            const summaryTotal = document.querySelector('.summaryTotal').children[1]
+            const totalAmount = document.querySelector(".totalAmount").children[1]
+            const fee = document.querySelector(".fee").children[1]
 
-        let trashs = document.querySelectorAll(".trashIcon")
-        trashs.forEach(function (trash) {
-            trash.addEventListener("click", function () {
-                confirm("確定刪除嗎?")
+
+            // 對每個計數器上監聽器
+            boxs.forEach(function (box) {
+                const valueEl = box.querySelector('.value');
+                
+                let value = Number(valueEl.textContent);
+                // 單一商品價格
+                let price = box.parentElement.parentElement.querySelector(".price").children[0].innerHTML.replace("$", "")
+                // 小計
+                let totalPrice = box.parentElement.parentElement.querySelector(".totalPrice").children[0]
+                //取商品名稱
+                let goodsItemName=box.closest(".cartItem").children[0].children[1].children[0].textContent
+                //商品
+                let goodsItem=box.closest(".cartItem")
+                
+                // 減
+                box.querySelector('.minus').onclick = () => {
+                    // 找array中對應索引直
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    value--;
+                    if (value < 1) {
+                        if (confirm("確定刪除嗎?")) {
+                            cartData.splice(index, 1)
+                            // 更新localStorage
+                            localStorage.setItem("cartData", JSON.stringify(cartData));
+                            goodsItem.remove()
+
+                            // 總數量
+                            summaryCount.textContent--
+            
+                            let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) - price * 1
+            
+                            summaryTotal.textContent = "$" + summaryTotalNum
+            
+                            // 總計500免運
+                            if (summaryTotalNum >= 500) {
+                                totalAmount.textContent = "$" + summaryTotalNum
+                                fee.textContent = "$0"
+                            } else {
+                                totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                                fee.textContent = "$30"
+                            }
+                            // 如果沒數據跳轉商品頁面
+                            if (cartData.length==0) {
+                                alert("購物車沒東西")
+                                window.location.href = "./store.html";
+                            }
+                        } else {
+                            value = 1
+                            
+                        }
+                        return
+                    }
+
+
+
+                    cartData[index].goodsQuantity=value
+                    // 更新localStorage
+                    localStorage.setItem("cartData", JSON.stringify(cartData));
+
+                    
+
+                    
+                    
+                    
+                    
+                    
+    
+                    valueEl.textContent = value;
+                    totalPrice.textContent = "$" + price * value
+                    // 總數量
+                    summaryCount.textContent--
+    
+                    let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) - price * 1
+    
+                    summaryTotal.textContent = "$" + summaryTotalNum
+    
+                    // 總計500免運
+                    if (summaryTotalNum >= 500) {
+                        totalAmount.textContent = "$" + summaryTotalNum
+                        fee.textContent = "$0"
+                    } else {
+                        totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                        fee.textContent = "$30"
+                    }
+    
+                };
+                // 加
+                box.querySelector('.plus').onclick = () => {
+                    // 找array中對應索引直
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    value++;
+
+                    cartData[index].goodsQuantity=value
+                    // 更新localStorage
+                    localStorage.setItem("cartData", JSON.stringify(cartData));
+
+                    valueEl.textContent = value;
+                    totalPrice.textContent = "$" + price * value
+                    summaryCount.textContent++
+    
+                    let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) + price * 1
+    
+                    summaryTotal.textContent = "$" + summaryTotalNum
+    
+                    if (summaryTotalNum >= 500) {
+                        totalAmount.textContent = "$" + summaryTotalNum
+                        fee.textContent = "$0"
+                    } else {
+                        totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                        fee.textContent = "$30"
+                    }
+                };
+    
+    
+                let trash = goodsItem.querySelector(".trashIcon")
+                trash.addEventListener("click", function () {
+                    // 找array中對應索引直
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    if (confirm("確定刪除嗎?")) {
+                        console.log(cartData[index].goodsQuantity);
+                        
+                            
+                            // 總數量
+                            summaryCount.textContent-= cartData[index].goodsQuantity
+                            // 總價
+                            let summaryTotalNum = Number(summaryTotal.textContent.replace("$", "")) - price * cartData[index].goodsQuantity
+            
+                            summaryTotal.textContent = "$" + summaryTotalNum
+            
+                            // 總計500免運
+                            if (summaryTotalNum >= 500) {
+                                totalAmount.textContent = "$" + summaryTotalNum
+                                fee.textContent = "$0"
+                            } else {
+                                totalAmount.textContent = "$" + (summaryTotalNum + 30)
+                                fee.textContent = "$30"
+                            }
+                            cartData.splice(index, 1)
+                            // 更新localStorage
+                            localStorage.setItem("cartData", JSON.stringify(cartData));
+                            goodsItem.remove()
+
+                            // 如果沒數據跳轉商品頁面
+                            if (cartData.length==0) {
+                                alert("購物車沒東西")
+                                window.location.href = "./store.html";
+                            }
+                        }
+
+                            
+            
+
+                    
+                })
+    
             })
+    
+    
+    
+    
+    
         })
+        
     </script>
     <script src="./hb.js"></script>
 </body>

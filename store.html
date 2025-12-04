@@ -521,7 +521,7 @@
                     <div class="cards">
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods1.png" alt="">
+                            <img src="./img/goods0.png" alt="0">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -543,7 +543,7 @@
                         </div>
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods2.png" alt="">
+                            <img src="./img/goods1.png" alt="1">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -565,7 +565,7 @@
                         </div>
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods3.png" alt="">
+                            <img src="./img/goods2.png" alt="2">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -587,7 +587,7 @@
                         </div>
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods4.png" alt="">
+                            <img src="./img/goods3.png" alt="3">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -609,7 +609,7 @@
                         </div>
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods5.png" alt="">
+                            <img src="./img/goods4.png" alt="4">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -631,7 +631,7 @@
                         </div>
                         <div class="card">
                             <div class="pic">
-                            <img src="./img/goods6.png" alt="">
+                            <img src="./img/goods5.png" alt="5">
                             </div>
                             <div class="content">
                                 <div class="goodsTitle">
@@ -770,6 +770,53 @@
                 cSubClass.insertAdjacentHTML("beforeend", `<option value="${i}">${cSubArray[i]}</option>`);
             }
             
+        })
+
+
+        // localStorage
+        // 取數據
+        let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+        const addCartBtns = document.querySelectorAll(".addCartBtn")
+        addCartBtns.forEach(function (addCartBtn) {
+            addCartBtn.addEventListener("click",function () {
+                //父容器
+                let btnParent = this.closest(".content")
+                //商品對應價格
+                let goodsPrice = Number(btnParent.querySelector(".money h4").textContent.replace("$",""))
+                
+                //商品對應圖索引
+                let goodsPicNum = Number(this.closest(".card").querySelector(".pic img").alt)
+
+                
+                
+                
+                
+                // array中對應名稱
+                let goodsItemName = btnParent.querySelector(".goodsTitle h4").textContent
+
+
+                // 找array中對應索引直
+                let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+
+                if (index== -1) {
+                    cartData.push(
+                        {
+                        goodsName : goodsItemName,
+                        goodsSize : "成魚",
+                        goodsPrice,
+                        goodsQuantity:1,
+                        goodsPicNum
+                        }
+                        
+                    )
+                    console.log(cartData);
+                } else {
+                    cartData[index].goodsQuantity++
+                }
+                // 更新localStorage
+                    localStorage.setItem("cartData", JSON.stringify(cartData));
+                    alert("已加入購物車")
+            })
         })
     </script>
     <script src="./hb.js"></script>
