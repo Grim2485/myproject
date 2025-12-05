@@ -280,7 +280,37 @@
                 }
             }
         }
-
+        .cForm {
+            display: none;
+        }
+        .modal {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 99999;
+            background-color: #fff0;
+            display: none;
+            .modalContainer {
+                position: relative;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 340px;
+                height: 180px;
+                background-color: #0009;
+                color: #fff;
+                font-size: 24px;
+                line-height: 180px;
+                text-align: center;
+                border-radius: 4px;
+                
+            }
+        }
+        .modal.show {
+            display: block;
+        }
         @media screen and (max-width: 1335px) {
             .main {
                 .container {
@@ -448,8 +478,9 @@
             <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="./cart.html">
+            <a href="./cart.html" class="cartIcon">
                 <img src="./img/cart.svg" alt="cart">
+                <div class="cartNumber">1</div>
             </a>
         </div>
         <label class="hb">
@@ -645,7 +676,13 @@
                 </div>
             </div>
         </div>
+        <div class="modal">
+            <div class="modalContainer">
+                <p>商品已加入購物車</p>
+            </div>
+        </div>
     </div>
+    
     <footer>
         <div class="outer">
 
@@ -679,9 +716,11 @@
             </div>
         </div>
     </footer>
+    
     <!-- 手風琴 -->
     <script src="./accordion.js">
     </script>
+    <script src="./cart.js"></script>
     <script>
         const box = document.querySelector('.number-box');
         const valueEl = box.querySelector('.value');
@@ -777,13 +816,27 @@
             // 找array中對應索引直
             let index = cartData.findIndex(item => item.goodsName === "白金鼠魚");
 
+
+            // cartIcon邏輯
+            if (cartData.length==0) {
+                cartNumber.classList.add("show")
+            }
+            totalGoodsQuantity+= goodsAmount
+            cartNumber.innerHTML= totalGoodsQuantity
+
+            cartIcon.classList.add('animate');
+
+            cartIcon.addEventListener('animationend', () => {
+                cartIcon.classList.remove('animate');
+            }, { once: true });
+
             if (index== -1) {
                 cartData.push(
                     {
                     goodsName : "白金鼠魚",
                     goodsSize : "成魚",
                     goodsPrice:20,
-                    goodsQuantity:1,
+                    goodsQuantity:goodsAmount,
                     goodsPicNum:0
                     }
                     
@@ -792,12 +845,27 @@
                 cartData[index].goodsQuantity+= goodsAmount
             }
             // 更新localStorage
-                localStorage.setItem("cartData", JSON.stringify(cartData));
-                alert("已加入購物車")
+            localStorage.setItem("cartData", JSON.stringify(cartData));
+            // alert("已加入購物車")
+            let modal = document.querySelector(".modal")
+            modal.classList.add('show');
+            let modalTimer = setTimeout(()=> {
+                modal.classList.remove('show')
+            },3000)
+            
+            modal.addEventListener("click",function () {
+                this.classList.remove('show')
+                clearTimeout(modalTimer)
+            })
+
+            // 數量變回1
+            document.querySelector(".value").textContent=1
+            value=1
         })
 
     </script>
     <script src="./hb.js"></script>
+    
 </body>
 
 </html>

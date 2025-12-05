@@ -445,8 +445,9 @@
             <a href="./contact.html">
                 <img src="./img/letter.svg" alt="contact">
             </a>
-            <a href="./cart.html">
+            <a href="./cart.html" class="cartIcon">
                 <img src="./img/cart.svg" alt="cart">
+                <div class="cartNumber">1</div>
             </a>
         </div>
         <label class="hb">
@@ -925,7 +926,7 @@
                     // 找array中對應索引直
                     let index = cartData.findIndex(item => item.goodsName === goodsItemName);
                     if (confirm("確定刪除嗎?")) {
-                        console.log(cartData[index].goodsQuantity);
+                        // console.log(cartData[index].goodsQuantity);
                         
                             
                             // 總數量
