@@ -132,6 +132,10 @@
                                     outline: 5px solid #008CEB;
                                     outline-offset: -1px;
                                 }
+                                img.active {
+                                    outline: 5px solid #008CEB;
+                                    outline-offset: -1px;
+                                }
                             }
                         }
 
@@ -623,7 +627,7 @@
                                 <img src="./img/goodsBigPic1.png" alt="bigPic" class="big">
                             </div>
                             <div class="smallPics">
-                                <img src="./img/goodsSmallPic1.png" alt="1" class="small">
+                                <img src="./img/goodsSmallPic1.png" alt="1" class="small active">
                                 <img src="./img/goodsSmallPic2.png" alt="2" class="small">
                                 <img src="./img/goodsSmallPic3.png" alt="3" class="small">
                                 <img src="./img/goodsSmallPic4.png" alt="4" class="small">
@@ -745,6 +749,8 @@
 
         smalls.forEach(function (small) {
             small.addEventListener("click", function (e) {
+                this.closest(".smallPics").querySelector(".active").classList.remove("active")
+                this.classList.add("active")
                 big.src = `./img/goodsBigPic${e.target.alt}.png`
 
             }
