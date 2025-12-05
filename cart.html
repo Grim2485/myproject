@@ -259,6 +259,71 @@
             background-color: #0071BE;
         }
 
+        .deleteModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999999;
+            background-color: #0005;
+
+            .deleteModalContainer {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 540px;
+                height: 320px;
+                background-color: #fff;
+                border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 25%;
+                h4 {
+                    font-size: 24px;
+                }
+                p {
+                    letter-spacing: 2px;
+                }
+                .btns {
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+                    gap: 16px;
+                    .btn {
+                        width: 45%;
+                        height: 40px;
+                        border-radius: 4px;
+                        letter-spacing: 2px;
+                        
+                    }
+                    .confirm {
+                        background-color: #52867E;
+                        border: none;
+                        color: #fff;
+                    }
+                    .confirm:hover {
+                        background-color: #366860;
+                    }
+                    .cancel {
+                        background-color: #fff0;
+                        border: 1px solid #B3B1B1;
+                        color: #666;
+                    }
+                    .cancel:hover {
+                        background-color: #e4e4e455;
+                    }
+                }
+            }
+        }
+        .deleteModal.show {
+            display: block;
+        }
+
         @media screen and (max-width: 1335px) {
             .main {
                 .container {
@@ -386,6 +451,17 @@
 
                             }
                         }
+                    }
+                }
+            }
+            .main .deleteModal .deleteModalContainer {
+                width: 300px;
+                height: 240px;
+                gap: 20%;
+                .btns {
+                    gap: 8px;
+                    .btn {
+                        width: 40%;
                     }
                 }
             }
@@ -627,6 +703,16 @@
                 </div>
             </div>
         </div>
+        <div class="deleteModal">
+            <div class="deleteModalContainer">
+                <h4>確定移除這個商品嗎?</h4>
+                <p>白金鼠魚</p>
+                <div class="btns">
+                    <button class="btn confirm">確定</button>
+                    <button class="btn cancel">取消</button>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
         <div class="outer">
@@ -807,6 +893,42 @@
             const fee = document.querySelector(".fee").children[1]
 
 
+            // 刪除彈窗
+            let modal = document.querySelector(".deleteModal")
+            // 刪除彈窗內文
+            let modalContent = modal.querySelector(".deleteModalContainer p")
+            // 確認按鈕
+            let modalConfirm = modal.querySelector(".confirm")
+            // 取消按鈕
+            let modalCancel = modal.querySelector(".cancel")
+            // 確認窗口函式
+            function confirmDetele(goodsItemName) {
+                modal.classList.add("show")
+                modalContent.textContent= goodsItemName
+                return new Promise((resolve)=>{
+                    // 點確認按鈕
+                    modalConfirm.addEventListener("click",function () {  
+                        modal.classList.remove("show")
+                        resolve(true)
+                    })
+                    // 點取消按鈕
+                    modalCancel.addEventListener("click",function () {
+                        modal.classList.remove("show")
+                        resolve(false)
+                    })
+                    // 點外面
+                    modal.addEventListener("click",function () {
+                        modal.classList.remove("show")
+                        resolve(false)
+                    })
+                    // 點窗口
+                    modal.querySelector(".deleteModalContainer").addEventListener("click",function (e) {
+                        e.stopPropagation()
+                    })
+                })
+
+            }
+
             // 對每個計數器上監聽器
             boxs.forEach(function (box) {
                 const valueEl = box.querySelector('.value');
@@ -822,12 +944,14 @@
                 let goodsItem=box.closest(".cartItem")
                 
                 // 減
-                box.querySelector('.minus').onclick = () => {
+                box.querySelector('.minus').onclick = async () => {
                     // 找array中對應索引直
                     let index = cartData.findIndex(item => item.goodsName === goodsItemName);
                     value--;
                     if (value < 1) {
-                        if (confirm("確定刪除嗎?")) {
+                        
+                        let ok = await confirmDetele(goodsItemName)
+                        if (ok) {
                             cartData.splice(index, 1)
                             // 更新localStorage
                             localStorage.setItem("cartData", JSON.stringify(cartData));
@@ -857,6 +981,7 @@
                             value = 1
                             
                         }
+                        
                         return
                     }
 
@@ -866,12 +991,6 @@
                     // 更新localStorage
                     localStorage.setItem("cartData", JSON.stringify(cartData));
 
-                    
-
-                    
-                    
-                    
-                    
                     
     
                     valueEl.textContent = value;
@@ -920,15 +1039,14 @@
                     }
                 };
     
-    
+                // 刪除icon邏輯
                 let trash = goodsItem.querySelector(".trashIcon")
-                trash.addEventListener("click", function () {
+                trash.addEventListener("click", async function () {
                     // 找array中對應索引直
                     let index = cartData.findIndex(item => item.goodsName === goodsItemName);
-                    if (confirm("確定刪除嗎?")) {
-                        // console.log(cartData[index].goodsQuantity);
-                        
-                            
+
+                    let ok = await confirmDetele(goodsItemName)
+                    if (ok) {
                             // 總數量
                             summaryCount.textContent-= cartData[index].goodsQuantity
                             // 總價
@@ -955,11 +1073,6 @@
                                 window.location.href = "./store.html";
                             }
                         }
-
-                            
-            
-
-                    
                 })
     
             })
