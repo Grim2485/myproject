@@ -98,6 +98,17 @@
             left: 0;
             width: 100%;
             height: 100%;
+            display: none;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
 
         .indexBanner {
@@ -366,6 +377,12 @@
             }
         }
         @media screen and (max-width: 1024px) {
+            canvas{
+                display: none !important;
+            }
+            .bg-video {
+                display: block;
+            }
             .main {
                 .about {
                     .content {
@@ -453,7 +470,9 @@
 
 <body>
     <div class="start"></div>
-    <canvas></canvas>
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="./img/video.mp4" type="video/mp4">
+    </video>
     <header>
         <div class="navLogo">
             <a href="./index.html">
@@ -745,8 +764,7 @@
             scene.add(renderQuad);
 
             // 建立 2D canvas 用於繪製文字
-            // const canvas = document.createElement("canvas");
-            const canvas = document.querySelector("canvas")
+            const canvas = document.createElement("canvas");
             canvas.width = width;
             canvas.height = height;
             const ctx = canvas.getContext("2d", { alpha: true });
