@@ -106,7 +106,7 @@
             }
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        
+
         .loading.fadeOut {
             transition: opacity .6s ease;
             opacity: 0;
@@ -568,7 +568,7 @@
                     <div class="price">
 
                         <h4>促銷價</h4>
-                        <h4>NT<span>$20</span></h4>
+                        <h4>NT<span>$<count-up data-duration="1">20</count-up></span></h4>
                     </div>
                 </div>
                 <div class="featureCard  pic2" data-aos="flip-left" data-aos-duration="1000">
@@ -582,7 +582,7 @@
                     </div>
                     <div class="price">
                         <h4>促銷價</h4>
-                        <h4>NT<span>$99999</span></h4>
+                        <h4>NT<span>$<count-up data-duration="3">99999</count-up></span></h4>
                     </div>
                 </div>
                 <div class="featureCard  pic3" data-aos="flip-left" data-aos-duration="1500">
@@ -596,7 +596,7 @@
                     </div>
                     <div class="price">
                         <h4>促銷價</h4>
-                        <h4>NT<span>$150</span></h4>
+                        <h4>NT<span>$<count-up data-duration="2">150</count-up></span></h4>
                     </div>
                 </div>
             </div>
@@ -1041,6 +1041,8 @@
     <script>
        AOS.init();
     </script>
+    <!-- counterup -->
+    <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements@master/dist/count-up.min.js"></script>
     <script>
         window.addEventListener("load",function () {
             const loaderEl = document.querySelector(".loading");
