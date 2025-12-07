@@ -163,6 +163,11 @@
                                 }
                             }
                         }
+                        .cartItem.fadeOut {
+                            transition: opacity .6s ease;
+                            opacity: 0;
+                            pointer-events: none; 
+                        }
                     }
                 }
 
@@ -794,6 +799,7 @@
         //     }
         // ];
         // localStorage.setItem("cartData", JSON.stringify(cartList));
+
         // 取數據
         let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
         
@@ -955,7 +961,9 @@
                             cartData.splice(index, 1)
                             // 更新localStorage
                             localStorage.setItem("cartData", JSON.stringify(cartData));
-                            goodsItem.remove()
+                            //刪除此元素
+                            goodsItem.classList.add('fadeOut');
+                            setTimeout(()=> goodsItem.remove(), 700);
 
                             // 總數量
                             summaryCount.textContent--
@@ -1065,7 +1073,9 @@
                             cartData.splice(index, 1)
                             // 更新localStorage
                             localStorage.setItem("cartData", JSON.stringify(cartData));
-                            goodsItem.remove()
+                            //刪除此元素
+                            goodsItem.classList.add('fadeOut');
+                            setTimeout(()=> goodsItem.remove(), 700);
 
                             // 如果沒數據跳轉商品頁面
                             if (cartData.length==0) {
@@ -1076,8 +1086,6 @@
                 })
     
             })
-    
-    
     
     
     
