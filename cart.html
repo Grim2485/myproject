@@ -964,13 +964,15 @@
                 let totalPrice = box.parentElement.parentElement.querySelector(".totalPrice").children[0]
                 //取商品名稱
                 let goodsItemName=box.closest(".cartItem").children[0].children[1].children[0].textContent
+                //取商品尺寸
+                let goodsItemSize=box.closest(".cartItem").querySelector('.goodsName p').textContent
                 //商品
                 let goodsItem=box.closest(".cartItem")
                 
                 // 減
                 box.querySelector('.minus').onclick = async () => {
                     // 找array中對應索引直
-                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName && item.goodsSize ==goodsItemSize);
                     value--;
                     if (value < 1) {
                         
@@ -1041,7 +1043,7 @@
                 // 加
                 box.querySelector('.plus').onclick = () => {
                     // 找array中對應索引直
-                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName && item.goodsSize ==goodsItemSize);
                     value++;
 
                     cartData[index].goodsQuantity=value
@@ -1069,7 +1071,7 @@
                 let trash = goodsItem.querySelector(".trashIcon")
                 trash.addEventListener("click", async function () {
                     // 找array中對應索引直
-                    let index = cartData.findIndex(item => item.goodsName === goodsItemName);
+                    let index = cartData.findIndex(item => item.goodsName === goodsItemName && item.goodsSize ==goodsItemSize);
 
                     let ok = await confirmDetele(goodsItemName)
                     if (ok) {

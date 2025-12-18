@@ -200,6 +200,9 @@
                                     button:hover {
                                         background-color: #e4e4e488;
                                     }
+                                    button.active {
+                                        background-color: #b3b2b288;
+                                    }
                                 }
                             }
 
@@ -647,8 +650,8 @@
                             <div class="goodsSize">
                                 <p>尺寸</p>
                                 <div class="size">
-                                    <button>幼魚</button>
-                                    <button>成魚</button>
+                                    <button >幼魚</button>
+                                    <button class='active'>成魚</button>
                                 </div>
                             </div>
                             <div class="amount">
@@ -810,6 +813,21 @@
             
         })
 
+        let sizebtns = document.querySelectorAll('.size button')
+        sizebtns.forEach(function (sizebtn) {
+            sizebtn.addEventListener('click',function () {
+                sizebtns.forEach(function (i) {
+                    i.classList.remove('active')
+                })
+                this.classList.add('active')
+                let price = this.closest('.goodsDescription').querySelector('.money h3')
+                if (this.innerHTML=="成魚") {
+                    price.innerHTML="$20"
+                } else {
+                    price.innerHTML="$10"
+                }
+            })
+        })
 
         // localStorage
         // 取數據
@@ -819,9 +837,18 @@
             let goodsAmount = Number(document.querySelector(".value").textContent)
             
 
+            
+            // 商品尺寸
+            let goodsSize= document.querySelector('button.active').innerHTML;
             // 找array中對應索引直
-            let index = cartData.findIndex(item => item.goodsName === "白金鼠魚");
-
+            let index = cartData.findIndex(item => item.goodsName === "白金鼠魚" && item.goodsSize ==="成魚");
+            let sindex = cartData.findIndex(item => item.goodsSize == "幼魚");
+            
+            
+            console.log(goodsSize);
+            
+            console.log(index);
+            
 
             // cartIcon邏輯
             if (cartData.length==0) {
@@ -836,20 +863,38 @@
                 cartIcon.classList.remove('animate');
             }, { once: true });
 
-            if (index== -1) {
+            if (goodsSize =='成魚') {
+                if (index == -1) {
                 cartData.push(
                     {
                     goodsName : "白金鼠魚",
-                    goodsSize : "成魚",
+                    goodsSize,
                     goodsPrice:20,
                     goodsQuantity:goodsAmount,
                     goodsPicNum:0
                     }
                     
                 )
-            } else {
+            }else {
                 cartData[index].goodsQuantity+= goodsAmount
             }
+            } else if(goodsSize =='幼魚'){
+                if (sindex == -1) {
+                cartData.push(
+                    {
+                    goodsName : "白金鼠魚",
+                    goodsSize,
+                    goodsPrice:10,
+                    goodsQuantity:goodsAmount,
+                    goodsPicNum:0
+                    }
+                    
+                )
+            }else {
+                cartData[sindex].goodsQuantity+= goodsAmount
+            }
+            }
+
             // 更新localStorage
             localStorage.setItem("cartData", JSON.stringify(cartData));
             // alert("已加入購物車")
